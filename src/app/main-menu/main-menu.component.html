@@ -1,0 +1,168 @@
+<html>
+  <style>
+  body
+  { 
+    background-image: url(http://localhost/slim/apirest/imagenes/1.jpg);
+    background-attachment: fixed;
+    background-position: center; 
+  }
+  </style>
+
+  <body>
+
+    <div class="alert alert-primary" align="right">
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal"  data-whatever="@mdo">Log in</button>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal2"  data-whatever="@mdo2">Registrarse</button>
+    </div>  
+
+  <div class="container">
+
+    <div class="jumbotron">
+      <h1 class="display-3">Hello, world!</h1>
+
+      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+      <hr class="my-4">
+      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">GitHub</a>
+      </p>
+    </div>
+
+    
+
+    <div class="card-deck">
+
+      <div class="card">
+        <img class="card-img-top" src="http://localhost/slim/apirest/imagenes/1.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Sala de juegos</h4>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><button class="btn btn-primary" name="BtnSalaDeJuegos" routerLink="/salaDeJuegos">Entrar</button> </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img class="card-img-top" src="http://localhost/slim/apirest/imagenes/1.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Tabla de resultados</h4>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img class="card-img-top" src="http://localhost/slim/apirest/imagenes/1.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">UTNFra</h4>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <br>
+    
+
+
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Log in</h5>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+
+        </div>
+
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Nombre de cuenta:</label>
+              <input type="text" class="form-control" id="TxtLoginUsuario">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Contraseña:</label>
+              <input type="password" class="form-control" id="TxtLoginPass">
+            </div>
+          </form>
+
+        </div>       
+
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Log in</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2"  data-whatever="@mdo" >Crear una cuenta</button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          
+
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModal2Label">Registro</h5>
+  
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>  
+          </div>  
+
+
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                  <label><b>Nombre de cuenta</b></label>
+                  <input type="text" class="form-control" placeholder="Enter Username" name="user" [(ngModel)]="form.nombre" >
+              </div>              
+            
+              <div class="form-group">
+                  <label><b>Contraseña</b></label>
+                  <input type="password" class="form-control" placeholder="Enter Password" name="pass" [(ngModel)]="form.password" >
+              </div>            
+            
+              <div class="form-group">
+                <label><b>E-Mail</b></label>
+                <input type="email" class="form-control" placeholder="Enter mail" name="mail" [(ngModel)]="form.mail" >
+              </div>            
+            
+              <div class="form-group">
+                  <label><b>Genero</b></label><br>
+                  <input type="radio" name="sexo" [(ngModel)]="form.sexo" value="Masculino">Masculino
+                  <input type="radio" name="sexo" [(ngModel)]="form.sexo" value="Femenino">Femenino
+              </div>            
+            
+              <div class="form-group">
+                <label><b>Foto de avatar</b></label>
+                <input type="File" class="form-control" placeholder="Click para subir una imagen" id="foto" name="foto" (change)=tomarFoto($event)>
+              </div>
+
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Registrarse</button>
+                  <button type="reset" class="btn btn-white">Limpiar</button>
+              </div>
+            </form>  
+          </div>
+
+        </div>
+      </div>
+    </div>
+  
+  </body>
+</html>
