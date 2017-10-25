@@ -27,9 +27,23 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+## Tareas
+Juegos:
+1. Cambiar el constructor de la clase juego ("nombreJugador", "", "", "") por ("", "", ""), usar LocalStorage para establecer el nombre del jugador en el constructor.
+2. Terminar el juego de agilidad.
+3. Hacer comportamiento de piedra papel o tijera. usar random() y tags <img>.
+4. Mejorar Adivina el numero.
 
 
-## TP1Lab4SalaDeJuegos
+SLIM:
+1. Prepararlo
 
-MainMenu: seta una pagina general donde se encuentr la mayoria de los componentes mas usuales a navegar.
-Login: Tengra la funcion habitual de un login y ademas un alta.
+
+Base de datos:
+1. Tabla usuario e historial.
+
+
+Proyecto:
+1. implementar FileUpload y hacerlo funcionar
+
+

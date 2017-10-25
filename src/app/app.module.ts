@@ -16,6 +16,8 @@ import { AdivinaElNumeroComponent } from './adivina-el-numero/adivina-el-numero.
 import { AgilidadComponent } from './agilidad/agilidad.component';
 import { JuegoDeColoresComponent } from './juego-de-colores/juego-de-colores.component';
 import { ErrorComponent } from './error/error.component';
+import { SalaDeJuegosComponent } from './sala-de-juegos/sala-de-juegos.component';
+import { PiedraPapelTijeraComponent } from './piedra-papel-tijera/piedra-papel-tijera.component';
 
 //Servicios                 //Verificar dependencia
 import { JuegoService } from "./servicios/juego.service";
@@ -23,14 +25,11 @@ import { MiHttpService } from "./servicios/mi-http.service";
 
 //entidades
 import { Juego } from "./entidades/juego";
-import { SalaDeJuegosComponent } from './sala-de-juegos/sala-de-juegos.component';
-import { PiedraPapelTijeraComponent } from './piedra-papel-tijera/piedra-papel-tijera.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    SalaDeJuegosComponent,
-    PiedraPapelTijeraComponent
   ],
   imports: [
     BrowserModule,

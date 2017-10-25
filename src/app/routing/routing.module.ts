@@ -15,6 +15,7 @@ import { AgilidadComponent } from '../agilidad/agilidad.component';
 import { JuegoDeColoresComponent } from '../juego-de-colores/juego-de-colores.component';
 import { ErrorComponent } from '../error/error.component';
 import { SalaDeJuegosComponent } from '../sala-de-juegos/sala-de-juegos.component';
+import { PiedraPapelTijeraComponent } from '../piedra-papel-tijera/piedra-papel-tijera.component';
 
 //Servicios
 import { JuegoService } from "../servicios/juego.service";
@@ -29,7 +30,7 @@ const miRuteo = [
   children: [
     {path: "login",component: LoginComponent},
     {path: "adivina",component: AdivinaElNumeroComponent},
-    {path: "piedraPapelTijera",component: AdivinaElNumeroComponent},
+    {path: "piedraPapelTijera",component: PiedraPapelTijeraComponent},
     {path: "agilidad",component: AgilidadComponent},
     {path: "juego de colores",component: JuegoDeColoresComponent}
   ]},
@@ -44,7 +45,9 @@ const miRuteo = [
     AdivinaElNumeroComponent,
     AgilidadComponent,
     JuegoDeColoresComponent,
-    ErrorComponent
+    ErrorComponent,
+    SalaDeJuegosComponent,
+    PiedraPapelTijeraComponent
   ],
   imports: [
     BrowserModule,

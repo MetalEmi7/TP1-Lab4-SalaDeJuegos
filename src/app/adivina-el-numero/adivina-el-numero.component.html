@@ -12,12 +12,15 @@
       </div>
 
       <div align="Center" class="container">
-        <input class="form-control" type="text" placeholder="Introduzca un numero" *ngIf="this.unJuego.juega" [(ngModel)]="numero_Usuario">
-        <button class="btn btn-primary" (click)="Adivinar()" *ngIf="this.unJuego.juega">Adivinar</button>  
-        <button class="btn btn-primary" (click)="GenerarNum()" *ngIf="!this.unJuego.juega">Nuevo</button>
-        <br>
-        {{unJuego.mensaje}}
+              <input class="form-control" type="text" placeholder="Introduzca un numero" *ngIf="this.unJuego.juega" name="TxtNumUser" [(ngModel)]="numero_Usuario">
+              
+              <button class="btn btn-primary" name="BtnAdivinar" (click)="Adivinar()" *ngIf="this.unJuego.juega">Adivinar</button>  
+              <button class="btn btn-primary" name="BtnNuevo" (click)="GenerarNum()" *ngIf="!this.unJuego.juega">Nuevo</button>
+
+            {{unJuego.mensaje}}
       </div>
+
+
 
   </body>
 </html>
