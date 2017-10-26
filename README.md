@@ -30,7 +30,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Tareas
 Juegos:
 1. Cambiar el constructor de la clase juego ("nombreJugador", "", "", "") por ("", "", ""), usar LocalStorage para establecer el nombre del jugador en el constructor.
-2. Terminar el juego de agilidad.
+2. Terminar el juego de agilidad. usar random().
 3. Hacer comportamiento de piedra papel o tijera. usar random() y tags <img>.
 4. Mejorar Adivina el numero.
 
@@ -44,6 +44,12 @@ Base de datos:
 
 
 Proyecto:
-1. implementar FileUpload y hacerlo funcionar
+1. Implementar FileUpload y hacerlo funcionar OK ... desarrollar
+2. Implementar @pipes
+3. Encapsulamiento entre servicios para obtener usuarios del archivo usuarios.json
+4. Desarrollar componente Error.
 
+RECORDAR:
+- que hacer con los componentes login y registro
+- borrar componente jugadores
 

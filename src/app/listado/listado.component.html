@@ -1,0 +1,34 @@
+<div class="container">  
+
+  <div class="alert alert-primary" align="right">
+    <button class="btn btn-primary" type="button" >Todos</button>
+  </div> 
+
+  {{filtro}}
+
+
+
+
+
+  <table class="table" border="1">
+  
+
+
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Genero</th>
+            <th>foto</th>
+          </tr>
+        </thead>   
+        
+        <tr *ngFor="let per of ListaDePersonas" >
+          <td>{{per.nombre}}</td>
+          <td>{{per.mail}}</td>
+          <td>{{per.sexo}}</td>
+          <th><img src="http://localhost/slim/apirest/imagenes/{{per.foto}}" width="40" height="40"></th>
+  
+        </tr>
+  </table>
+</div>
