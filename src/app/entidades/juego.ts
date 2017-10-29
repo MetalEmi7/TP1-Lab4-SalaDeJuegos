@@ -4,10 +4,10 @@ export class Juego
     public nombreJuego:string = "_Juego";
     public descripcion:string = "_Un juego para jugar";
     public mensaje:string = "Esperando...";
-    public resultado:boolean;
+    public resultado:boolean = false;
 
     //las siguientes variables deben ser modificadas en el componente que instancia esta clase.
-    public juega:boolean;
+    public juega:boolean = false;
     public FechaYHora:Date = new Date();
 
     
