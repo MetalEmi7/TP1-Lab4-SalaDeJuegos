@@ -10,37 +10,39 @@
               </div>
           </div>
         
-
+    <div class="container">
         <div class="row justify-content-md-center">
 
+            <div class="col-6 col-md-3">
+                <div class="container" align="center">
+                <div class="alert alert-primary">
+                    <button class="btn btn-primary"> <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Piedra.jpg" alt="Piedra"    class="rounded" width=150 (click)="QueHay($event)"> </button><br><br>
+                    <button class="btn btn-primary"> <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Papel.jpg"  alt="Papel"     class="rounded" width=150 (click)="QueHay($event)"> </button><br><br>
+                    <button class="btn btn-primary"> <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Tijera.jpg" alt="Tijera"    class="rounded" width=150 (click)="QueHay($event)"> </button><br><br>
+                </div>
+                </div>
+            </div>
 
-        <div class="col-6 col-md-4">
-            <div class="container" align="center">
-            <div class="alert alert-primary">
-                <div><img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Piedra.jpg" alt="Piedra" class="rounded" width=150></div><br>
-                <div><img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Papel.jpg" alt="Papel" class="rounded" width=150></div><br>
-                <div><img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Tijera.jpg" alt="Tijera" class="rounded" width=150></div>
+
+
+            <div class="col-6 col-md-3">
+                <div class="container" align="center">            
+                <div class="alert alert-danger">
+                    <button class="btn btn-danger"> <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Piedra.jpg" alt="Piedra" class="rounded" width=150> </button><br><br>
+                    <button class="btn btn-danger"> <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Papel.jpg" alt="Papel" class="rounded" width=150></button><br><br>
+                    <button class="btn btn-danger"> <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Tijera.jpg" alt="Tijera" class="rounded" width=150></button><br><br>
+                </div>
+                </div>
             </div>
-            </div>
+
         </div>
-
-        <div class="col align-self-center" align="center">
-        <button class="btn btn-primary" type="button" (click)="verificarJugada()" >Log in</button>
-        {{mensaje}}
-        </div>
-
-        <div class="col-6 col-md-4">
-            <div class="container" align="center">            
-            <div class="alert alert-primary">
-                <div><img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Piedra.jpg" alt="Piedra" class="rounded" width=150></div><br>
-                <div><img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Papel.jpg" alt="Papel" class="rounded" width=150></div><br>
-                <div><img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Tijera.jpg" alt="Tijera" class="rounded" width=150></div>
-            </div>
-            </div>
-        </div>
+        <div class="row"> <button *ngIf="unJuego.juega" class="btn btn-primary btn-lg btn-block" (click)="verificarJugada()"> Jugar </button> </div>
+        <div class="row"> <button *ngIf="!unJuego.juega" class="btn btn-primary btn-lg btn-block" (click)="prepararJuego()"> Intentar otra vez </button> </div>
+        <h1 align="center" >{{unJuego.mensaje}}</h1>
+    </div>
 
 
-        </div>  
+
 
 
 

@@ -18,9 +18,13 @@ export class PiedraPapelTijeraComponent{
   jugadaUsuario:string;
   jugadaSistema:string;
 
-  aux_jugadaSistema:number;
+  aux_jugadaSistema;
 
   Modo_Testeo = true;
+
+  valor:string;
+
+
 
   //intentos:any=3;
 
@@ -41,6 +45,7 @@ export class PiedraPapelTijeraComponent{
 
   prepararJuego()
   {
+    this.unJuego.mensaje="Esperando...";
     this.unJuego.juega=true;
     this.generarJugada();
   }
@@ -49,7 +54,8 @@ export class PiedraPapelTijeraComponent{
 
   generarJugada()
   {
-    this.aux_jugadaSistema = Math.floor(Math.random() * (1 - 3));
+    //this.aux_jugadaSistema = 3;
+    this.aux_jugadaSistema = Math.floor(Math.random() * ((3+1) - 1)+1);
     console.log(this.aux_jugadaSistema);
 
     switch (this.aux_jugadaSistema)
@@ -66,6 +72,8 @@ export class PiedraPapelTijeraComponent{
         this.jugadaSistema = "Papel";
         break;
     }
+
+    console.log(this.jugadaSistema);
   }
 
 
@@ -76,36 +84,51 @@ export class PiedraPapelTijeraComponent{
     if(this.jugadaUsuario != this.jugadaSistema)
     {
       if(this.jugadaUsuario == "Piedra")
+      {
         if (this.jugadaSistema == "Tijera")
           this.unJuego.resultado=true;
         else      
           this.unJuego.resultado=false;
+      }
+
 
       if(this.jugadaUsuario == "Tijera")
+      {
         if (this.jugadaSistema == "Papel")
           this.unJuego.resultado=true;
         else      
           this.unJuego.resultado=false;
+      }
       
+
       if(this.jugadaUsuario == "Papel")
+      {
         if (this.jugadaSistema == "Piedra")
           this.unJuego.resultado=true;
         else      
           this.unJuego.resultado=false;
+      }
+
 
       this.unJuego.juega=false; //revisar mas tarde    
     }
 
-    if (this.unJuego.resultado)
-      this.unJuego.mensaje = "Usted ha ganado";    
+    if (this.unJuego.resultado == true)
+      this.unJuego.mensaje = "Usted ha ganado";
     else
       this.unJuego.mensaje = "Usted perdio";
 
+    console.log(this.unJuego.mensaje);
+    this.unJuego.juega = false;  
   }
 
 
 
-
+QueHay(val)
+{
+  this.jugadaUsuario = val.target.alt;
+  console.log(this.jugadaUsuario); 
+}
 
 
 
