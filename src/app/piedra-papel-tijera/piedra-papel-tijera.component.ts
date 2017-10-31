@@ -15,7 +15,7 @@ export class PiedraPapelTijeraComponent{
   event_emitter :EventEmitter<Juego>;
   unJuego:Juego;  
 
-  jugadaUsuario:string;
+  jugadaUsuario:string=null;
   jugadaSistema:string;
 
   aux_jugadaSistema;
@@ -47,6 +47,7 @@ export class PiedraPapelTijeraComponent{
   {
     this.unJuego.mensaje="Esperando...";
     this.unJuego.juega=true;
+    this.jugadaUsuario=null;
     this.generarJugada();
   }
 
@@ -174,13 +175,13 @@ QueHay(val)
 
 desmarcarBotones()
 {
-  document.getElementById("BtnPiedra_user").setAttribute("class", "btn btn-primary-outline");  
-  document.getElementById("BtnPapel_user").setAttribute("class", "btn btn-primary-outline");
-  document.getElementById("BtnTijera_user").setAttribute("class", "btn btn-primary-outline"); 
+  document.getElementById("BtnPiedra_user").setAttribute("class", "btn btn-outline-primary");  
+  document.getElementById("BtnPapel_user").setAttribute("class", "btn btn-outline-primary");
+  document.getElementById("BtnTijera_user").setAttribute("class", "btn btn-outline-primary"); 
 
-  document.getElementById("BtnPiedra").setAttribute("class", "btn btn-primary-outline");  
-  document.getElementById("BtnPapel").setAttribute("class", "btn btn-primary-outline");
-  document.getElementById("BtnTijera").setAttribute("class", "btn btn-primary-outline"); 
+  document.getElementById("BtnPiedra").setAttribute("class", "btn btn-outline-primary");  
+  document.getElementById("BtnPapel").setAttribute("class", "btn btn-outline-primary");
+  document.getElementById("BtnTijera").setAttribute("class", "btn btn-outline-primary"); 
 }
 
 reiniciarJuego()

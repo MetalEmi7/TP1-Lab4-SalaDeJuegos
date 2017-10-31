@@ -10,17 +10,14 @@ import { Juego } from "../entidades/juego";
 })
 export class AgilidadComponent implements OnInit {
   @Output() 
-  enviarJuego :EventEmitter<any>= new EventEmitter<any>();
-
+  event_emitter :EventEmitter<any>= new EventEmitter<any>();
   unJuego:Juego;
 
-  private numero_uno:number;
-  private numero_dos:number;
-  operador:string;
+  numUno:number=0;
+  operador:string="?";
+  numDos:number=0;  
 
   numeroIngresado:number;
-
-  gano:boolean;  
 
   ocultarVerificar: boolean;
   Tiempo: number;
@@ -31,29 +28,43 @@ export class AgilidadComponent implements OnInit {
 
    constructor()
    {
+    this.event_emitter = new EventEmitter<Juego>();
     this.unJuego = new Juego(
-      "algo",
-      "Agilidad Aritmetica",
-      "Nose que hay que hacer pero voy a copiar el codigo del TP del profe",
-      "Esperando resultado");
+      localStorage.getItem("jugador"), 
+      "Agilidad aritmetica", 
+      "Debe calcular y responder correcta y rapidamente la operacion que el sistema tiene preparado para usted.", 
+      "Esperando a que empiece el juego...");
 
+    this.prepararJuego();  
+  }
+
+
+
+  prepararJuego()
+  {
     this.ocultarVerificar=true;
     this.Tiempo=5; 
 
     console.info("Inicio agilidad");  
+
+    this.unJuego.mensaje="Esperando...";
+    this.unJuego.juega=true;
   }
 
 
-  
+
+
+
   NuevoJuego()
   {
     this.ocultarVerificar=false;
-    this.repetidor = setInterval(()=>{       
+    this.repetidor = setInterval(()=>
+    {       
         this.Tiempo--;
+        console.log("llega", this.Tiempo);
 
-        console.log("llego", this.Tiempo);
-
-        if(this.Tiempo==0 ) {
+        if(this.Tiempo==0 )
+        {
           clearInterval(this.repetidor);
           this.verificar();
           this.ocultarVerificar=true;

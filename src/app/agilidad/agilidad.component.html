@@ -13,23 +13,25 @@
 
       
       <div align="Center" class="container">
-            Primer número:
-            <input [(ngModel)]="numero_uno" placeholder="ingrese numero" name="num_uno" type="text" class="form-control" style="width:50%" readonly/>
+                  <div class="row justify-content-md-center" >
+                        <div class="col col-lg-1">  <h1>{{numUno}}</h1>           </div>
+                        <div class="col-md-auto">  <h1>{{operador}}</h1>           </div>
+                        <div class="col col-lg-1">  <h1>{{numDos}}</h1>           </div>
+                  </div>
 
-            Operador:
-            <input [(ngModel)]="operador" placeholder="ingrese numero" name="op" type="text" class="form-control" style="width:50%" readonly/>
+                  <div class="row">
+                        <div class="col-sm-9" >
+                              <input class="form-control" *ngIf="this.unJuego.juega" [(ngModel)]="numeroIngresado" type="text" placeholder="ingrese numero" name="numeroIngresado"/>
+                        </div>
+                        
+                        <div class="col-sm-3">  
+                              <button *ngIf="!ocultarVerificar" (click)="verificar()" class="btn btn-success btn-block">Verificar {{Tiempo}} </button>
+                              <button *ngIf="ocultarVerificar" (click)="NuevoJuego()" class="btn btn-primary btn-block">Nuevo</button>
+                        </div>
+                  </div>
+            
+            <h1>{{unJuego.mensaje}}</h1>
 
-            Segundo número:
-            <input [(ngModel)]="numero_dos" placeholder="ingrese numero" name="num_dos" type="text" class="form-control" style="width:50%" readonly/>
-
-            Respuesta:
-            <input [(ngModel)]="numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%"/>
-
-      
-            <h2 [hidden]="ocultarVerificar" ><button (click)="verificar()" class="btn btn-success btn-lg">Verificar {{Tiempo}} </button></h2>
-            <h2 [hidden]="!ocultarVerificar"><button (click)="NuevoJuego()"  class="btn btn-info btn-lg">Nuevo</button></h2>
-
-            {{unJuego.mensaje}}    
       </div> 
 
 </body>
