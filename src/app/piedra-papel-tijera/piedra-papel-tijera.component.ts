@@ -65,11 +65,11 @@ export class PiedraPapelTijeraComponent{
         break;
 
       case 2:        
-        this.jugadaSistema = "Tijera";
+        this.jugadaSistema = "Papel";
         break;
 
       case 3:        
-        this.jugadaSistema = "Papel";
+        this.jugadaSistema = "Tijera";
         break;
     }
 
@@ -118,8 +118,26 @@ export class PiedraPapelTijeraComponent{
     else
       this.unJuego.mensaje = "Usted perdio";
 
+
+
     console.log(this.unJuego.mensaje);
     this.unJuego.juega = false;  
+
+    switch (this.jugadaSistema)
+    {
+      case "Piedra":
+        document.getElementById("BtnPiedra").setAttribute("class", "btn btn-danger active");         
+        break;
+
+      case "Papel":        
+        document.getElementById("BtnPapel").setAttribute("class", "btn btn-danger active"); 
+        break;
+
+      case "Tijera":        
+        document.getElementById("BtnTijera").setAttribute("class", "btn btn-danger active"); 
+        break;
+    }
+
   }
 
 
@@ -128,6 +146,27 @@ QueHay(val)
 {
   this.jugadaUsuario = val.target.alt;
   console.log(this.jugadaUsuario); 
+
+  switch (this.jugadaUsuario)
+  {
+    case "Piedra":
+      document.getElementById("BtnPiedra_user").setAttribute("class", "btn btn-primary active");
+      document.getElementById("BtnPapel_user").setAttribute("class", "btn btn-outline-primary");
+      document.getElementById("BtnTijera_user").setAttribute("class", "btn btn-outline-primary");         
+      break;
+
+    case "Papel":
+      document.getElementById("BtnPiedra_user").setAttribute("class", "btn btn-outline-primary");
+      document.getElementById("BtnPapel_user").setAttribute("class", "btn btn-primary active");      
+      document.getElementById("BtnTijera_user").setAttribute("class", "btn btn-outline-primary"); 
+      break;
+
+    case "Tijera": 
+      document.getElementById("BtnPiedra_user").setAttribute("class", "btn btn-outline-primary");
+      document.getElementById("BtnPapel_user").setAttribute("class", "btn btn-outline-primary");      
+      document.getElementById("BtnTijera_user").setAttribute("class", "btn btn-primary active"); 
+      break;
+  }
 }
 
 
