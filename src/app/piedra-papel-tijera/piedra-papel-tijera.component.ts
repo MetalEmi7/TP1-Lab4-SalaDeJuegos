@@ -48,19 +48,15 @@ export class PiedraPapelTijeraComponent{
     this.unJuego.mensaje="Esperando...";
     this.unJuego.juega=true;
     this.generarJugada();
-
-
-    
   }
 
 
 
   generarJugada()
   {
-
     //this.aux_jugadaSistema = 3;
     this.aux_jugadaSistema = Math.floor(Math.random() * ((3+1) - 1)+1);
-    console.log(this.aux_jugadaSistema);
+    console.log(this.aux_jugadaSistema);    
 
     switch (this.aux_jugadaSistema)
     {
@@ -78,6 +74,8 @@ export class PiedraPapelTijeraComponent{
     }
 
     console.log(this.jugadaSistema);
+
+
   }
 
 
@@ -124,35 +122,29 @@ export class PiedraPapelTijeraComponent{
       this.unJuego.mensaje = "Usted ha ganado";
     else if (this.jugadaUsuario == this.jugadaSistema)
       this.unJuego.mensaje = "Empate";
-    else
+    else if (this.unJuego.resultado == false)
       this.unJuego.mensaje = "Usted perdio";
 
 
 
-    console.log(this.unJuego.mensaje);
-    this.unJuego.juega = false;  
-
     switch (this.jugadaSistema)
     {
       case "Piedra":
-        document.getElementById("BtnPiedra").setAttribute("class", "btn btn-danger active");  
-        document.getElementById("BtnPapel").setAttribute("class", "btn btn-outline-danger");  
-        document.getElementById("BtnTijera").setAttribute("class", "btn btn-outline-danger");         
+        document.getElementById("BtnPiedra").setAttribute("class", "btn btn-danger active");       
         break;
 
       case "Papel":        
-      document.getElementById("BtnPiedra").setAttribute("class", "btn btn-outline-danger");  
-      document.getElementById("BtnPapel").setAttribute("class", "btn btn-danger active");  
-      document.getElementById("BtnTijera").setAttribute("class", "btn btn-outline-danger");  
+        document.getElementById("BtnPapel").setAttribute("class", "btn btn-danger active");  
         break;
 
       case "Tijera":        
-      document.getElementById("BtnPiedra").setAttribute("class", "btn btn-outline-danger");  
-      document.getElementById("BtnPapel").setAttribute("class", "btn btn-outline-danger");  
-      document.getElementById("BtnTijera").setAttribute("class", "btn btn-danger active");  
+        document.getElementById("BtnTijera").setAttribute("class", "btn btn-danger active");  
         break;
     }
 
+    
+    console.log(this.unJuego.mensaje);
+    this.unJuego.juega = false;  
   }
 
 
@@ -162,31 +154,40 @@ QueHay(val)
   this.jugadaUsuario = val.target.alt;
   console.log(this.jugadaUsuario); 
 
+  this.desmarcarBotones();
+
   switch (this.jugadaUsuario)
   {
     case "Piedra":
-      document.getElementById("BtnPiedra_user").setAttribute("class", "btn btn-primary active");
-      document.getElementById("BtnPapel_user").setAttribute("class", "btn btn-outline-primary");
-      document.getElementById("BtnTijera_user").setAttribute("class", "btn btn-outline-primary");         
+      document.getElementById("BtnPiedra_user").setAttribute("class", "btn btn-primary active");   
       break;
 
     case "Papel":
-      document.getElementById("BtnPiedra_user").setAttribute("class", "btn btn-outline-primary");
-      document.getElementById("BtnPapel_user").setAttribute("class", "btn btn-primary active");      
-      document.getElementById("BtnTijera_user").setAttribute("class", "btn btn-outline-primary"); 
+      document.getElementById("BtnPapel_user").setAttribute("class", "btn btn-primary active");   
       break;
 
-    case "Tijera": 
-      document.getElementById("BtnPiedra_user").setAttribute("class", "btn btn-outline-primary");
-      document.getElementById("BtnPapel_user").setAttribute("class", "btn btn-outline-primary");      
+    case "Tijera":    
       document.getElementById("BtnTijera_user").setAttribute("class", "btn btn-primary active"); 
       break;
   }
 }
 
+desmarcarBotones()
+{
+  document.getElementById("BtnPiedra_user").setAttribute("class", "btn btn-primary-outline");  
+  document.getElementById("BtnPapel_user").setAttribute("class", "btn btn-primary-outline");
+  document.getElementById("BtnTijera_user").setAttribute("class", "btn btn-primary-outline"); 
 
+  document.getElementById("BtnPiedra").setAttribute("class", "btn btn-primary-outline");  
+  document.getElementById("BtnPapel").setAttribute("class", "btn btn-primary-outline");
+  document.getElementById("BtnTijera").setAttribute("class", "btn btn-primary-outline"); 
+}
 
-
+reiniciarJuego()
+{
+  this.prepararJuego();
+  this.desmarcarBotones();
+}
 
 
 

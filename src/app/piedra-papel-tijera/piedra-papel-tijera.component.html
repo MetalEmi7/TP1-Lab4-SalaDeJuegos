@@ -39,7 +39,7 @@
 
         </div>
         <div class="row"> <button *ngIf="unJuego.juega" class="btn btn-primary btn-lg btn-block" (click)="verificarJugada()"> Jugar </button> </div>
-        <div class="row"> <button *ngIf="!unJuego.juega" class="btn btn-primary btn-lg btn-block" (click)="prepararJuego()"> Intentar otra vez </button> </div>
+        <div class="row"> <button *ngIf="!unJuego.juega" class="btn btn-primary btn-lg btn-block" (click)="reiniciarJuego()"> Intentar otra vez </button> </div>
         <h1 align="center" >{{unJuego.mensaje}}</h1>
     </div>
 

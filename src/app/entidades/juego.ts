@@ -23,6 +23,6 @@ export class Juego
 
     toString()
     {
-        return "[Juego]: "+this.nombreJuego+" - [Jugador]: "+ this.jugador +" - "+ this.FechaYHora.toLocaleDateString() +" - "+ this.FechaYHora.toLocaleTimeString();
+        return "[Juego]: "+this.nombreJuego+" [Jugador]: "+ this.jugador +" - "+ this.FechaYHora.toLocaleDateString() +" - "+ this.FechaYHora.toLocaleTimeString();
     }
 }
