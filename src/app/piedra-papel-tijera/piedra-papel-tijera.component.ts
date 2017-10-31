@@ -48,12 +48,16 @@ export class PiedraPapelTijeraComponent{
     this.unJuego.mensaje="Esperando...";
     this.unJuego.juega=true;
     this.generarJugada();
+
+
+    
   }
 
 
 
   generarJugada()
   {
+
     //this.aux_jugadaSistema = 3;
     this.aux_jugadaSistema = Math.floor(Math.random() * ((3+1) - 1)+1);
     console.log(this.aux_jugadaSistema);
@@ -83,6 +87,7 @@ export class PiedraPapelTijeraComponent{
     
     if(this.jugadaUsuario != this.jugadaSistema)
     {
+
       if(this.jugadaUsuario == "Piedra")
       {
         if (this.jugadaSistema == "Tijera")
@@ -113,8 +118,12 @@ export class PiedraPapelTijeraComponent{
       this.unJuego.juega=false; //revisar mas tarde    
     }
 
+
+
     if (this.unJuego.resultado == true)
       this.unJuego.mensaje = "Usted ha ganado";
+    else if (this.jugadaUsuario == this.jugadaSistema)
+      this.unJuego.mensaje = "Empate";
     else
       this.unJuego.mensaje = "Usted perdio";
 
@@ -126,15 +135,21 @@ export class PiedraPapelTijeraComponent{
     switch (this.jugadaSistema)
     {
       case "Piedra":
-        document.getElementById("BtnPiedra").setAttribute("class", "btn btn-danger active");         
+        document.getElementById("BtnPiedra").setAttribute("class", "btn btn-danger active");  
+        document.getElementById("BtnPapel").setAttribute("class", "btn btn-outline-danger");  
+        document.getElementById("BtnTijera").setAttribute("class", "btn btn-outline-danger");         
         break;
 
       case "Papel":        
-        document.getElementById("BtnPapel").setAttribute("class", "btn btn-danger active"); 
+      document.getElementById("BtnPiedra").setAttribute("class", "btn btn-outline-danger");  
+      document.getElementById("BtnPapel").setAttribute("class", "btn btn-danger active");  
+      document.getElementById("BtnTijera").setAttribute("class", "btn btn-outline-danger");  
         break;
 
       case "Tijera":        
-        document.getElementById("BtnTijera").setAttribute("class", "btn btn-danger active"); 
+      document.getElementById("BtnPiedra").setAttribute("class", "btn btn-outline-danger");  
+      document.getElementById("BtnPapel").setAttribute("class", "btn btn-outline-danger");  
+      document.getElementById("BtnTijera").setAttribute("class", "btn btn-danger active");  
         break;
     }
 
