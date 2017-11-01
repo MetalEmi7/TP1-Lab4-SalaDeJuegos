@@ -8,7 +8,7 @@ import { Juego } from "../entidades/juego";
   templateUrl: './agilidad.component.html',
   styleUrls: ['./agilidad.component.css']
 })
-export class AgilidadComponent implements OnInit {
+export class AgilidadComponent{
   @Output() 
   event_emitter :EventEmitter<any>= new EventEmitter<any>();
   unJuego:Juego;
@@ -83,14 +83,6 @@ export class AgilidadComponent implements OnInit {
     }, 900);
 
     this.generarCalculo();
-    console.log("HOLA");
-
-
-
-
-
-
-
   }
 
 
@@ -120,10 +112,19 @@ export class AgilidadComponent implements OnInit {
 
       case 4:
       this.operador = ":";
-      this.numUno = Math.floor(Math.random() * ((100+1) - 1)+1);
-      this.numDos = Math.floor(Math.random() * ((100+1) - 1)+1);
+      var bandera = true;
+
+      while (bandera || (this.numUno % this.numDos) != 0 )
+      { 
+        bandera=false;     
+        this.numUno = Math.floor(Math.random() * ((100+1) - 1)+1);
+        this.numDos = Math.floor(Math.random() * ((10+1) - 1)+1);
+      }
         break;
+
     }
+
+
 
     switch (this.operador)
     {
@@ -143,44 +144,16 @@ export class AgilidadComponent implements OnInit {
         this.resultadoSistema = this.numUno / this.numDos;
         break;
     }
-    console.log(this.resultadoSistema);
-    
-    
-
-    
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-  resetBotones()
-  {
-    if(this.Tiempo==0 )
-    {
-      clearInterval(this.repetidor);
-      this.verificar();
-      this.ocultarVerificar=true;
-      this.Tiempo=5;
-    }
-  }
 
   verificar()
   {
       this.unJuego.juega=false;
       clearInterval(this.repetidor);
       this.ocultarVerificar=true;
-      this.Tiempo=5;
-      
+      this.Tiempo=5;      
 
     if (this.resultadoUsuario == this.resultadoSistema)    
     {
@@ -197,15 +170,7 @@ export class AgilidadComponent implements OnInit {
 
     //RESETEAR TODO?
     this.resultadoUsuario=null;
-
-
-
-
   }  
 
-
-
-  ngOnInit() {
-  }
 
 }
