@@ -19,7 +19,7 @@ export class AgilidadComponent implements OnInit {
 
   aux_operador:number;
 
-  numeroIngresado:number;
+  resultadoUsuario:number;
 
   resultadoSistema:number;
 
@@ -39,16 +39,11 @@ export class AgilidadComponent implements OnInit {
       "Debe calcular y responder correcta y rapidamente la operacion que el sistema tiene preparado para usted.", 
       "Esperando a que empiece el juego...");
       
-      this.ocultarVerificar=true;
-      this.Tiempo=5; 
-
-      console.info("Inicio agilidad");  
-
-      this.unJuego.mensaje="";
-      this.unJuego.juega=true;
+      this.prepararJuego();      
     }
 
 
+    
 
   prepararJuego()
   {
@@ -58,9 +53,6 @@ export class AgilidadComponent implements OnInit {
     console.info("Inicio agilidad");  
 
     this.unJuego.mensaje="Esperando...";
-    this.unJuego.juega=true;
-
-    this.NuevoJuego();
   }
 
 
@@ -70,6 +62,8 @@ export class AgilidadComponent implements OnInit {
   NuevoJuego()
   {
     this.ocultarVerificar=false;
+    this.unJuego.juega=true;
+
     this.repetidor = setInterval(()=>
     {       
         this.Tiempo--;
@@ -77,15 +71,19 @@ export class AgilidadComponent implements OnInit {
 
         if(this.Tiempo==0 )
         {
+          this.unJuego.juega=false;
           clearInterval(this.repetidor);
           this.verificar();
           this.ocultarVerificar=true;
           this.Tiempo=5;
         }
 
+        //this.resetBotones();
+
     }, 900);
 
     this.generarCalculo();
+    console.log("HOLA");
 
 
 
@@ -145,8 +143,9 @@ export class AgilidadComponent implements OnInit {
         this.resultadoSistema = this.numUno / this.numDos;
         break;
     }
-
-    console.log(this.resultadoSistema); 
+    console.log(this.resultadoSistema);
+    
+    
 
     
   }
@@ -164,12 +163,44 @@ export class AgilidadComponent implements OnInit {
 
 
 
-
+  resetBotones()
+  {
+    if(this.Tiempo==0 )
+    {
+      clearInterval(this.repetidor);
+      this.verificar();
+      this.ocultarVerificar=true;
+      this.Tiempo=5;
+    }
+  }
 
   verificar()
   {
-    this.ocultarVerificar=false;
-    clearInterval(this.repetidor);
+      this.unJuego.juega=false;
+      clearInterval(this.repetidor);
+      this.ocultarVerificar=true;
+      this.Tiempo=5;
+      
+
+    if (this.resultadoUsuario == this.resultadoSistema)    
+    {
+      this.unJuego.resultado=true;
+      this.unJuego.mensaje="Usted gano";
+      console.log("Usted gano");    
+    }
+    else
+    {
+      this.unJuego.resultado=false;
+      this.unJuego.mensaje="Usted perdio";
+      console.log("Usted perdio");       
+    }
+
+    //RESETEAR TODO?
+    this.resultadoUsuario=null;
+
+
+
+
   }  
 
 

@@ -21,13 +21,14 @@
 
                   <div class="row">
                         <div class="col-sm-9" >
-                              <input class="form-control" *ngIf="this.unJuego.juega" [(ngModel)]="numeroIngresado" type="text" placeholder="ingrese numero" name="numeroIngresado"/>
+                              <input class="form-control" *ngIf="this.unJuego.juega" [(ngModel)]="resultadoUsuario" type="text" placeholder="ingrese numero" name="numeroIngresado"/>
                         </div>
                         
                         <div class="col-sm-3">  
                               <button *ngIf="!ocultarVerificar" (click)="verificar()" class="btn btn-success btn-block">Verificar {{Tiempo}} </button>
-                              <button *ngIf="ocultarVerificar" (click)="NuevoJuego()" class="btn btn-primary btn-block">Nuevo</button>
                         </div>
+
+                        <button *ngIf="ocultarVerificar" (click)="NuevoJuego()" class="btn btn-primary btn-block">Nuevo</button>
                   </div>
             
             <h1>{{unJuego.mensaje}}</h1>
