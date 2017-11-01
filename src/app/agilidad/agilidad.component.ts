@@ -17,7 +17,11 @@ export class AgilidadComponent implements OnInit {
   operador:string="?";
   numDos:number=0;  
 
+  aux_operador:number;
+
   numeroIngresado:number;
+
+  resultadoSistema:number;
 
   ocultarVerificar: boolean;
   Tiempo: number;
@@ -34,9 +38,15 @@ export class AgilidadComponent implements OnInit {
       "Agilidad aritmetica", 
       "Debe calcular y responder correcta y rapidamente la operacion que el sistema tiene preparado para usted.", 
       "Esperando a que empiece el juego...");
+      
+      this.ocultarVerificar=true;
+      this.Tiempo=5; 
 
-    this.prepararJuego();  
-  }
+      console.info("Inicio agilidad");  
+
+      this.unJuego.mensaje="";
+      this.unJuego.juega=true;
+    }
 
 
 
@@ -49,6 +59,8 @@ export class AgilidadComponent implements OnInit {
 
     this.unJuego.mensaje="Esperando...";
     this.unJuego.juega=true;
+
+    this.NuevoJuego();
   }
 
 
@@ -72,7 +84,85 @@ export class AgilidadComponent implements OnInit {
         }
 
     }, 900);
+
+    this.generarCalculo();
+
+
+
+
+
+
+
   }
+
+
+  generarCalculo()
+  {
+    this.aux_operador = Math.floor(Math.random() * ((4+1) - 1)+1);
+
+    switch (this.aux_operador)
+    {
+      case 1:
+      this.operador = "X";
+      this.numUno = Math.floor(Math.random() * ((100+1) - 1)+1);
+      this.numDos = Math.floor(Math.random() * ((100+1) - 1)+1);
+        break;
+
+      case 2:
+      this.operador = "-";
+      this.numUno = Math.floor(Math.random() * ((100+1) - 1)+1);
+      this.numDos = Math.floor(Math.random() * ((100+1) - 1)+1);
+        break;
+
+      case 3:
+      this.operador = "+";
+      this.numUno = Math.floor(Math.random() * ((100+1) - 1)+1);
+      this.numDos = Math.floor(Math.random() * ((100+1) - 1)+1);
+        break;
+
+      case 4:
+      this.operador = ":";
+      this.numUno = Math.floor(Math.random() * ((100+1) - 1)+1);
+      this.numDos = Math.floor(Math.random() * ((100+1) - 1)+1);
+        break;
+    }
+
+    switch (this.operador)
+    {
+      case "X":
+        this.resultadoSistema = this.numUno * this.numDos;
+        break;
+
+      case "-":
+        this.resultadoSistema = this.numUno - this.numDos;
+        break;
+
+      case "+":
+        this.resultadoSistema = this.numUno + this.numDos;
+        break;
+
+      case ":":
+        this.resultadoSistema = this.numUno / this.numDos;
+        break;
+    }
+
+    console.log(this.resultadoSistema); 
+
+    
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -81,7 +171,6 @@ export class AgilidadComponent implements OnInit {
     this.ocultarVerificar=false;
     clearInterval(this.repetidor);
   }  
-
 
 
 
