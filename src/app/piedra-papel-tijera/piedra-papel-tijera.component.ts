@@ -113,11 +113,8 @@ export class PiedraPapelTijeraComponent{
           this.unJuego.resultado=false;
       }
 
-
       this.unJuego.juega=false; //revisar mas tarde    
     }
-
-
 
     if (this.unJuego.resultado == true)
       this.unJuego.mensaje = "Usted ha ganado";
@@ -181,7 +178,7 @@ desmarcarBotones()
 
   document.getElementById("BtnPiedra").setAttribute("class", "btn btn-outline-primary");  
   document.getElementById("BtnPapel").setAttribute("class", "btn btn-outline-primary");
-  document.getElementById("BtnTijera").setAttribute("class", "btn btn-outline-primary"); 
+  document.getElementById("BtnTijera").setAttribute("class", "btn btn-outline-primary");
 }
 
 reiniciarJuego()

@@ -25,10 +25,10 @@
                         </div>
                         
                         <div class="col-sm-3">  
-                              <button *ngIf="!ocultarVerificar" (click)="verificar()" class="btn btn-success btn-block">Verificar {{Tiempo}} </button>
+                              <button *ngIf="!ocultarVerificar" (click)="verificar()" class="btn btn-primary btn-block">Verificar {{Tiempo}} </button>
                         </div>
 
-                        <button *ngIf="ocultarVerificar" (click)="NuevoJuego()" class="btn btn-primary btn-block">Nuevo</button>
+                        <button *ngIf="ocultarVerificar" (click)="NuevoJuego()" class="btn btn-warning btn-block">Nuevo</button>
                   </div>
             
             <h1>{{unJuego.mensaje}}</h1>

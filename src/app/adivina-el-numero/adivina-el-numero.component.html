@@ -21,7 +21,7 @@
                 <button class="btn btn-primary btn-block" name="BtnAdivinar" (click)="Adivinar()" *ngIf="this.unJuego.juega">Adivinar</button>  
             </div>
 
-            <button class="btn btn-primary btn-block" name="BtnNuevo" (click)="GenerarNum()" *ngIf="!this.unJuego.juega">Nuevo</button>
+            <button class="btn btn-warning btn-block" name="BtnNuevo" (click)="GenerarNum()" *ngIf="!this.unJuego.juega">Nuevo</button>
         </div>
         
           <h1>{{unJuego.mensaje}}</h1>

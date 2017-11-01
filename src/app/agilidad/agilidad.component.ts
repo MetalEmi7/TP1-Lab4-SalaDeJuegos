@@ -125,7 +125,6 @@ export class AgilidadComponent{
     }
 
 
-
     switch (this.operador)
     {
       case "X":
