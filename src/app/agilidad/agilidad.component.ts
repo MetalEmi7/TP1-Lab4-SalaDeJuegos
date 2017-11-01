@@ -23,6 +23,8 @@ export class AgilidadComponent{
 
   resultadoSistema:number;
 
+
+  
   ocultarVerificar: boolean;
   Tiempo: number;
   repetidor:any;
@@ -95,7 +97,7 @@ export class AgilidadComponent{
       case 1:
       this.operador = "X";
       this.numUno = Math.floor(Math.random() * ((100+1) - 1)+1);
-      this.numDos = Math.floor(Math.random() * ((100+1) - 1)+1);
+      this.numDos = Math.floor(Math.random() * ((10+1) - 1)+1);
         break;
 
       case 2:
@@ -171,5 +173,20 @@ export class AgilidadComponent{
     this.resultadoUsuario=null;
   }  
 
+
+
+  teclaEnter(e)
+  {
+    console.log(e);
+
+    if (e.key == "Enter") {
+      this.unJuego.juega=false;
+      clearInterval(this.repetidor);
+      this.verificar();
+      this.ocultarVerificar=true;
+      this.Tiempo=5;
+    }
+
+  }
 
 }
