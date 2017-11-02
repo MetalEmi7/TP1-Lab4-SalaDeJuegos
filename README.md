@@ -53,6 +53,6 @@ Proyecto:
 RECORDAR:
 - que hacer con los componentes login y registro
 - borrar componente jugadores
-- AGILIDAD: analizar como queda el objeto unJuego luego de cada calculo; buscar atributos o lineas de codigo redundantes y basuras.
+- AGILIDAD: analizar como queda el objeto unJuego luego de cada calculo; buscar atributos o lineas de codigo redundantes o basura.
 - 
 

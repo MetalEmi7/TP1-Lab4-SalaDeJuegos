@@ -1,34 +1,54 @@
-<div class="container">  
+<html>
+    <style>
+        body
+        { 
+          background-image: url(http://localhost/slim/apirest/imagenes/5.jpg);
+          background-attachment:fixed;
+          background-position:center; 
+        }
+    </style>
 
-  <div class="alert alert-primary" align="right">
-    <button class="btn btn-primary" type="button" >Todos</button>
-  </div> 
+  <body>
 
-  {{filtro}}
+    <div class="alert alert-primary">          
+      <button class="btn btn-primary" type="button" routerLink="/" >INICIO</button>
+    </div>  
+
+      <div class="row justify-content-md-center" >
+        <div class="alert alert-success">
+          <button class="btn btn-success" type="button" >Todos</button>  
+          <button class="btn btn-success" type="button" >Los que ganaron</button>  
+          <button class="btn btn-success" type="button" >Los que perdieron</button>
+        </div>
+      </div>  
 
 
-
-
-
-  <table class="table" border="1">
-  
-
-
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Genero</th>
-            <th>foto</th>
+    <div class="container">
+    <table class="table">
+          <thead>
+            <tr>
+              <th>Cuit</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Puntaje</th>
+              <th>Fecha</th>
+              <th>Sexo</th>
+              <th>Gano</th>
+            </tr>
+          </thead>   
+          
+          <tr *ngFor="let jug of ListaDeJugadores" >
+            <td>{{jug.cuit}}</td>
+            <td>{{jug.usuario}}</td>
+            <td>{{jug.email}}</td>
+            <td>{{jug.puntaje}}</td>   
+            <td>{{jug.fecha}}</td>
+            <td>{{jug.sexo}}</td>
+            <td>{{jug.gano}}</td>   
           </tr>
-        </thead>   
-        
-        <tr *ngFor="let per of ListaDePersonas" >
-          <td>{{per.nombre}}</td>
-          <td>{{per.mail}}</td>
-          <td>{{per.sexo}}</td>
-          <th><img src="http://localhost/slim/apirest/imagenes/{{per.foto}}" width="40" height="40"></th>
-  
-        </tr>
-  </table>
-</div>
+
+    </table>
+    </div>
+
+  </body>
+</html>

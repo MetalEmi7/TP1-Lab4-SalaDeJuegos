@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import {  ResponseOptions, Http, Response } from "@angular/http";
+import { ResponseOptions, Http, Response } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import { ArchivosJugadoresService } from "./archivos-jugadores.service";
 
@@ -11,24 +11,21 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class JugadoresService {
 
-  constructor(private http:ArchivosJugadoresService)
+  constructor(private httpArchivo:ArchivosJugadoresService, private http:Http)
   {}
 
 
-  jugadores(archivo, filtro)
+  jugadores(archivo)
   {
-    //let url="http://Localhost/slim/apirest/a donde apunta esto?";
-    //let url="http://Localhost:8080/slim/apirest/jugaodres/conFiltro";
-
-    return this.http.archivosJugadores(archivo)
+    return this.http.get("../../assets/archivos/" + archivo)
+    .toPromise()
     .then(this.extraerDatos)
     .catch(this.handlerError)
   }
 
 
-  private extraerDatos(resp:Response) {
-    return resp.json() || {}
-  }
+  extraerDatos(resp:Response)
+  {return resp.json() || {};}
 
   handlerError(error: Response)  {
     return error;

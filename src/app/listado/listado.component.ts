@@ -6,35 +6,29 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './listado.component.html',
   styleUrls: ['./listado.component.css']
 })
-export class ListadoComponent implements OnInit {
+export class ListadoComponent{
 
-  ListaDeJugadores:Array<any>;
+  ListaDeJugadores:any;
   filtro:String;
 
-  constructor(public datos:JugadoresService){
-    this.ListaDeJugadores = new Array<any>();
-
-    this.traerDatos("algo");
-  }
+  constructor(private datos:JugadoresService)
+  {this.traerDatos();}
 
 
-
-  traerDatos(archivo)
+  traerDatos()
   {
-    this.datos.jugadores(archivo, "todos")
+    this.datos.jugadores("usuarios.json")
     .then(data=>{
 
-      this.ListaDeJugadores = data;
-
-    })
+        this.ListaDeJugadores = data;
+        console.log(this.ListaDeJugadores);
+  })
     .catch(error=> console.log(error))
   }
 
+  
 
 
 
-
-  ngOnInit() {
-  }
 
 }
