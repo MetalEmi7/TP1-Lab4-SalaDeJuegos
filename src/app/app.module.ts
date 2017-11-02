@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";//Verificar de
 import { RoutingModule } from "./routing/routing.module";
 import { HttpModule } from "@angular/http";//Verificar dependencia
 import { FileUploadModule } from 'ng2-file-upload';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 //Router
 import { RouterModule, Routes , RouterLinkActive} from '@angular/router';//Verificar dependencia
@@ -44,7 +45,8 @@ import { JugadoresComponent } from './jugadores/jugadores.component';
     RoutingModule,
     RouterModule,
     HttpModule,
-    FileUploadModule
+    FileUploadModule,
+    Ng2SmartTableModule
   ],
   providers: [
     JuegoService,

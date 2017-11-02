@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listado.component.css']
 })
 export class ListadoComponent{
+ListaDeJugadores:any;
+filtro:String;
 
-  ListaDeJugadores:any;
-  filtro:String;
+settings = {
+  columns: {
+    cuit: {
+      title: 'Cuit'
+    },
+    usuario: {
+      title: 'Usuario'
+    },
+    puntaje: {
+      title: 'Puntaje'
+    },
+    email: {
+      title: 'Email'
+    }
+  }
+};
 
   constructor(private datos:JugadoresService)
   {this.traerDatos();}
@@ -26,7 +42,7 @@ export class ListadoComponent{
     .catch(error=> console.log(error))
   }
 
-  
+
 
 
 
