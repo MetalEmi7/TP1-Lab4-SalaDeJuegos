@@ -176,9 +176,9 @@ desmarcarBotones()
   document.getElementById("BtnPapel_user").setAttribute("class", "btn btn-outline-primary");
   document.getElementById("BtnTijera_user").setAttribute("class", "btn btn-outline-primary"); 
 
-  document.getElementById("BtnPiedra").setAttribute("class", "btn btn-outline-primary");  
-  document.getElementById("BtnPapel").setAttribute("class", "btn btn-outline-primary");
-  document.getElementById("BtnTijera").setAttribute("class", "btn btn-outline-primary");
+  document.getElementById("BtnPiedra").setAttribute("class", "btn btn-outline-danger");  
+  document.getElementById("BtnPapel").setAttribute("class", "btn btn-outline-danger");
+  document.getElementById("BtnTijera").setAttribute("class", "btn btn-outline-danger");
 }
 
 reiniciarJuego()
