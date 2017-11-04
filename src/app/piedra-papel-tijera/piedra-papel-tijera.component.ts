@@ -82,10 +82,10 @@ export class PiedraPapelTijeraComponent{
 
 
   verificarJugada()
-  {
-    
+  {    
     if(this.jugadaUsuario != this.jugadaSistema)
     {
+      
 
       if(this.jugadaUsuario == "Piedra")
       {
@@ -112,17 +112,17 @@ export class PiedraPapelTijeraComponent{
         else      
           this.unJuego.resultado=false;
       }
-
-      this.unJuego.juega=false; //revisar mas tarde    
     }
+    else
+      this.unJuego.mensaje = "Empate";
+
+
 
     if (this.unJuego.resultado == true)
       this.unJuego.mensaje = "Usted ha ganado";
-    else if (this.jugadaUsuario == this.jugadaSistema)
-      this.unJuego.mensaje = "Empate";
-    else if (this.unJuego.resultado == false)
-      this.unJuego.mensaje = "Usted perdio";
 
+    if (this.unJuego.resultado == false)
+      this.unJuego.mensaje = "Usted perdio";
 
 
     switch (this.jugadaSistema)
@@ -139,7 +139,6 @@ export class PiedraPapelTijeraComponent{
         document.getElementById("BtnTijera").setAttribute("class", "btn btn-danger active");  
         break;
     }
-
     
     console.log(this.unJuego.mensaje);
     this.unJuego.juega = false;  

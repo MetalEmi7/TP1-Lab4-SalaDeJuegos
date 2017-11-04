@@ -1,3 +1,43 @@
-<p>
-  Consiste en escribir el nombre del color que se ve en la imagen segun si el juego le pregunta de que color es el fondo, el texto o el color al que refiere el texto escrito. 
-</p>
+<html>
+  <body>
+      <div class="container">
+
+        <div class="card mb-3">
+            <img class="card-img-top" src="http://Localhost/slim/apirest/imagenes/4.jpg" alt="Card image cap" width="500" height="200" >
+
+            <div class="card-body">
+                <h4 class="card-text">{{unJuego.nombreJuego}} </h4>
+                Descripcion: {{unJuego.descripcion}}
+            </div>
+        </div>
+      
+        <div class="card bg-{{colorFondo}}">
+            <div class="card-header" align="center"> <h3>{{elSistemaPide}}</h3> </div>
+                <div class="card-body">
+                
+                <br><br><br>
+                <h1 class="card-title text-{{colorLetra}}" align="center"> {{Palabra}} </h1>
+                <br><br><br>
+
+            <hr>
+
+
+            <div class="row">
+                <div class="col" >
+                    <input class="form-control" type="text" placeholder="Introduzca el color" *ngIf="this.unJuego.juega" id="TxtRespuesta" [(ngModel)]="respuestaUsuario" (keypress)="teclaEnter($event)">
+                    <button class="btn btn-dark btn-block" name="BtnAdivinar" (click)="prepararJuego()" *ngIf="!this.unJuego.juega">Comenzar</button>    
+                </div>
+            </div>
+
+
+            </div>
+          </div>
+
+          <br>
+          <h1 align="center" >{{unJuego.mensaje}}</h1>
+          <br>
+
+      </div>
+
+  </body>
+</html>
