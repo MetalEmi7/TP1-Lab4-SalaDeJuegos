@@ -30,14 +30,12 @@ import { JugadoresService } from "./servicios/jugadores.service";
 //entidades
 import { Juego } from "./entidades/juego";
 import { ListadoComponent } from './listado/listado.component';
-import { JugadoresComponent } from './jugadores/jugadores.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ListadoComponent,
-    JugadoresComponent,
   ],
   imports: [
     BrowserModule,
