@@ -85,44 +85,56 @@ export class PiedraPapelTijeraComponent{
   {    
     if(this.jugadaUsuario != this.jugadaSistema)
     {
-      
 
       if(this.jugadaUsuario == "Piedra")
       {
         if (this.jugadaSistema == "Tijera")
-          this.unJuego.resultado=true;
-        else      
-          this.unJuego.resultado=false;
+        {
+          this.unJuego.resultado = true;
+          this.unJuego.mensaje = "Usted ha ganado";
+        }
+        else
+        {      
+          this.unJuego.resultado = false;
+          this.unJuego.mensaje = "Usted perdio";
+        }
       }
 
 
       if(this.jugadaUsuario == "Tijera")
       {
         if (this.jugadaSistema == "Papel")
-          this.unJuego.resultado=true;
-        else      
-          this.unJuego.resultado=false;
+        {
+          this.unJuego.resultado = true;
+          this.unJuego.mensaje = "Usted ha ganado";
+        }
+        else
+        {      
+          this.unJuego.resultado = false;
+          this.unJuego.mensaje = "Usted perdio";
+        }
       }
       
 
       if(this.jugadaUsuario == "Papel")
       {
         if (this.jugadaSistema == "Piedra")
-          this.unJuego.resultado=true;
-        else      
-          this.unJuego.resultado=false;
-      }
+        {
+          this.unJuego.resultado = true;
+          this.unJuego.mensaje = "Usted ha ganado";
+        }
+        else
+        {      
+          this.unJuego.resultado = false;
+          this.unJuego.mensaje = "Usted perdio";
+        }
+      }      
     }
     else
+    {
+      this.unJuego.resultado = false;
       this.unJuego.mensaje = "Empate";
-
-
-
-    if (this.unJuego.resultado == true)
-      this.unJuego.mensaje = "Usted ha ganado";
-
-    if (this.unJuego.resultado == false)
-      this.unJuego.mensaje = "Usted perdio";
+    }
 
 
     switch (this.jugadaSistema)
@@ -139,6 +151,7 @@ export class PiedraPapelTijeraComponent{
         document.getElementById("BtnTijera").setAttribute("class", "btn btn-danger active");  
         break;
     }
+    
     
     console.log(this.unJuego.mensaje);
     this.unJuego.juega = false;  

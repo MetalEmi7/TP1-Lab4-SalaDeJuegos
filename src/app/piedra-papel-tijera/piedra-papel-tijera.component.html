@@ -1,55 +1,55 @@
 <html>
-    <body>
-  
-        <div class="container">
-          <div class="card mb-3">
-              <img class="card-img-top" src="http://Localhost/slim/apirest/imagenes/4.jpg" alt="Card image cap" width="500" height="200" >
-              <div class="card-body">
-                  <h4 class="card-text">{{unJuego.nombreJuego}} </h4>
-                  Descripcion: {{unJuego.descripcion}}
-              </div>
-          </div>
-        
-    <div class="container">
-        <div class="row justify-content-md-center">
+<body>
 
-            <div class="col-6 col-md-3">
-                <div class="container" align="center">
-                    <h6>Jugador: {{this.unJuego.jugador}}</h6>
-                    <button class="btn btn-outline-primary" id="BtnPiedra_user" > <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Piedra.jpg" alt="Piedra"    class="rounded" width=150 (click)="QueHay($event)"> </button><br><br>
-                    <button class="btn btn-outline-primary" id="BtnPapel_user" > <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Papel.jpg"  alt="Papel"     class="rounded" width=150 (click)="QueHay($event)"> </button><br><br>
-                    <button class="btn btn-outline-primary" id="BtnTijera_user" > <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Tijera.jpg" alt="Tijera"    class="rounded" width=150 (click)="QueHay($event)"> </button><br><br>
-                
-                </div>
+
+        <div class="container row justify-content-md-center"> 
+
+    <div class="col sm-6">            
+        <div class="card mb-3">
+            <img class="card-img-top" src="http://Localhost/slim/apirest/imagenes/PPT.jpg" alt="Card image cap" width="500" height="200" >
+            <div class="card-body">
+            <h4 class="card-text">{{unJuego.nombreJuego}} </h4>
+            Descripcion: {{unJuego.descripcion}}
             </div>
-
-            <div class="col-md-auto"></div>
-
-            <div class="col-6 col-md-3">
-                <div class="container" align="center">
-                    <h6>Sistema: CPU Lvl 4</h6>
-                    <button class="btn btn-outline-danger" id="BtnPiedra" disabled> <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Piedra.jpg" alt="Piedra" class="rounded" width=150> </button><br><br>
-                    <button class="btn btn-outline-danger" id="BtnPapel" disabled> <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Papel.jpg" alt="Papel" class="rounded" width=150></button><br><br>
-                    <button class="btn btn-outline-danger" id="BtnTijera" disabled> <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Tijera.jpg" alt="Tijera" class="rounded" width=150></button><br><br>
-                
-                </div>
-            </div>
-
         </div>
+    </div>
+
+    <div class="col sm-6">
+        <div class="row justify-content-md-center">
+            <div class="col-6 col-md-3">
+                <div align="center">
+                    <h6>{{this.unJuego.jugador}}</h6>
+                    <button class="btn btn-outline-primary" id="BtnPiedra_user" > <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Piedra.jpg" alt="Piedra"    class="rounded" width=50 (click)="QueHay($event)"> </button><br><br>
+                    <button class="btn btn-outline-primary" id="BtnPapel_user" > <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Papel.jpg"  alt="Papel"     class="rounded" width=50 (click)="QueHay($event)"> </button><br><br>
+                    <button class="btn btn-outline-primary" id="BtnTijera_user" > <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Tijera.jpg" alt="Tijera"    class="rounded" width=50 (click)="QueHay($event)"> </button><br><br>
+                </div>
+            </div>
+
+            <div class="col-md-auto">                
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div align="center">
+                    <h6>Sistema</h6>
+                    <button class="btn btn-outline-danger" id="BtnPiedra" disabled> <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Piedra.jpg" alt="Piedra" class="rounded" width=50> </button><br><br>
+                    <button class="btn btn-outline-danger" id="BtnPapel" disabled> <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Papel.jpg" alt="Papel" class="rounded" width=50></button><br><br>
+                    <button class="btn btn-outline-danger" id="BtnTijera" disabled> <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Tijera.jpg" alt="Tijera" class="rounded" width=50></button><br><br>
+                </div>
+            </div>
+        </div>
+
         <div class="row"> <button *ngIf="unJuego.juega" class="btn btn-primary btn-lg btn-block" (click)="verificarJugada()"> Jugar </button> </div>
         <div class="row"> <button *ngIf="!unJuego.juega" class="btn btn-warning btn-lg btn-block" (click)="reiniciarJuego()"> Intentar otra vez </button> </div>
 
         <br>
         <h1 align="center" >{{unJuego.mensaje}}</h1>
         <br>
-
     </div>
 
+</div>
 
 
 
-
-
-        </div>
-    </body>
-  </html>
+        
+</body>
+</html>

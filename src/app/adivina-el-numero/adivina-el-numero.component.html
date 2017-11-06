@@ -1,9 +1,9 @@
 <html>
   <body>
-
-      <div class="container">
+<div class="container row justify-content-md-center">
+        <div align="Center" class="col sm-6">
         <div class="card mb-3">
-            <img class="card-img-top" src="http://Localhost/slim/apirest/imagenes/1.jpg" alt="Card image cap" width="500" height="200" >
+            <img class="card-img-top" src="http://Localhost/slim/apirest/imagenes/AdivinaElNumero banner.jpg" alt="Card image cap" width="500" height="200" >
             <div class="card-body">
                 <h4 class="card-text">{{unJuego.nombreJuego}} </h4>
                 Descripcion: {{unJuego.descripcion}}
@@ -11,7 +11,7 @@
         </div>
       </div>
 
-    <div align="Center" class="container">
+        <div align="Center" class="col sm-6">
         <div class="row">
             <div class="col-sm-9" >
                 <input class="form-control" type="text" placeholder="Introduzca un numero" *ngIf="this.unJuego.juega" name="TxtNumUser" [(ngModel)]="numero_Usuario">
@@ -30,7 +30,7 @@
         <br>
 
     </div>
-
+</div>
 
 
   </body>
