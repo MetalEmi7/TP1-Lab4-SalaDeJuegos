@@ -29,30 +29,29 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Tareas
 Juegos:
-1. Cambiar el constructor de la clase juego ("nombreJugador", "", "", "") por ("", "", ""), usar LocalStorage para establecer el nombre del jugador en el constructor.
+1. Cambiar el constructor de la clase juego ("nombreJugador", "", "", "") por ("", "", ""), usar LocalStorage para establecer el nombre del jugador en el constructor.  [Hacerlo despues de JWT]
 
 2. Terminar el juego de agilidad. usar random().    OK
 3. Hacer comportamiento de piedra papel o tijera. usar random() y tags <img>.    OK
+    - REVISAR CUANDO UN JUGADOR SELECIONA CUALQUIER ELEMENTO TANTAS VECES ANTES DE HACER CLICK A "JUGAR".
 4. Mejorar Adivina el numero. OK
-
-
-SLIM:
-1. Prepararlo
-
 
 Base de datos:
 1. Tabla usuario e historial. 
 
-
 Proyecto:
-1. Implementar FileUpload y hacerlo funcionar OK ... desarrollar
-2. Implementar @pipes
-3. Encapsulamiento entre servicios para obtener usuarios del archivo usuarios.json
-4. Desarrollar componente Error.
+1. Implementar FileUpload y hacerlo funcionar OK
+    - desarrollar
+2. Implementar @pipes   *
+3. Encapsulamiento entre servicios para obtener usuarios del archivo usuarios.json      *
+4. Desarrollar componente Error.        *
+5. Implementar y desarrollar JWT.
+6. hacer con los componentes login y registro
+7. Corregir o mejorar los estilos.      *
+
+SLIM:
+1. Prepararlo [despues o junto con JWT]
 
 RECORDAR:
-- que hacer con los componentes login y registro
-- borrar componente jugadores
+- borrar componentes y servicios basura (o creados por error). 
 - AGILIDAD: analizar como queda el objeto unJuego luego de cada calculo; buscar atributos o lineas de codigo redundantes o basura.
-- 
-

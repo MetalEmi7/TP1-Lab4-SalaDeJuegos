@@ -1,24 +1,14 @@
 <html>
-    <style>
-        body
-        { 
-          background-image: url(http://localhost/slim/apirest/imagenes/10.jpg);
-          background-attachment:fixed;
-          background-position:center; 
-        }
-    </style>
-
   <body>
-
-    <div class="alert alert-primary">          
+    <div class="alert alert menuimagen">          
       <button class="btn btn-primary" type="button" routerLink="/" >INICIO</button>
     </div>  
 
       <div class="row justify-content-md-center" >
         <div class="alert alert-success">
-          <button class="btn btn-success" type="button" (click)="traerDatos()">Todos</button>  
-          <button class="btn btn-success" type="button" (click)="traerDatosGanadores()" value="ganadores" >Los que ganaron</button>  
-          <button class="btn btn-success" type="button" (click)="traerDatosPerdedores()">Los que perdieron</button>
+          <button class="btn text-white BtnVerde " type="button" (click)="filtrar($event)" value="Todos">Todos</button>  
+          <button class="btn text-white BtnVerde" type="button" (click)="filtrar($event)" value="Ganadores" >Los que ganaron</button>  
+          <button class="btn text-white BtnVerde" type="button" (click)="filtrar($event)" value="Perdedores">Los que perdieron</button>
         </div>
       </div>  
 
@@ -51,7 +41,11 @@
     </div>
     -->
 
-    <ng2-smart-table [settings]="settings" [source]="ListaDeJugadores"></ng2-smart-table>
-
+    <!-- IMAGEN PERSONALIZADA -->
+    <div class="container alert alert-primary">
+      <ng2-smart-table [settings]="settings" [source]="ListaDeJugadores"></ng2-smart-table>
+    </div>
+  
+  
   </body>
 </html>

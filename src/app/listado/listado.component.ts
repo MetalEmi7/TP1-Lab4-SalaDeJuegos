@@ -11,6 +11,7 @@ export class ListadoComponent{
 ListaDeJugadores:Array<any>;
 filtro:String;
 
+//Config Smart_TAble
 settings = {
   columns: {
     cuit: {
@@ -37,77 +38,73 @@ settings = {
   }
 };
 
+
   constructor(private datos:JugadoresService)
   {
-    this.traerDatos();
-  }
-
-
-  traerDatos()
-  {
-
     this.datos.jugadores("usuarios.json")
-    .then(data=>{
-      
-        this.ListaDeJugadores = data;
-        console.log(this.ListaDeJugadores);
-        
-  })
-    .catch(error=> console.log(error))
-  }
-
-
-  filtrarGanadores(item)
-  {
-    return item.gano;
-  }
-
-
-  traerDatosGanadores()
-  {
-    this.ListaDeJugadores = [];
-    var AUX_lista:Array<any> = new Array();
-
-    this.datos.jugadores("usuarios.json")
-    .then(data=>{
-
-      this.ListaDeJugadores = data.filter(this.filtrarGanadores);
-
-/*
-      for (let dato of data)
-      {
-        if (dato.gano == true)
-          this.ListaDeJugadores.push(dato);
-      }
-      */
-        
-        console.log(this.ListaDeJugadores);
-    })
+    .then(data=>{this.ListaDeJugadores = data;})
     .catch(error=> console.log(error))
   }
 
 
 
 
-  traerDatosPerdedores()
+
+
+
+
+  
+  private filtrar_Ganadores(item)
+  {return item.gano;}
+
+  private filtrar_Perdedores(item)
+  {return !item.gano;}
+
+
+  
+
+
+  filtrar(ctrl)
   {
+    //console.log(ctrl);
     this.ListaDeJugadores = [];
-    
+
+    switch (ctrl.target.value)
+    {
+      case "Ganadores":
         this.datos.jugadores("usuarios.json")
         .then(data=>{
-    
-          for (let dato of data)
-          {
-            if (dato.gano == false)
-              this.ListaDeJugadores.push(dato);
-          }
-    
+
+          this.ListaDeJugadores = data.filter(this.filtrar_Ganadores);
+          console.log(this.ListaDeJugadores);
+        })
+        .catch(error=> console.log(error))   
+
+      break;
+
+
+      case "Perdedores":
+        this.datos.jugadores("usuarios.json")
+        .then(data=>{
+
+          this.ListaDeJugadores = data.filter(this.filtrar_Perdedores);
+          console.log(this.ListaDeJugadores);
+        })
+        .catch(error=> console.log(error))      
+      break;
+
+
+      case "Todos":
+        this.datos.jugadores("usuarios.json")
+        .then(data=>{
+
+            this.ListaDeJugadores = data;
             console.log(this.ListaDeJugadores);
         })
-        .catch(error=> console.log(error))
+        .catch(error=> console.log(error))  
+      break;
+    }
   }
-
-
 
 
 }
