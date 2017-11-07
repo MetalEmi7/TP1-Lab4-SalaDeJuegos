@@ -42,12 +42,12 @@ Base de datos:
 Proyecto:
 1. Implementar FileUpload y hacerlo funcionar OK
     - desarrollar
-2. Implementar @pipes   *
+2. Implementar @pipes   [PENDIENTE]
 3. Encapsulamiento entre servicios para obtener usuarios del archivo usuarios.json      *
 4. Desarrollar componente Error.        *
 5. Implementar y desarrollar JWT.
 6. hacer con los componentes login y registro
-7. Corregir o mejorar los estilos.      *
+7. Corregir o mejorar los estilos.      [OK]
 
 SLIM:
 1. Prepararlo [despues o junto con JWT]

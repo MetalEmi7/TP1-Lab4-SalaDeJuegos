@@ -18,7 +18,7 @@
         <div class="row justify-content-md-center">
             <div class="col-6 col-md-3">
                 <div align="center">
-                    <h6>{{this.unJuego.jugador}}</h6>
+                    <h6 class="text-white">{{this.unJuego.jugador}}</h6>
                     <button class="btn btn-outline-primary" id="BtnPiedra_user" > <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Piedra.jpg" alt="Piedra"    class="rounded" width=50 (click)="QueHay($event)"> </button><br><br>
                     <button class="btn btn-outline-primary" id="BtnPapel_user" > <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Papel.jpg"  alt="Papel"     class="rounded" width=50 (click)="QueHay($event)"> </button><br><br>
                     <button class="btn btn-outline-primary" id="BtnTijera_user" > <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Tijera.jpg" alt="Tijera"    class="rounded" width=50 (click)="QueHay($event)"> </button><br><br>
@@ -30,7 +30,7 @@
 
             <div class="col-6 col-md-3">
                 <div align="center">
-                    <h6>Sistema</h6>
+                    <h6 class="text-white">Sistema</h6>
                     <button class="btn btn-outline-danger" id="BtnPiedra" disabled> <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Piedra.jpg" alt="Piedra" class="rounded" width=50> </button><br><br>
                     <button class="btn btn-outline-danger" id="BtnPapel" disabled> <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Papel.jpg" alt="Papel" class="rounded" width=50></button><br><br>
                     <button class="btn btn-outline-danger" id="BtnTijera" disabled> <img src="http://Localhost/slim/apirest/imagenes/Piedra papel o tijera/Tijera.jpg" alt="Tijera" class="rounded" width=50></button><br><br>
@@ -42,7 +42,7 @@
         <div class="row"> <button *ngIf="!unJuego.juega" class="btn btn-warning btn-lg btn-block" (click)="reiniciarJuego()"> Intentar otra vez </button> </div>
 
         <br>
-        <h1 align="center" >{{unJuego.mensaje}}</h1>
+        <h1 align="center" class="text-white" >{{unJuego.mensaje}}</h1>
         <br>
     </div>
 
