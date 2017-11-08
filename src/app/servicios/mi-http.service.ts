@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Response, ResponseOptions } from "@angular/http";
 import { Observable } from "rxjs/observable";
 
-
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -17,6 +16,15 @@ export class MiHttpService {
 
     return this.http
     .post(url, arc)
+    .toPromise()
+    .then(this.extraerDatos)
+    .catch(this.handlerError)
+  }
+
+
+  public realJugadores(archivo)
+  {
+    return this.http.get("../../assets/archivos/" + archivo)
     .toPromise()
     .then(this.extraerDatos)
     .catch(this.handlerError)

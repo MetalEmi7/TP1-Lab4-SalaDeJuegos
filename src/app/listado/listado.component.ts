@@ -42,7 +42,9 @@ settings = {
   constructor(private datos:JugadoresService)
   {
     this.datos.jugadores("usuarios.json")
-    .then(data=>{this.ListaDeJugadores = data;})
+    .then(data=>{
+      this.ListaDeJugadores = data;
+    })
     .catch(error=> console.log(error))
   }
 
