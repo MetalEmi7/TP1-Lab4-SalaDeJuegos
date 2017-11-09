@@ -26,32 +26,3 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-## Tareas
-Juegos:
-1. Cambiar el constructor de la clase juego ("nombreJugador", "", "", "") por ("", "", ""), usar LocalStorage para establecer el nombre del jugador en el constructor.  [Hacerlo despues de JWT]
-
-2. Terminar el juego de agilidad. usar random().    OK
-3. Hacer comportamiento de piedra papel o tijera. usar random() y tags <img>.    OK
-    - REVISAR CUANDO UN JUGADOR SELECIONA CUALQUIER ELEMENTO TANTAS VECES ANTES DE HACER CLICK A "JUGAR".
-4. Mejorar Adivina el numero. OK
-
-Base de datos:
-1. Tabla usuario e historial. 
-
-Proyecto:
-1. Implementar FileUpload y hacerlo funcionar OK
-    - desarrollar
-2. Implementar @pipes   [PENDIENTE]
-3. Encapsulamiento entre servicios para obtener usuarios del archivo usuarios.json      *
-4. Desarrollar componente Error.        *
-5. Implementar y desarrollar JWT.
-6. hacer con los componentes login y registro
-7. Corregir o mejorar los estilos.      [OK]
-
-SLIM:
-1. Prepararlo [despues o junto con JWT]
-
-RECORDAR:
-- borrar componentes y servicios basura (o creados por error). 
-- AGILIDAD: analizar como queda el objeto unJuego luego de cada calculo; buscar atributos o lineas de codigo redundantes o basura.
