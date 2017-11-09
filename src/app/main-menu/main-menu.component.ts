@@ -78,7 +78,6 @@ user ={
   }
 
 
-
   Registrarse()
   {
   }
