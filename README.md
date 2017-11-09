@@ -29,4 +29,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Recordatorio:
 1. En SalaDeJuegos, poner un Carousel.
-2. 
+2. Hacer andar la pagina github.
+3. Ver que pasa con las fotos de PPT.
+4. almacenaje de datos.
+5. dar formato a la pagina para guiar a los usuarios y que sea mas intuitivo.
+6. desarrollar quien soy.
