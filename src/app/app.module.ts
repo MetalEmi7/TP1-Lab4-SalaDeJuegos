@@ -36,15 +36,6 @@ import { ListadoComponent } from './listado/listado.component';
   declarations: [
     AppComponent,
     ListadoComponent,
-    MainMenuComponent,
-    LoginComponent,
-    RegistroComponent,
-    AdivinaElNumeroComponent,
-    AgilidadComponent,
-    JuegoDeColoresComponent,
-    ErrorComponent,
-    SalaDeJuegosComponent,
-    PiedraPapelTijeraComponent
   ],
   imports: [
     BrowserModule,
