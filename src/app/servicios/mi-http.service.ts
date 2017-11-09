@@ -31,6 +31,20 @@ export class MiHttpService {
   }
 
 
+  public login()
+  {
+    let archivoU = "usuarios.json";
+    let archivoJ = "jugadores.json";
+
+    return this.http.get("../../assets/archivos/" + archivoU)
+    .toPromise()
+    .then(this.extraerDatos)
+    .catch(this.handlerError)
+  }
+
+//Tratar datos desde aca?
+
+
   private extraerDatos(resp:Response) {
     return resp.json() || {}
   }

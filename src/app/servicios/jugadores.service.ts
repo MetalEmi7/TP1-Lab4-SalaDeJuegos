@@ -17,9 +17,19 @@ export class JugadoresService {
   {}
 
 
+
+
   jugadores(archivo)
   {
     return this.httpMiHttp.realJugadores(archivo)
+    .then(data => data)
+    .catch(data => data)
+  }
+
+
+  verificarLogin()
+  {
+    return this.httpMiHttp.login()
     .then(data => data)
     .catch(data => data)
   }

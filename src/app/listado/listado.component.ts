@@ -57,7 +57,7 @@ settings = {
 
   
   private filtrar_Ganadores(item)
-  {return item.gano;}
+  {return item.email=="hbelchem2@nytimes.com";}
 
   private filtrar_Perdedores(item)
   {return !item.gano;}
