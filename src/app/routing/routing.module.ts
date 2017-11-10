@@ -18,6 +18,7 @@ import { JuegoDeColoresComponent } from '../juego-de-colores/juego-de-colores.co
 import { ErrorComponent } from '../error/error.component';
 import { SalaDeJuegosComponent } from '../sala-de-juegos/sala-de-juegos.component';
 import { PiedraPapelTijeraComponent } from '../piedra-papel-tijera/piedra-papel-tijera.component';
+import { AnagramaComponent } from '../anagrama/anagrama.component';
 // import { ListadoComponent } from './listado/listado.component';        //-
 
 //Servicios
@@ -33,6 +34,7 @@ const miRuteo = [
 {path: "salaDeJuegos",component: SalaDeJuegosComponent,
   children: [
     {path: "login",component: LoginComponent},
+    {path: "anagrama",component: AnagramaComponent},
     {path: "adivina",component: AdivinaElNumeroComponent},
     {path: "piedraPapelTijera",component: PiedraPapelTijeraComponent},
     {path: "agilidad",component: AgilidadComponent},
@@ -51,7 +53,8 @@ const miRuteo = [
     JuegoDeColoresComponent,
     ErrorComponent,
     SalaDeJuegosComponent,
-    PiedraPapelTijeraComponent
+    PiedraPapelTijeraComponent,
+    AnagramaComponent,
   ],
   imports: [
     BrowserModule,

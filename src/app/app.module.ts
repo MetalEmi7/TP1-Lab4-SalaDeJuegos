@@ -32,6 +32,7 @@ import { Juego } from "./entidades/juego";
 import { ListadoComponent } from './listado/listado.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
