@@ -20,6 +20,8 @@ import { JuegoDeColoresComponent } from './juego-de-colores/juego-de-colores.com
 import { ErrorComponent } from './error/error.component';
 import { SalaDeJuegosComponent } from './sala-de-juegos/sala-de-juegos.component';
 import { PiedraPapelTijeraComponent } from './piedra-papel-tijera/piedra-papel-tijera.component';
+import { ListadoComponent } from './listado/listado.component';
+
 
 //Servicios                 //Verificar dependencia
 import { JuegoService } from "./servicios/juego.service";
@@ -29,7 +31,7 @@ import { JugadoresService } from "./servicios/jugadores.service";
 
 //entidades
 import { Juego } from "./entidades/juego";
-import { ListadoComponent } from './listado/listado.component';
+
 
 
 

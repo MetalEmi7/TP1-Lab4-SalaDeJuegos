@@ -20,6 +20,7 @@ import { SalaDeJuegosComponent } from '../sala-de-juegos/sala-de-juegos.componen
 import { PiedraPapelTijeraComponent } from '../piedra-papel-tijera/piedra-papel-tijera.component';
 import { AnagramaComponent } from '../anagrama/anagrama.component';
 import { QuienSoyComponent } from '../quien-soy/quien-soy.component';
+import { MenuStripComponent } from '../menu-strip/menu-strip.component';
 // import { ListadoComponent } from './listado/listado.component';        //-
 
 //Servicios
@@ -52,7 +53,8 @@ const miRuteo = [
     SalaDeJuegosComponent,
     PiedraPapelTijeraComponent,
     AnagramaComponent,
-    QuienSoyComponent,
+    QuienSoyComponent,    
+    MenuStripComponent,
   ],
   imports: [
     BrowserModule,
