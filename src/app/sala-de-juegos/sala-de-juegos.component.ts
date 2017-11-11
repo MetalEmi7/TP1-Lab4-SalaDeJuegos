@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-sala-de-juegos',
@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sala-de-juegos.component.css']
 })
 export class SalaDeJuegosComponent implements OnInit {
+
   CtrlCarousel:boolean=true;
+
   constructor() { }
 
   ngOnInit() {

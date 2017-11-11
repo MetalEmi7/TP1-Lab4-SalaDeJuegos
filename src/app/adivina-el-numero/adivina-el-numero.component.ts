@@ -10,20 +10,21 @@ import { Juego } from "../entidades/juego";
   templateUrl: './adivina-el-numero.component.html',
   styleUrls: ['./adivina-el-numero.component.css']
 })
-export class AdivinaElNumeroComponent{
+export class AdivinaElNumeroComponent implements OnInit{
   @Output()
   event_emitter :EventEmitter<Juego>;
+  CtrlCarousel:boolean=false;
 
     unJuego:Juego;  
     Modo_Testeo = true;
 
     private _numMax:number=10;
     private _numMin:number=1;
+
     numero_Usuario:any;
     numero_Secreto:any;
 
     intentos:any=3;
-
   
     constructor()  {
       this.event_emitter = new EventEmitter<Juego>();
@@ -85,5 +86,11 @@ export class AdivinaElNumeroComponent{
     console.log("numero_Secreto - "+this.numero_Secreto);
     console.log("unJuego - "+this.unJuego);
     }
+  }
+
+
+  ngOnInit()
+  {
+    this.CtrlCarousel=false;
   }
 }
