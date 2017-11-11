@@ -30,16 +30,13 @@ import { MiHttpService } from "../servicios/mi-http.service";
 
 const miRuteo = [
 {path: "",component: MainMenuComponent},
-{path: "registro",component: RegistroComponent},
+{path: "salaDeJuegos",component: SalaDeJuegosComponent},
 {path: "listado",component: ListadoComponent},
-{path: "salaDeJuegos",component: SalaDeJuegosComponent,
-  children: [
-    {path: "anagrama",component: AnagramaComponent},
-    {path: "adivina",component: AdivinaElNumeroComponent},
-    {path: "piedraPapelTijera",component: PiedraPapelTijeraComponent},
-    {path: "agilidad",component: AgilidadComponent},
-    {path: "juego de colores",component: JuegoDeColoresComponent}
-  ]},
+{path: "adivina",component: AdivinaElNumeroComponent},
+{path: "anagrama",component: AnagramaComponent},
+{path: "piedraPapelTijera",component: PiedraPapelTijeraComponent},
+{path: "agilidad",component: AgilidadComponent},
+{path: "juego de colores",component: JuegoDeColoresComponent},
 {path: "**",component: ErrorComponent}
 ]
 

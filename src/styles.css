@@ -41,3 +41,15 @@ body
   background-image:url(/assets/imagenes/BtnCeleste.jpg);
 }
 
+.centroDePagina
+{  
+  margin: 0 auto;
+  margin-top: 150px;
+}
+
+.centroDePagina2
+{  
+  margin: 0 auto;
+  padding: 2em;
+}
+
