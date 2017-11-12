@@ -1,4 +1,3 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -33,6 +32,7 @@ import { MiHttpService } from "../servicios/mi-http.service";
 
 const miRuteo = [
 {path: "",component: MainMenuComponent},
+{path: "registro",component: RegistroComponent},
 {path: "salaDeJuegos",component: SalaDeJuegosComponent},
 {path: "listado",component: ListadoComponent},
 {path: "adivina",component: AdivinaElNumeroComponent},
@@ -63,7 +63,8 @@ const miRuteo = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(miRuteo),
-    FileUploadModule
+    FileUploadModule,
+    Ng2SmartTableModule
   ],
 })
 export class RoutingModule { }

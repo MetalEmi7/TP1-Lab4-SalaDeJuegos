@@ -1,10 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload';
 
-import { MiHttpService } from "../servicios/mi-http.service";
-
-const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
+declare var $;
 
 @Component({
   selector: 'app-registro',
@@ -13,34 +10,15 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
   
 })
 
-export class RegistroComponent {
-  
-  public uploader:FileUploader = new FileUploader({url: "http://localhost/slim/apirest/imagenes/"});
-
-  public hasBaseDropZoneOver:boolean = false;
-  public hasAnotherDropZoneOver:boolean = false; 
-
-  
-  public fileOverBase(e:any):void {
-    this.hasBaseDropZoneOver = e;
-  }
- 
-  public fileOverAnother(e:any):void {
-    this.hasAnotherDropZoneOver = e;
-  }
-
-  constructor(public archivo:MiHttpService)
-  {}
+export class RegistroComponent implements OnInit{
 
 
-  QueHay(arc)
+
+
+
+
+  ngOnInit()
   {
-    this.archivo.SubirArchivo(this.uploader)
-    .then(data=>{
-
-      console.log(data);
-
-    })
+    $('#exampleModal').modal("show");
   }
-
 }

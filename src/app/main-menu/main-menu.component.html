@@ -15,12 +15,13 @@
       <p>Fue desarrollado con Bootstrap e imagenes mediante Corel x7.</p>
       <p class="lead">
         <a class="btn btn-primary btn-lg BtnAzul" href="https://github.com/MetalEmi7/TP1-Lab4-SalaDeJuegos" role="button">Repositorio del TP</a>
+        <a class="btn btn-primary btn-lg BtnAzul" data-target="exampleModal" role="button">DASDASd</a>
       </p>
     </div>
 
     
 
-    <div class="card-columns">
+    <div class="card-deck">
       <div class="card">
         <img class="card-img-top" src="../../assets/imagenes/SalaDeJuegos.jpg" alt="Card image cap">
         <div class="card-body ">
@@ -48,6 +49,37 @@
             <p class="card-text"><button class="btn btn-primary BtnVerde" name="BtnSalaDeJuegos" routerLink="/quienSoy">Detalles</button> </p>
           </div>
         </div>
+    </div>
+  </div>
+
+
+  
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Recipient:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send message</button>
+        </div>
+      </div>
     </div>
   </div>
     

@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";//Verificar dependencia
-import { RoutingModule } from "./routing/routing.module";
 import { HttpModule } from "@angular/http";//Verificar dependencia
 import { FileUploadModule } from 'ng2-file-upload';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 //Router
+import { RoutingModule } from "./routing/routing.module";
 import { RouterModule, Routes , RouterLinkActive} from '@angular/router';//Verificar dependencia
 
 //Componente            //Verificar dependencia
