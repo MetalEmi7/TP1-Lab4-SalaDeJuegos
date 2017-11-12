@@ -21,6 +21,7 @@ import { ErrorComponent } from './error/error.component';
 import { SalaDeJuegosComponent } from './sala-de-juegos/sala-de-juegos.component';
 import { PiedraPapelTijeraComponent } from './piedra-papel-tijera/piedra-papel-tijera.component';
 import { ListadoComponent } from './listado/listado.component';
+import { MenuStripComponent } from './menu-strip/menu-strip.component';
 
 
 //Servicios                 //Verificar dependencia
@@ -39,7 +40,6 @@ import { Juego } from "./entidades/juego";
 @NgModule({
   declarations: [
     AppComponent,
-    ListadoComponent,
   ],
   imports: [
     BrowserModule,

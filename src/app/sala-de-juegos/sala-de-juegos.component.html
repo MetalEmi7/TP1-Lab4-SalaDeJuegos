@@ -1,12 +1,7 @@
 <body>  
-        <div class="sticky-top">
-                <div class="alert menuimagen" >
-                  <button class="btn btn-dark " *ngIf="!Logueado" type="button" data-toggle="modal" data-target="#FrmLogin"  data-whatever="@mdo">Log in</button>
-                  <button class="btn btn-danger " *ngIf="Logueado" type="button" (click)="desLoguearse()" >Log out</button>
-                  <button class="btn btn-dark " type="button" data-toggle="modal" data-target="#exampleModal2"  data-whatever="@mdo2">Registrarse</button>
-                </div> 
-              </div>
 
+        <app-menu-strip>        
+            </app-menu-strip>
 
 <div class="container centroDePagina2" *ngIf="CtrlCarousel"> 
     <div class="alert alert-primary">

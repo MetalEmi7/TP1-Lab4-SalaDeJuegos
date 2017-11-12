@@ -1,9 +1,10 @@
-import { ListadoComponent } from '../listado/listado.component';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";         //Verificar dependencia
 import { FileUploadModule } from 'ng2-file-upload';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 //Router
 import { RouterModule, Routes, RouterLinkActive} from '@angular/router';
@@ -21,6 +22,7 @@ import { PiedraPapelTijeraComponent } from '../piedra-papel-tijera/piedra-papel-
 import { AnagramaComponent } from '../anagrama/anagrama.component';
 import { QuienSoyComponent } from '../quien-soy/quien-soy.component';
 import { MenuStripComponent } from '../menu-strip/menu-strip.component';
+import { ListadoComponent } from '../listado/listado.component';
 // import { ListadoComponent } from './listado/listado.component';        //-
 
 //Servicios
@@ -55,6 +57,7 @@ const miRuteo = [
     AnagramaComponent,
     QuienSoyComponent,    
     MenuStripComponent,
+    ListadoComponent
   ],
   imports: [
     BrowserModule,

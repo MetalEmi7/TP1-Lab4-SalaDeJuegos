@@ -1,47 +1,60 @@
 
 <div class="sticky-top">
   <div class="alert menuimagen" >
+    <button class="btn btn-white text-dark" routerLink="/">Pagina Principal</button>
     <button class="btn btn-dark " *ngIf="!Logueado" type="button" data-toggle="modal" data-target="#FrmLogin"  data-whatever="@mdo">Log in</button>
     <button class="btn btn-danger " *ngIf="Logueado" type="button" (click)="desLoguearse()" >Log out</button>
     <button class="btn btn-dark " type="button" data-toggle="modal" data-target="#exampleModal2"  data-whatever="@mdo2">Registrarse</button>
   </div> 
 </div>
 
-<div class="modal fade" id="FrmLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal" id="FrmLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-          
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Log in</h5>
-    
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-      <div>
-    
+
+
+        <div class="modal-header bg-primary ">
+            <h5 class="modal-title">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
       <div class="modal-body">
         <form>
-
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Nombre de cuenta:</label>
             <input type="text" class="form-control" id="TxtLoginUsuario" name="TxtNombre" [(ngModel)]="form.nombre" >
-          </div>
-          
+          </div>    
+
+
+
+
+
           <div class="form-group">
             <label for="message-text" class="col-form-label">Contraseña:</label>
             <input type="password" class="form-control" id="TxtLoginPass" name="TxtPass" [(ngModel)]="form.password">
-          </div>
-          
+          </div> 
         </form>
       <div>       
     
+
+
+
+
     
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="Loguearse()" >Log in</button>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2"  data-whatever="@mdo" >Crear una cuenta</button>
       </div>
   
-    </div>
+
+
+
+
+
+
+    </div>    
   </div>
 </div>
   
