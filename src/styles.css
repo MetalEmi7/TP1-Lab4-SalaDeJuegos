@@ -21,23 +21,23 @@ body
 }
 
 
-.BtnAzul{
+.btn-primary{
   background-image:url(/assets/imagenes/BtnAzul.jpg);
 }
 
-.BtnVerde{
+.btn-success{
   background-image:url(/assets/imagenes/BtnVerde.jpg);
 }
 
-.BtnRojo{
+.btn-danger{
   background-image:url(/assets/imagenes/BtnRojo.jpg);
 }
 
-.BtnAmarillo{
+.btn-warning{
   background-image:url(/assets/imagenes/BtnAmarillo.jpg);
 }
 
-.BtnCeleste{
+.btn-info{
   background-image:url(/assets/imagenes/BtnCeleste.jpg);
 }
 
@@ -52,4 +52,17 @@ body
   margin: 2em auto;
   padding: 2em;
 }
+
+.centroDePagina3
+{  
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 10%;
+  left: 10%;  
+  bottom: 10%;
+  right: 10%;  
+}
+
+
 

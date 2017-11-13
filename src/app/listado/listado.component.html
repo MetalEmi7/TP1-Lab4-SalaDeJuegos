@@ -1,14 +1,11 @@
 <html>
-  <body>
+  <body> <app-menu-strip></app-menu-strip>
 
-<app-menu-strip>  
-</app-menu-strip>
-
-      <div class="row justify-content-md-center" >
+      <div class="row justify-content-md-center">
         <div class="alert alert-success">
-          <button class="btn text-white BtnVerde " type="button" (click)="filtrar($event)" value="Todos">Todos</button>  
-          <button class="btn text-white BtnVerde" type="button" (click)="filtrar($event)" value="Ganadores" >Los que ganaron</button>  
-          <button class="btn text-white BtnVerde" type="button" (click)="filtrar($event)" value="Perdedores">Los que perdieron</button>
+          <button class="btn text-white btn-success" type="button" (click)="filtrar($event)" value="Todos">Todos</button>  
+          <button class="btn text-white btn-success" type="button" (click)="filtrar($event)" value="Ganadores" >Los que ganaron</button>  
+          <button class="btn text-white btn-success" type="button" (click)="filtrar($event)" value="Perdedores">Los que perdieron</button>
         </div>
       </div>  
 
@@ -45,7 +42,6 @@
     <div class="container alert alert-primary">
       <ng2-smart-table [settings]="settings" [source]="ListaDeJugadores"></ng2-smart-table>
     </div>
-  
-  
+
   </body>
 </html>

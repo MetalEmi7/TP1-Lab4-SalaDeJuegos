@@ -19,6 +19,5 @@ export class RegistroComponent implements OnInit{
 
   ngOnInit()
   {
-    $('#exampleModal').modal("show");
   }
 }

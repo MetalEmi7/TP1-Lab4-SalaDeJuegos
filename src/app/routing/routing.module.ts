@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpModule } from "@angular/http";         //Verificar dependencia
+import { HttpModule } from "@angular/http";         
 import { FileUploadModule } from 'ng2-file-upload';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
@@ -22,7 +22,6 @@ import { AnagramaComponent } from '../anagrama/anagrama.component';
 import { QuienSoyComponent } from '../quien-soy/quien-soy.component';
 import { MenuStripComponent } from '../menu-strip/menu-strip.component';
 import { ListadoComponent } from '../listado/listado.component';
-// import { ListadoComponent } from './listado/listado.component';        //-
 
 //Servicios
 import { JuegoService } from "../servicios/juego.service";
@@ -32,16 +31,18 @@ import { MiHttpService } from "../servicios/mi-http.service";
 
 const miRuteo = [
 {path: "",component: MainMenuComponent},
-{path: "registro",component: RegistroComponent},
 {path: "salaDeJuegos",component: SalaDeJuegosComponent},
 {path: "listado",component: ListadoComponent},
-{path: "adivina",component: AdivinaElNumeroComponent},
 {path: "anagrama",component: AnagramaComponent},
-{path: "piedraPapelTijera",component: PiedraPapelTijeraComponent},
+{path: "adivina",component: AdivinaElNumeroComponent},
 {path: "agilidad",component: AgilidadComponent},
+{path: "piedraPapelTijera",component: PiedraPapelTijeraComponent},
 {path: "juego de colores",component: JuegoDeColoresComponent},
+{path: "quienSoy",component: QuienSoyComponent},
 {path: "**",component: ErrorComponent}
 ]
+
+
 
 @NgModule({
   declarations: [
