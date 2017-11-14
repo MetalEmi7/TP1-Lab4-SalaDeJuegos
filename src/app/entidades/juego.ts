@@ -5,6 +5,7 @@ export class Juego
     public descripcion:string = "_Un juego para jugar";
     public mensaje:string = "Esperando...";
     public resultado:boolean = false;
+    public puntajeTotal:number;
 
     //las siguientes variables deben ser modificadas en el componente que instancia esta clase.
     public juega:boolean = false;

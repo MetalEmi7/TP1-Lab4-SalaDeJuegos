@@ -38,6 +38,7 @@ export class AnagramaComponent implements OnInit{
 
   obtenerPalabra()
   { 
+    this.palabra_Mezclada = "";
 
     this.datos.palabras()
     .then(data=>{
@@ -46,12 +47,6 @@ export class AnagramaComponent implements OnInit{
     this.unJuego.juega=true;
     
     this.ListaDePalabras = data;
-    /*
-    if (data.length > 0)
-    {
-      this.ListaDePalabras = data.sort;
-      
-    }*/
 
     if (this.ListaDePalabras.length > 0)
     {
@@ -59,16 +54,20 @@ export class AnagramaComponent implements OnInit{
       this.palabra_Sistema = this.ListaDePalabras.pop().toUpperCase();
 
       this.mezclarLetras();
-      //
     }
-
-    
-
-
-    //this.mezclarLetras();
 
     })
     .catch()
+
+    console.log("Palabra correcta: "+ this.palabra_Sistema);
+  }
+
+  mezclarLetras()
+  {
+    do
+    {
+      this.palabra_Mezclada = this.palabra_Sistema.split('').sort(function(){return 0.5 - Math.random() }).join('');
+    } while (this.palabra_Mezclada == this.palabra_Sistema)
   }
   
 
@@ -87,7 +86,7 @@ export class AnagramaComponent implements OnInit{
       this.unJuego.juega = false;
       this.unJuego.resultado = false;
 
-      alert("Usted Gano");
+      alert("Usted perdio");
       
     }
 
@@ -95,89 +94,14 @@ export class AnagramaComponent implements OnInit{
   }
 
   resetControlTxt()
-  {this.palabra_Usuario = "";}
-
-
-
-
-
-  mezclarLetras()
   {
-    do
-    {
-      this.palabra_Mezclada = this.palabra_Sistema.split('').sort(function(){return 0.5 - Math.random() }).join('');
-    } while (this.palabra_Mezclada == this.palabra_Sistema)
-  }
+    this.palabra_Usuario = "";
+    this.palabra_Sistema = "";
+    this.palabra_Mezclada = "****";
+    
+    this.unJuego.mensaje = "Haga click en el boton 'iniciar' para comenzar el juego";
 
-
-
-
-
-
-
-
-
-
-  words: Array<string>;
-  wordToGuess: string;
-  shuffledWord: string;
-  wordUser: string;
-  startMessage: string;
-
-
-
-
-  validateWord(): boolean {
-
-      return this.wordUser.toUpperCase() == this.wordToGuess;
-  }
-
-  setWordToGuess() {
-      let rv:boolean = false;
-      if (this.words.length > 0) {
-          this.words = this.words.sort(() => { return Math.random() - 0.5 });
-          this.wordToGuess = this.words.pop().toUpperCase();
-          this.setDisorderedWord();
-          rv = true;
-      }
-
-      return rv;
-  }
-
-  setDisorderedWord() {
-      do {
-          this.shuffledWord = this.wordToGuess.split('').sort(function () { return 0.5 - Math.random() }).join('');
-      } while (this.shuffledWord == this.wordToGuess);
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
