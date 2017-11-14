@@ -15,7 +15,13 @@ export class AnagramaComponent implements OnInit{
 
     unJuego:Juego;
     intentos:any=3;
-  
+
+    palabra_Usuario:string="";
+    palabra_Sistema:string="";
+    palabra_Mezclada:string="";
+
+    private ListaDePalabras:Array<any> = new Array<any>();
+
     constructor(private datos:JuegoService)  {
       this.event_emitter = new EventEmitter<Juego>();
 
@@ -30,17 +36,148 @@ export class AnagramaComponent implements OnInit{
 
     
 
-  GenerarNum(){
+  obtenerPalabra()
+  { 
+
+    this.datos.palabras()
+    .then(data=>{
+
+    this.unJuego.mensaje = "Escriba la palabra correcta y haga click en 'verificar' o precione la tecla 'enter'.";
+    this.unJuego.juega=true;
     
+    this.ListaDePalabras = data;
+    /*
+    if (data.length > 0)
+    {
+      this.ListaDePalabras = data.sort;
+      
+    }*/
+
+    if (this.ListaDePalabras.length > 0)
+    {
+      this.ListaDePalabras = this.ListaDePalabras.sort(()=>{ return Math.random() - 0.5});
+      this.palabra_Sistema = this.ListaDePalabras.pop().toUpperCase();
+
+      this.mezclarLetras();
+      //
+    }
+
+    
+
+
+    //this.mezclarLetras();
+
+    })
+    .catch()
   }
   
 
 
-  Adivinar(){
+  verificar()
+  {
+    if(this.palabra_Usuario.toUpperCase() == this.palabra_Sistema.toUpperCase())
+    {
+      this.unJuego.juega = false;
+      this.unJuego.resultado = true;
+
+      alert("Usted Gano");
+    }
+    else
+    {
+      this.unJuego.juega = false;
+      this.unJuego.resultado = false;
+
+      alert("Usted Gano");
+      
+    }
+
+    this.resetControlTxt();
+  }
+
+  resetControlTxt()
+  {this.palabra_Usuario = "";}
+
+
+
+
+
+  mezclarLetras()
+  {
+    do
+    {
+      this.palabra_Mezclada = this.palabra_Sistema.split('').sort(function(){return 0.5 - Math.random() }).join('');
+    } while (this.palabra_Mezclada == this.palabra_Sistema)
   }
 
 
-  
+
+
+
+
+
+
+
+
+  words: Array<string>;
+  wordToGuess: string;
+  shuffledWord: string;
+  wordUser: string;
+  startMessage: string;
+
+
+
+
+  validateWord(): boolean {
+
+      return this.wordUser.toUpperCase() == this.wordToGuess;
+  }
+
+  setWordToGuess() {
+      let rv:boolean = false;
+      if (this.words.length > 0) {
+          this.words = this.words.sort(() => { return Math.random() - 0.5 });
+          this.wordToGuess = this.words.pop().toUpperCase();
+          this.setDisorderedWord();
+          rv = true;
+      }
+
+      return rv;
+  }
+
+  setDisorderedWord() {
+      do {
+          this.shuffledWord = this.wordToGuess.split('').sort(function () { return 0.5 - Math.random() }).join('');
+      } while (this.shuffledWord == this.wordToGuess);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

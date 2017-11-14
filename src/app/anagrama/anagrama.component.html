@@ -1,44 +1,52 @@
-<html>
+    <html>
     <body> <app-menu-strip></app-menu-strip>
-      
-    <div class="container" align="center" >
-            <button class="btn btn-primary btn-lg" routerLink="/salaDeJuegos" >Volver atras</button>
-    </div>
-      
-      <div class="container row justify-content-md-center centroDePagina2">
-      
-              <div align="Center" class="col sm-6">
-              <div class="card mb-3">
-                  <img class="card-img-top" src="/assets/imagenes/Anagrama.jpg" alt="Card image cap" width="500" height="200" >
-                  <div class="card-body">
-                      <h4 class="card-text">{{unJuego.nombreJuego}} </h4>
-                      Descripcion: {{unJuego.descripcion}}
-                  </div>
-              </div>
-            </div>
-      
-              <div align="Center" class="col sm-6">
-                      <h4 class="text-white">Jugador: {{this.unJuego.jugador}}</h4>
-              <div class="row">
-                  <div class="col-sm-9" >
-                      <input class="form-control" type="text" placeholder="Introduzca un numero" *ngIf="this.unJuego.juega" name="TxtNumUser" [(ngModel)]="numero_Usuario">
-                  </div> 
-                  
-                  <div class="col-sm-3">
-                      <button class="btn btn-primary btn-block BtnAzul" name="BtnAdivinar" (click)="Adivinar()" *ngIf="this.unJuego.juega">Adivinar</button>  
-                  </div>
-      
-                  <button class="btn btn-warning btn-block BtnAmarillo" name="BtnNuevo" (click)="GenerarNum()" *ngIf="!this.unJuego.juega">Nuevo</button>
-              </div>
-              
-      
-              <br>
-              <h1 align="center" class="text-white" >{{unJuego.mensaje}}</h1>
-              <br>
-      
-          </div>
-      </div>
-      
-      
-        </body>
-      </html>
+        
+        <div class="container" align="center" >
+        <button class="btn btn-primary btn-lg" routerLink="/salaDeJuegos" >Volver atras</button>
+        </div>
+        
+        <div class="container row justify-content-md-center centroDePagina2">
+
+                <div align="Center" class="col sm-6">
+                <div class="card mb-3">
+                    <img class="card-img-top" src="/assets/imagenes/Anagrama.jpg" alt="Card image cap" width="500" height="200" >
+                    <div class="card-body">
+                    <h4 class="card-text">{{unJuego.nombreJuego}} </h4>
+                    Descripcion: {{unJuego.descripcion}}
+                    </div>
+                </div>
+                </div>
+        
+                <div class="alert bg-primary col sm-6">
+                <div align="Center" class="col sm-6">
+
+                        <p class="text-white" align="left"><strong>Palabra mezclada</strong></p>
+                        <div class="alert bg-dark text-white" >
+                        <h3>{{palabra_Mezclada}} </h3>                        
+                        </div> 
+
+                        <p class="text-white" align="left"><strong>Palabra CORRECTA</strong></p>
+                        
+                        <div class="row">                       
+                            
+                        <div class="col-sm-9" >
+                        <input class="form-control" type="text" placeholder="Introduzca un numero" *ngIf="this.unJuego.juega" name="TxtNumUser" [(ngModel)]="palabra_Usuario">
+                        </div> 
+                            
+                        <div class="col-sm-3">
+                        <button class="btn btn-success btn-block BtnAzul" name="BtnAdivinar" (click)="verificar()" *ngIf="this.unJuego.juega">Adivinar</button>  
+                        </div>
+
+                        <div class="col-sm-12">
+                        <button class="btn btn-info btn-block" name="BtnNuevo" (click)="obtenerPalabra()" *ngIf="!this.unJuego.juega">Nuevo</button>
+                        </div>
+                    </div>
+        
+                <br>
+                <h3 align="center" class="text-white" >{{unJuego.mensaje}}</h3>
+                <br>
+                </div>
+                </div>
+        </div>
+    </body>
+    </html>

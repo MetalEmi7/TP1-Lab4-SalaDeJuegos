@@ -31,6 +31,15 @@ export class MiHttpService {
   }
 
 
+  public realPalabras()
+  {
+    return this.http.get("../../assets/archivos/palabras.json")
+    .toPromise()
+    .then(this.extraerDatos)
+    .catch(this.handlerError)
+  }
+
+
   public login()
   {
     let archivoU = "usuarios.json";
