@@ -45,7 +45,7 @@ export class JuegoDeColoresComponent{
   }
 
 
-  teclaEnter(e)
+  keyPressEnter(e)
   {
     if (e.key == "Enter")    
     {
@@ -233,7 +233,7 @@ export class JuegoDeColoresComponent{
         this.unJuego.mensaje = "Usted perdio!";
       }
 
-      console.log("aaaDASdkjghfdklgsdflkfsfhkaldflasgdyaslkjdahskfasfkljh");
+      console.log("");
       this.reiniciarControles();
       this.unJuego.juega = false;
     }

@@ -34,7 +34,7 @@
 
                 <hr>
 
-                <input class="form-control" type="text" placeholder="Introduzca el color" *ngIf="this.unJuego.juega" id="TxtRespuesta" [(ngModel)]="respuestaUsuario" (keypress)="teclaEnter($event)">
+                <input class="form-control" type="text" placeholder="Introduzca el color" *ngIf="this.unJuego.juega" id="TxtRespuesta" [(ngModel)]="respuestaUsuario" (keypress)="keyPressEnter($event)">
                 <button class="btn btn-dark btn-block" name="BtnAdivinar" (click)="prepararJuego()" *ngIf="!this.unJuego.juega">Comenzar</button>    
             </div>            
 
