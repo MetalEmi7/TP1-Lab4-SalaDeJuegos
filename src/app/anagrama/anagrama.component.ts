@@ -44,43 +44,44 @@ export class AnagramaComponent implements OnInit{
     this.puntos=0;
     this.unJuego.juega = true;
     this.obtenerPalabra();
-  }
-
-
-
-
-
-  mezclarLetras()
-  {
-    do
-    {
-      this.palabra_Mezclada = this.palabra_Sistema.split('').sort(function(){return 0.5 - Math.random() }).join('');
-    } while (this.palabra_Mezclada == this.palabra_Sistema)
-  }
-  
+  } 
 
 
   obtenerPalabra()
   {
-    this.datos.palabras()
-    .then(data=>{
+    if (this.unJuego.juega == true)
+    {    
+      this.datos.palabras()
+      .then(data=>{
 
-    this.unJuego.mensaje = "Escriba la palabra correcta y haga click en 'verificar' o precione la tecla 'enter'.";    
-    this.ListaDePalabras = data;
+      this.unJuego.mensaje = "Escriba la palabra correcta y haga click en 'verificar' o precione la tecla 'enter'.";    
+      this.ListaDePalabras = data;
 
-    if (this.ListaDePalabras.length > 0)
-    {
-      this.ListaDePalabras = this.ListaDePalabras.sort(()=>{ return Math.random() - 0.5});
-      this.palabra_Sistema = this.ListaDePalabras.pop().toUpperCase();
+      if (this.ListaDePalabras.length > 0)
+      {
+        this.ListaDePalabras = this.ListaDePalabras.sort(()=>{ return Math.random() - 0.5});
+        this.palabra_Sistema = this.ListaDePalabras.pop().toUpperCase();
 
-      this.mezclarLetras();
+        this.mezclarLetras();
+      }
+
+      })
+      .catch()
     }
 
-    })
-    .catch()
-
-    console.log(this.palabra_Sistema);
   }
+  
+  
+    mezclarLetras()
+    {
+      do
+      {
+        this.palabra_Mezclada = this.palabra_Sistema.split('').sort(function(){return 0.5 - Math.random() }).join('');
+      } while (this.palabra_Mezclada == this.palabra_Sistema)
+
+      console.log(this.palabra_Sistema);
+      console.log(this.palabra_Mezclada);
+    }
 
 
 
@@ -118,7 +119,7 @@ export class AnagramaComponent implements OnInit{
     this.palabra_Sistema = "";
     this.palabra_Mezclada = "****";
     
-    this.unJuego.mensaje = "Haga click en el boton 'iniciar' para comenzar el juego";
+    this.unJuego.mensaje = "Sumo un total de "+ this.puntos +" Pts.";
     this.puntos = 0;
   }
 
