@@ -18,7 +18,12 @@ export class AnagramaComponent implements OnInit{
 
     palabra_Usuario:string="";
     palabra_Sistema:string="";
-    palabra_Mezclada:string="";
+    palabra_Mezclada:string="****";
+
+    intentos_Usuario:number=0;
+    intentos_Sistema:number=5;
+
+    puntos:number;
 
     private ListaDePalabras:Array<any> = new Array<any>();
 
@@ -28,24 +33,39 @@ export class AnagramaComponent implements OnInit{
       this.unJuego = new Juego(
         localStorage.getItem("jugador"), 
         "Anagrama", 
-        "Apareceran palabras con sus letras mezcladas, hay de descifrar cual es la palabra correcta para sumar puntos", 
+        "Apareceran palabras con sus letras mezcladas, hay de descifrar 5 veces cual es la palabra correcta para sumar puntos", 
         "Haga click en el boton 'iniciar' para comenzar el juego");
 
       //this.GenerarNum();
-    }
+    }    
 
-    
+  generarJuego()
+  { 
+    this.puntos=0;
+    this.unJuego.juega = true;
+    this.obtenerPalabra();
+  }
+
+
+
+
+
+  mezclarLetras()
+  {
+    do
+    {
+      this.palabra_Mezclada = this.palabra_Sistema.split('').sort(function(){return 0.5 - Math.random() }).join('');
+    } while (this.palabra_Mezclada == this.palabra_Sistema)
+  }
+  
+
 
   obtenerPalabra()
-  { 
-    this.palabra_Mezclada = "";
-
+  {
     this.datos.palabras()
     .then(data=>{
 
-    this.unJuego.mensaje = "Escriba la palabra correcta y haga click en 'verificar' o precione la tecla 'enter'.";
-    this.unJuego.juega=true;
-    
+    this.unJuego.mensaje = "Escriba la palabra correcta y haga click en 'verificar' o precione la tecla 'enter'.";    
     this.ListaDePalabras = data;
 
     if (this.ListaDePalabras.length > 0)
@@ -59,49 +79,64 @@ export class AnagramaComponent implements OnInit{
     })
     .catch()
 
-    console.log("Palabra correcta: "+ this.palabra_Sistema);
+    console.log(this.palabra_Sistema);
   }
 
-  mezclarLetras()
-  {
-    do
-    {
-      this.palabra_Mezclada = this.palabra_Sistema.split('').sort(function(){return 0.5 - Math.random() }).join('');
-    } while (this.palabra_Mezclada == this.palabra_Sistema)
-  }
-  
 
 
   verificar()
   {
-    if(this.palabra_Usuario.toUpperCase() == this.palabra_Sistema.toUpperCase())
+    if (this.intentos_Usuario < this.intentos_Sistema && this.unJuego.juega == true)
     {
-      this.unJuego.juega = false;
-      this.unJuego.resultado = true;
+      if(this.palabra_Usuario.toUpperCase() == this.palabra_Sistema.toUpperCase())
+      {
+        this.puntos += 10;
 
-      alert("Usted Gano");
+        this.obtenerPalabra();       
+        this.intentos_Usuario++; 
+      }
+      else
+      {
+
+        this.obtenerPalabra();       
+        this.intentos_Usuario++;        
+      }
+
+
+      if (this.intentos_Usuario >= this.intentos_Sistema)
+      {
+          this.finDelJuego();
+      } 
     }
-    else
-    {
-      this.unJuego.juega = false;
-      this.unJuego.resultado = false;
 
-      alert("Usted perdio");
-      
-    }
-
-    this.resetControlTxt();
+    console.log(this.puntos);
   }
 
-  resetControlTxt()
+  resetControls()
   {
     this.palabra_Usuario = "";
     this.palabra_Sistema = "";
     this.palabra_Mezclada = "****";
     
     this.unJuego.mensaje = "Haga click en el boton 'iniciar' para comenzar el juego";
+    this.puntos = 0;
+  }
 
+
+
+
+finDelJuego()
+{
+  this.unJuego.juega = false;
+  this.unJuego.puntajeTotal += this.puntos;
+
+  localStorage.setItem("puntos", this.puntos.toString());
+  this.resetControls();
 }
+
+
+
+
 
 
 
