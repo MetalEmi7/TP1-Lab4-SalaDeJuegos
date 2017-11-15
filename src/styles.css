@@ -9,8 +9,7 @@ body
 .menuimagen{
   background-image:url(/assets/imagenes/MainMenu2.png);
   background-repeat: no-repeat;
-  background-attachment: local;
-  background-size: 75% ;
+  background-size: 70%;
 }
 
 .jumboCode{

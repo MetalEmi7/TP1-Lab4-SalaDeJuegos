@@ -21,6 +21,7 @@ export class AnagramaComponent implements OnInit{
 
     intentos_Usuario:number=0;
     intentos_Sistema:number=5;
+    aciertosPositivos:number=0;
 
     puntos:number;
 
@@ -42,6 +43,7 @@ export class AnagramaComponent implements OnInit{
   { 
     this.puntos = 0;
     this.unJuego.juega = true;
+    this.intentos_Usuario = 0;
     this.obtenerPalabra();
     this.unJuego.mensaje = "Escriba la palabra correcta y haga click en 'verificar' o precione la tecla 'enter'.";    
   } 
@@ -91,6 +93,7 @@ export class AnagramaComponent implements OnInit{
       if(this.palabra_Usuario.toUpperCase() == this.palabra_Sistema.toUpperCase())
       {
         this.puntos += 10;
+        this.aciertosPositivos++;
 
         document.getElementById("LblMensaje").setAttribute("class", "text-white");
         this.unJuego.mensaje = "Palabra correcta, pruebe con esta otra palabra...";
@@ -124,10 +127,18 @@ export class AnagramaComponent implements OnInit{
 
     
 
-    if (this.intentos_Usuario >= 5)
+    if (this.aciertosPositivos == this.intentos_Sistema){
       this.unJuego.mensaje = "Excelente puntuacion! sumo un total de "+ this.puntos +" Pts. ";
-    else
+      this.unJuego.resultado = true;
+    }
+    else if (this.aciertosPositivos > 0){
       this.unJuego.mensaje = "Sumo un total de "+ this.puntos +" Pts. ";
+      this.unJuego.resultado = true;
+    }
+    else{
+      this.unJuego.mensaje = "Usted perdio!!! no pudo acertar ninguna palabra. ";
+      this.unJuego.resultado = false;
+    }
 
 
       this.unJuego.mensaje += "Haga click en el boton 'Juego nuevo' para volver a comenzar.";
@@ -143,8 +154,7 @@ export class AnagramaComponent implements OnInit{
     this.palabra_Usuario = "";
     this.palabra_Sistema = "";
     this.palabra_Mezclada = "****";
-
-    this.intentos_Usuario = 0;
+    this.aciertosPositivos = 0;
     document.getElementById("LblMensaje").setAttribute("class", "text-white");
   }
 

@@ -7,11 +7,10 @@ import { JugadoresService } from "../servicios/jugadores.service";
   styleUrls: ['./menu-strip.component.css']
 })
 export class MenuStripComponent implements OnInit {
-
-
-
 Logueado:boolean=false;
 
+cuenta:any;
+puntosTotales:number = 0;
 
 form ={
   nombre:"avolker0",
@@ -86,7 +85,9 @@ user ={
 
 
 
-  ngOnInit() {
+  ngOnInit()
+  {
+      this.cuenta = localStorage.getItem("jugador");
   }
 
 }
