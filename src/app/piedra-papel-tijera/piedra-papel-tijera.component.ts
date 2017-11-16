@@ -12,7 +12,7 @@ import { Juego } from "../entidades/juego";
 })
 export class PiedraPapelTijeraComponent{
   @Output()
-  event_emitter :EventEmitter<Juego>;
+  event_emitter :EventEmitter<any>;
   unJuego:Juego;  
 
   jugadaUsuario:string=null;
@@ -22,7 +22,7 @@ export class PiedraPapelTijeraComponent{
 
   Modo_Testeo = true;
 
-  valor:string;
+  puntos:number;
 
 
 
@@ -31,12 +31,12 @@ export class PiedraPapelTijeraComponent{
 
 
   constructor()  {
-    this.event_emitter = new EventEmitter<Juego>();
+    this.event_emitter = new EventEmitter<any>();
     this.unJuego = new Juego(
       localStorage.getItem("jugador"), 
       "Piedra, Pepel o Tijera", 
       "Debe elegir piedra papel o tijera y ganarle al sistema.", 
-      "Esperando...");
+      "Haga click en la alguno de los botones (en la piedra, en el papel o en la tijera) para realizar su jugada.");
 
     this.prepararJuego();
   }
@@ -45,7 +45,8 @@ export class PiedraPapelTijeraComponent{
 
   prepararJuego()
   {
-    this.unJuego.mensaje="Esperando...";
+    this.puntos = 0;
+    this.unJuego.mensaje="Haga click en la alguno de los botones (en la piedra, en el papel o en la tijera) para realizar su jugada.";
     this.unJuego.juega=true;
     this.jugadaUsuario=null;
     this.generarJugada();
@@ -83,6 +84,8 @@ export class PiedraPapelTijeraComponent{
 
   verificarJugada()
   {    
+    if(this.unJuego.juega == true)
+    {
     if(this.jugadaUsuario != this.jugadaSistema)
     {
 
@@ -91,11 +94,14 @@ export class PiedraPapelTijeraComponent{
         if (this.jugadaSistema == "Tijera")
         {
           this.unJuego.resultado = true;
+          document.getElementById("LblMensaje").setAttribute("class", "text-white");
           this.unJuego.mensaje = "Usted ha ganado";
+          this.puntos += 15;
         }
         else
         {      
           this.unJuego.resultado = false;
+          document.getElementById("LblMensaje").setAttribute("class", "text-danger");
           this.unJuego.mensaje = "Usted perdio";
         }
       }
@@ -106,11 +112,14 @@ export class PiedraPapelTijeraComponent{
         if (this.jugadaSistema == "Papel")
         {
           this.unJuego.resultado = true;
+          document.getElementById("LblMensaje").setAttribute("class", "text-white");
           this.unJuego.mensaje = "Usted ha ganado";
+          this.puntos += 15;
         }
         else
         {      
           this.unJuego.resultado = false;
+          document.getElementById("LblMensaje").setAttribute("class", "text-danger");
           this.unJuego.mensaje = "Usted perdio";
         }
       }
@@ -121,11 +130,14 @@ export class PiedraPapelTijeraComponent{
         if (this.jugadaSistema == "Piedra")
         {
           this.unJuego.resultado = true;
+          document.getElementById("LblMensaje").setAttribute("class", "text-white");
           this.unJuego.mensaje = "Usted ha ganado";
+          this.puntos += 15;
         }
         else
         {      
           this.unJuego.resultado = false;
+          document.getElementById("LblMensaje").setAttribute("class", "text-danger");
           this.unJuego.mensaje = "Usted perdio";
         }
       }      
@@ -134,8 +146,12 @@ export class PiedraPapelTijeraComponent{
     {
       this.unJuego.resultado = false;
       this.unJuego.mensaje = "Empate";
+      this.puntos += 5;
     }
 
+
+    
+    this.unJuego.mensaje += ". Sumo "+ this.puntos +"Pts., haga click en 'Intentar otra vez' e intente con otra jugada.";
 
     switch (this.jugadaSistema)
     {
@@ -153,34 +169,41 @@ export class PiedraPapelTijeraComponent{
     }
     
     
-    console.log(this.unJuego.mensaje);
-    this.unJuego.juega = false;  
+    console.log("PUTA MADRE");
+    this.finDelJuego();
+    }
   }
 
 
 
 QueHay(val)
 {
-  this.jugadaUsuario = val.target.alt;
-  console.log(this.jugadaUsuario); 
-
-  this.desmarcarBotones();
-
-  switch (this.jugadaUsuario)
+  if (this.unJuego.juega == true)
   {
-    case "Piedra":
-      document.getElementById("BtnPiedra_user").setAttribute("class", "btn btn-primary active");   
-      break;
+    this.jugadaUsuario = val.target.alt;
+    console.log(this.jugadaUsuario); 
 
-    case "Papel":
-      document.getElementById("BtnPapel_user").setAttribute("class", "btn btn-primary active");   
-      break;
+    this.desmarcarBotones();
+    switch (this.jugadaUsuario)
+    {
+      case "Piedra":
+        document.getElementById("BtnPiedra_user").setAttribute("class", "btn btn-primary active");   
+        break;
 
-    case "Tijera":    
-      document.getElementById("BtnTijera_user").setAttribute("class", "btn btn-primary active"); 
-      break;
+      case "Papel":
+        document.getElementById("BtnPapel_user").setAttribute("class", "btn btn-primary active");   
+        break;
+
+      case "Tijera":    
+        document.getElementById("BtnTijera_user").setAttribute("class", "btn btn-primary active"); 
+        break;
+    }
   }
+
+  this.verificarJugada();
 }
+
+
 
 desmarcarBotones()
 {
@@ -192,6 +215,16 @@ desmarcarBotones()
   document.getElementById("BtnPapel").setAttribute("class", "btn btn-outline-danger");
   document.getElementById("BtnTijera").setAttribute("class", "btn btn-outline-danger");
 }
+
+
+finDelJuego()
+{
+  this.unJuego.juega = false;
+  this.unJuego.puntajeTotal = Number.parseInt(localStorage.getItem("puntos"));
+  this.unJuego.puntajeTotal += this.puntos;
+  localStorage.setItem("puntos", this.unJuego.puntajeTotal.toString());
+}
+
 
 reiniciarJuego()
 {

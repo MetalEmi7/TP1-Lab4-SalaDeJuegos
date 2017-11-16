@@ -120,9 +120,9 @@ export class AdivinaElNumeroComponent implements OnInit{
   finDelJuego()
   {
     this.unJuego.juega = false;
-
+    this.unJuego.puntajeTotal = Number.parseInt(localStorage.getItem("puntos").toString());
     this.unJuego.puntajeTotal += this.puntos;
-    localStorage.setItem("puntos", this.puntos.toString());
+    localStorage.setItem("puntos", this.unJuego.puntajeTotal.toString());
 
 
     document.getElementById("LblMensaje").setAttribute("class", "text-white");

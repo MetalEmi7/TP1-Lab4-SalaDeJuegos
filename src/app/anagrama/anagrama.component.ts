@@ -11,7 +11,7 @@ import { JuegoService } from "../servicios/juego.service";
 })
 export class AnagramaComponent implements OnInit{
   @Output()
-  event_emitter :EventEmitter<Juego>;
+  event_emitter :EventEmitter<any>;
 
     unJuego:Juego;
 
@@ -28,7 +28,7 @@ export class AnagramaComponent implements OnInit{
     private ListaDePalabras:Array<any> = new Array<any>();
 
     constructor(private datos:JuegoService)  {
-      this.event_emitter = new EventEmitter<Juego>();
+      this.event_emitter = new EventEmitter<any>();
 
       this.unJuego = new Juego(
         localStorage.getItem("jugador"), 
@@ -122,8 +122,9 @@ export class AnagramaComponent implements OnInit{
   finDelJuego()
   {
     this.unJuego.juega = false;
+    this.unJuego.puntajeTotal = Number.parseInt(localStorage.getItem("puntos").toString());
     this.unJuego.puntajeTotal += this.puntos;
-    localStorage.setItem("puntos", this.puntos.toString());
+    localStorage.setItem("puntos", this.unJuego.puntajeTotal.toString());
 
     
 

@@ -1,9 +1,10 @@
 <html>
-<body> <app-menu-strip></app-menu-strip>
+<body> <app-menu-strip [puntosTotales]="unJuego.puntajeTotal" ></app-menu-strip>
     
     <div class="container" align="center" >
             <button class="btn btn-primary btn-lg" routerLink="/salaDeJuegos" >Volver atras</button>
     </div>
+
 
     <div class="container row justify-content-md-center centroDePagina2"> 
     <div class="col sm-6">            
@@ -16,7 +17,8 @@
         </div>
     </div>
 
-    <div class="col sm-6">
+
+    <div class="alert bg-dark col sm-6">
         <div class="row justify-content-md-center">
             <div class="col-6 col-md-3">
                 <div align="center">
@@ -40,11 +42,21 @@
             </div>
         </div>
 
-        <div class="row"> <button *ngIf="unJuego.juega" class="btn btn-primary btn-lg btn-block" (click)="verificarJugada()"> Jugar </button> </div>
-        <div class="row"> <button *ngIf="!unJuego.juega" class="btn btn-warning btn-lg btn-block" (click)="reiniciarJuego()"> Intentar otra vez </button> </div>
+<!--
+        <div class="row">
+        <div class="col-md-12">
+            <button *ngIf="unJuego.juega" class="btn btn-primary btn-lg btn-block" (click)="verificarJugada()"> Jugar </button>
+        </div>
+        </div>
+-->      
+        <div class="row">
+        <div class="col-md-12">
+            <button *ngIf="!unJuego.juega" class="btn btn-info btn-lg btn-block text-dark" (click)="reiniciarJuego()"><strong> Intentar otra vez </strong></button>
+        </div>
+        </div>
 
         <br>
-        <h1 align="center" class="text-white" >{{unJuego.mensaje}}</h1>
+        <h5 align="center" id="LblMensaje" class="text-white" ><strong>  {{unJuego.mensaje}}</strong> </h5>
         <br>
     </div>
 

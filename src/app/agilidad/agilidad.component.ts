@@ -181,8 +181,9 @@ export class AgilidadComponent{
   finDelJuego()
   {
     this.unJuego.juega = false;
+    this.unJuego.puntajeTotal = Number.parseInt(localStorage.getItem("puntos").toString());
     this.unJuego.puntajeTotal += this.puntos;
-    localStorage.setItem("puntos", this.puntos.toString());
+    localStorage.setItem("puntos", this.unJuego.puntajeTotal.toString());
     
 
     if (this.aciertosPositivos == this.intentos_Sistema){

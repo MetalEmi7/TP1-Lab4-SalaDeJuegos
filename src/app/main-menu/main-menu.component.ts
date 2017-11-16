@@ -10,7 +10,5 @@ import { JugadoresService } from "../servicios/jugadores.service";
 export class MainMenuComponent implements OnInit {
 
   ngOnInit()
-  {
-    localStorage.setItem("jugador", "Anonimo");
-  }
+  {}
 }
