@@ -6,7 +6,7 @@
             <button class="btn btn-white text-dark" routerLink="/">Pagina Principal</button>
             <button class="btn btn-danger" *ngIf="Logueado" type="button" (click)="desLoguearse()" >Log out</button>
 
-                                        <button class="btn btn-secondary dropdown-toggle" *ngIf="!Logueado" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</button>
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</button>
                         
                             <div class="dropdown-menu">
                                 <form class="px-4 py-3">
@@ -21,37 +21,13 @@
                                   </div> 
                         
                                   <div class="form-group">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="Loguearse()" >Log in</button>
-                                    <button type="button" class="btn btn-primary" routerLink="registro" >Crear una cuenta</button>
+                                    <button type="button" class="btn btn-primary" (click)="datosAdmin()">usar cuenta admin</button>
+                                    <button type="button" class="btn btn-secondary" (click)="Loguearse()" >Log in</button>
                                   </div>
                         
                                 </form>        
                             </div>
           </div>
-          
-
-
-
-
-
-
-
-
-                        <div class="dropdown">
-
-                        </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
           <div class="float-right">
             <strong class="text-white">Jugador: {{cuenta}}</strong>

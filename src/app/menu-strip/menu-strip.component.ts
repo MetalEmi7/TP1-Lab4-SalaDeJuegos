@@ -47,16 +47,19 @@ form ={
   {
     this.Logueado=false;
     localStorage.setItem("jugador", "Anonimo");
+    localStorage.setItem("puntos", "0");
     this.cuenta = localStorage.getItem("jugador");
-
-    if (localStorage.getItem("puntos") == "NaN")
-    this.puntosTotales = 0;
+    this.puntosTotales = localStorage.getItem("puntos");
     
   }
 
 
 
-
+  datosAdmin()
+  {
+    this.form.nombre = "Admin";
+    this.form.password = "123456";
+  }
 
 
 
@@ -73,11 +76,9 @@ form ={
     else
     {      
       localStorage.setItem("jugador", "Anonimo");
-      this.puntosTotales = 0;
-
-      //this.puntosTotales = Number.parseInt(localStorage.getItem("puntos"));
+      localStorage.setItem("puntos", "0");
       this.cuenta = localStorage.getItem("jugador");
-      this.puntosTotales = localStorage.getItem("jugador");
+      this.puntosTotales = localStorage.getItem("puntos");
       
     }
   }

@@ -13,7 +13,9 @@ export class JuegoDeColoresComponent{
   @Output()
   event_emitter :EventEmitter<Juego>;
   unJuego:Juego;  
-  
+  puntos:number;
+
+
   respuestaUsuario:string = "";  
   respuestaSistema:string;
 
@@ -23,9 +25,9 @@ export class JuegoDeColoresComponent{
   colorLetra = "dark";
   Palabra:string="Negro";
 
-  cont:number = 0;
-  cuantasVeces:number = 10;
-  ptsParaGanar:number = 0;
+  intentos_Usuario:number = 0;
+  intentos_Sistema:number = 5;
+  aciertosPositivos:number = 0;
 
   constructor()  {
     this.event_emitter = new EventEmitter<Juego>();
@@ -40,7 +42,11 @@ export class JuegoDeColoresComponent{
 
   prepararJuego()
   {
-    this.unJuego.juega=true;    
+    this.puntos = 0;
+    this.unJuego.juega=true;  
+    this.intentos_Usuario = 0;
+    this.aciertosPositivos = 0;
+    this.unJuego.mensaje = "Escriba el color que se le pide y presione la tecla 'Enter' para verificar las respuestas hasta terminar.";    
     this.jugar();
   }
 
@@ -49,12 +55,12 @@ export class JuegoDeColoresComponent{
   {
     if (e.key == "Enter")    
     {
-      this.verificar();
-      this.jugar();    
+      this.verificar();  
     }
   }
 
 
+  //Equivalente a GenerarJugada();
   jugar()
   {
     this.elSistemaPide = this.quePide();
@@ -136,22 +142,28 @@ export class JuegoDeColoresComponent{
 
   verificar()
   {
-    this.cont++;
+    this.intentos_Usuario++;
 
-    if (this.cont <= this.cuantasVeces)
-    {     
-    
+    if (this.intentos_Usuario <= this.intentos_Sistema)
+    {   
       if (this.unJuego.juega == true)
       {
+
 
         switch (this.elSistemaPide)
         {
           case "QUE PALABRA DICE":        
-            if (this.respuestaUsuario.toLowerCase() == this.Palabra.toLowerCase())
-            {        
-              //this.cont++;      
-              this.ptsParaGanar++ 
-              console.log("punto"); 
+            if (this.respuestaUsuario.toLowerCase() == this.Palabra.toLowerCase() && this.respuestaUsuario.toLowerCase() != "")
+            {              
+              this.puntos += 10;
+              this.aciertosPositivos++;
+              document.getElementById("LblMensaje").setAttribute("class", "text-white");
+              this.unJuego.mensaje = "Correcto!!! Ahora el siguiente color.";
+            }
+            else
+            {
+              document.getElementById("LblMensaje").setAttribute("class", "text-danger");
+              this.unJuego.mensaje = "Incorrecto!!! era "+ this.Palabra;
             }
           break;
 
@@ -178,10 +190,16 @@ export class JuegoDeColoresComponent{
             }
             
             if (this.respuestaUsuario.toLowerCase() == this.respuestaSistema.toLowerCase()) 
-            {        
-              //this.cont++;      
-              this.ptsParaGanar++ 
-              console.log("punto"); 
+            {              
+              this.puntos += 10;
+              this.aciertosPositivos++;
+              document.getElementById("LblMensaje").setAttribute("class", "text-white");
+              this.unJuego.mensaje = "Correcto!!! Ahora el siguiente color.";
+            }
+            else
+            {
+              document.getElementById("LblMensaje").setAttribute("class", "text-dark");
+              this.unJuego.mensaje = "Incorrecto!!! era "+ this.respuestaSistema;
             }
           break;
 
@@ -208,52 +226,85 @@ export class JuegoDeColoresComponent{
             }
           
             if (this.respuestaUsuario.toLowerCase() == this.respuestaSistema.toLowerCase())
-            {        
-              //this.cont++;      
-              this.ptsParaGanar++ 
-              console.log("punto"); 
+            {              
+              this.puntos += 10;
+              this.aciertosPositivos++;
+              document.getElementById("LblMensaje").setAttribute("class", "text-white");
+              this.unJuego.mensaje = "Correcto!!! Ahora el siguiente color.";
+            }
+            else
+            {
+              document.getElementById("LblMensaje").setAttribute("class", "text-dark");
+              this.unJuego.mensaje = "Incorrecto!!! era "+ this.respuestaSistema;
             }
           break; 
 
 
+
         }
       }
-    }
-
-    if (this.cont == this.cuantasVeces)
-    {
-      if (this.ptsParaGanar == 10)
-      {
-        this.unJuego.resultado = true;
-        alert("USTED HA GANADO");
-        this.unJuego.mensaje = "Usted gano!";
-      }
-      else{
-        this.unJuego.resultado = false;
-        this.unJuego.mensaje = "Usted perdio!";
-      }
-
-      console.log("");
-      this.reiniciarControles();
-      this.unJuego.juega = false;
-    }
-
+    }    
     this.respuestaUsuario="";
+    if (this.intentos_Usuario < this.intentos_Sistema)
+      this.jugar();
+
+
+
+    if (this.intentos_Usuario >= this.intentos_Sistema)
+    {
+      console.log("----------------------------");
+      this.finDelJuego();
+    }
+
+    
   }
 
 
-  reiniciarControles()
-  {
 
-    this.elSistemaPide = "Esperando...";  
+
+
+
+  finDelJuego()
+  {
+    this.unJuego.juega = false;
+    this.unJuego.puntajeTotal = Number.parseInt(localStorage.getItem("puntos").toString());
+    this.unJuego.puntajeTotal += this.puntos;
+    localStorage.setItem("puntos", this.unJuego.puntajeTotal.toString());
+
+    
+
+    if (this.aciertosPositivos == this.intentos_Sistema){
+      this.unJuego.mensaje = "Excelente puntuacion! sumo un total de "+ this.puntos +" Pts. ";
+      this.unJuego.resultado = true;
+    }
+    else if (this.aciertosPositivos > 0){
+      this.unJuego.mensaje = "Sumo un total de "+ this.puntos +" Pts. ";
+      this.unJuego.resultado = true;
+    }
+    else{
+      this.unJuego.mensaje = "Usted perdio!!! no pudo acertar ningun color. ";
+      this.unJuego.resultado = false;
+    }
+
+    this.unJuego.mensaje += "Haga click en el boton 'Juego nuevo' para volver a jugar.";
+
+    this.resetVariables();
+  }
+
+
+
+
+
+
+
+  resetVariables()
+  {
+    document.getElementById("LblMensaje").setAttribute("class", "text-white");
+    this.elSistemaPide = " - Juego de colores - ";  
     this.colorFondo = "secondary";
     this.colorLetra = "dark";
     this.Palabra="Negro";
-    //NO ESTA REINICIANDO LOS COLORES... NOSE POR QUE!!!
-
-    this.cont = 0;
-    this.ptsParaGanar = 0;
-    //Esto si anda :P
+    this.aciertosPositivos = 0;
   }
 
 

@@ -20,26 +20,28 @@
 
 
         <div class="col sm-6">
-                <h4 class="text-white" align="center">Jugador: {{this.unJuego.jugador}}</h4>
             <div class="card bg-{{colorFondo}}">
 
             <div class="card-header" align="center"> <h3>{{elSistemaPide}}</h3>
             </div>
 
             <div class="card-body"> 
-
-                <br><br>    
+                        <div class="clearfix">
+                        <p class="text-white float-right text-dark" ><strong>Pts: {{puntos}}</strong></p>
+                        <p class="text-white text-dark"><strong>Colores: {{intentos_Usuario}} / {{intentos_Sistema}} </strong></p>
+                        </div> 
+                   
                 <h1 class="card-title text-{{colorLetra}}" align="center"> {{Palabra}} </h1>
-                <br><br>
+                
 
                 <hr>
-
                 <input class="form-control" type="text" placeholder="Introduzca el color" *ngIf="this.unJuego.juega" id="TxtRespuesta" [(ngModel)]="respuestaUsuario" (keypress)="keyPressEnter($event)">
-                <button class="btn btn-dark btn-block" name="BtnAdivinar" (click)="prepararJuego()" *ngIf="!this.unJuego.juega">Comenzar</button>    
+                <button class="btn btn-dark btn-block" name="BtnAdivinar" (click)="prepararJuego()" *ngIf="!this.unJuego.juega">Juego nuevo</button>  
+                <h5 align="center" id="LblMensaje" class="text-white"><strong>{{unJuego.mensaje}}</strong></h5>  
             </div>            
 
             </div>
-            <h1 align="center" class="text-white" >{{unJuego.mensaje}}</h1>
+
 
         </div>
 
