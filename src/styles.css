@@ -1,6 +1,6 @@
 body
 { 
-  background-image: url(/assets/imagenes/TP_Fondo.jpg);
+  background-image: url(../assets/imagenes/TP_Fondo.jpg);
   background-position: top center;
   background-attachment: fixed;
   background-size: 100% ;
