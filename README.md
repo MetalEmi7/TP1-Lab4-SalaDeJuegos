@@ -28,9 +28,6 @@ Before running the tests make sure you are serving the app via `ng serve`.
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 Recordatorio:
-1. En SalaDeJuegos, poner un Carousel.
-2. Hacer andar la pagina github.
+2. Hacer andar la pagina github.    
 3. Ver que pasa con las fotos de PPT.
 4. almacenaje de datos.
-5. dar formato a la pagina para guiar a los usuarios y que sea mas intuitivo.
-6. desarrollar quien soy.

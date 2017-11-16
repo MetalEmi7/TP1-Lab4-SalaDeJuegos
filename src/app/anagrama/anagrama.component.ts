@@ -140,6 +140,7 @@ export class AnagramaComponent implements OnInit{
       this.unJuego.resultado = false;
     }
 
+    
 
       this.unJuego.mensaje += "Haga click en el boton 'Juego nuevo' para volver a comenzar.";
 

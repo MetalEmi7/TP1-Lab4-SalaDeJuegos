@@ -95,6 +95,7 @@ export class AdivinaElNumeroComponent implements OnInit{
         
       }
       this.intentos_Usuario++;
+      this.numero_Usuario = null;
 
     }
 

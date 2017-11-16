@@ -7,41 +7,58 @@
 
 <div class="container centroDePagina2">
 <div class="row justify-content-md-center">
+
       <div class="col sm-6">
-            <div class="card mb-3">
-                  <img class="card-img-top" src="/assets/imagenes/Agilidad.jpg" alt="Card image cap" width="500" height="200" >
-                  <div class="card-body">
-                        <h4 class="card-text">{{unJuego.nombreJuego}} </h4>
-                        Descripcion: {{unJuego.descripcion}}
-                  </div>
+      <div class="card mb-3">
+            <img class="card-img-top" src="/assets/imagenes/Agilidad.jpg" alt="Card image cap" width="500" height="200" >
+            <div class="card-body">
+                  <h4 class="card-text">{{unJuego.nombreJuego}} </h4>
+                  Descripcion: {{unJuego.descripcion}}
             </div>
       </div>
+      </div>
+
+
 
       
-      <div align="Center" class="col sm-6">
-                  <h4 class="text-white">Jugador: {{this.unJuego.jugador}}</h4>
-                  <div class="row justify-content-md-center" >
+      <div class="alert bg-primary col sm-6">
+      <div align="center" class="col sm-6">
+
+            
+            <p class="text-white" align="left"><strong> Operacion a resolver </strong></p> 
+            
+            <div class="justify-content alert bg-dark">
+                  <div class="row md-center">
                         <div class="col col-lg-2">  <h1 class="text-white">{{numUno}}</h1>           </div>
-                        <div class="col-md-auto">  <h1 class="text-white">{{operador}}</h1>           </div>
+                        <div class="col-md-auto">  <h1 class="text-white">{{operador}}</h1>          </div>
                         <div class="col col-lg-2">  <h1 class="text-white">{{numDos}}</h1>           </div>
                   </div>
+            </div>
 
-                  <div class="row">
-                        <div class="col-sm-9" >
-                              <input class="form-control" *ngIf="this.unJuego.juega" [(ngModel)]="resultadoUsuario" type="text" placeholder="ingrese numero" name="numeroIngresado" (keypress)="teclaEnter($event)"/>
-                        </div>
-                        
-                        <div class="col-sm-3">  
-                              <button *ngIf="!ocultarVerificar" (click)="verificar()" class="btn btn-primary btn-block">Verificar {{Tiempo}} </button>
-                        </div>
+            <div class="clearfix">
+                  <p class="text-white float-left"><strong>Resultado:</strong></p>
+                  <p class="text-white float-right text-warning" ><strong>Pts: {{puntos}} </strong></p>
+                  <p class="text-white text-dark"><strong>Intentos: {{intentos_Usuario}} / {{intentos_Sistema}} </strong></p>
+            </div> 
 
-                        <button *ngIf="ocultarVerificar" (click)="NuevoJuego()" class="btn btn-warning btn-block">Nuevo</button>
+
+            <div class="row">
+                  <div class="col-sm-9" >                  
+                  <input class="form-control" [(ngModel)]="resultadoUsuario" type="text" placeholder="ingrese numero" name="numeroIngresado" (keypress)="keyPressEnter($event)"/>
                   </div>
-            
+                        
+                  <div class="col-sm-3">  
+                  <button *ngIf="unJuego.juega"  (click)="verificar()" class="btn btn-success btn-block"> <strong>Verificar {{Tiempo}}</strong> </button>
+                  <button *ngIf="!unJuego.juega" (click)="prepararJuego()" class="btn btn-info btn-block text-dark"><strong>Nuevo</strong></button>
+                  </div>
 
-                  <br>
-                  <h1 align="center" class="text-white" >{{unJuego.mensaje}}</h1>
-                  <br>
+            </div>            
+
+            <br>
+            <h5 align="center" id="LblMensaje" class="text-white" >{{unJuego.mensaje}}</h5>
+            <br>
+            
+      </div>
       </div>
 </div>
 </div> 
