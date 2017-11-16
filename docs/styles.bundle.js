@@ -1,5 +1,75 @@
 webpackJsonp(["styles"],{
 
+/***/ "../../../../../src/assets/imagenes/BtnAmarillo.jpg":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "BtnAmarillo.fd0e00c4cd9edba675e6.jpg";
+
+/***/ }),
+
+/***/ "../../../../../src/assets/imagenes/BtnAzul.jpg":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "BtnAzul.25425336ee5d08881912.jpg";
+
+/***/ }),
+
+/***/ "../../../../../src/assets/imagenes/BtnCeleste.jpg":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "BtnCeleste.c4ca89a67e4db0bbfbb1.jpg";
+
+/***/ }),
+
+/***/ "../../../../../src/assets/imagenes/BtnDark.jpg":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "BtnDark.2922efc029393d8905e9.jpg";
+
+/***/ }),
+
+/***/ "../../../../../src/assets/imagenes/BtnRojo.jpg":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "BtnRojo.0635790fb540c2be2cb8.jpg";
+
+/***/ }),
+
+/***/ "../../../../../src/assets/imagenes/BtnVerde.jpg":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "BtnVerde.5739a3a446a93a720f37.jpg";
+
+/***/ }),
+
+/***/ "../../../../../src/assets/imagenes/BtnWhite.jpg":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "BtnWhite.26f58663927ada861752.jpg";
+
+/***/ }),
+
+/***/ "../../../../../src/assets/imagenes/MainMenu2.png":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "MainMenu2.5304f5afd88a29fb821b.png";
+
+/***/ }),
+
+/***/ "../../../../../src/assets/imagenes/TP_Fondo.jpg":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "TP_Fondo.73d1a3c84dc57675b5cf.jpg";
+
+/***/ }),
+
+/***/ "../../../../../src/assets/imagenes/junboMainMenu.jpg":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "junboMainMenu.bd954e851812e9966353.jpg";
+
+/***/ }),
+
 /***/ "../../../../../src/styles.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -35,7 +105,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "body\r\n{ \r\n  background-image: url(./assets/imagenes/TP_Fondo.jpg);\r\n  background-position: top center;\r\n  background-attachment: fixed;\r\n  background-size: 100% ;\r\n}\r\n\r\n.menuimagen{\r\n  background-image:url(./assets/imagenes/MainMenu2.png);\r\n  background-repeat: no-repeat;\r\n  background-size: 70%;\r\n}\r\n\r\n.jumboCode{\r\n  background-image:url(/assets/imagenes/junboMainMenu.jpg);\r\n  background-repeat: no-repeat;\r\n  background-attachment: local;\r\n  background-size: 100% ;\r\n}\r\n\r\n.btn-primary{\r\n  background-image:url(./assets/imagenes/BtnAzul.jpg);\r\n}\r\n\r\n.btn-success{\r\n  background-image:url(/assets/imagenes/BtnVerde.jpg);\r\n}\r\n\r\n.btn-danger{\r\n  background-image:url(/assets/imagenes/BtnRojo.jpg);\r\n}\r\n\r\n.btn-warning{\r\n  background-image:url(/assets/imagenes/BtnAmarillo.jpg);\r\n}\r\n\r\n.btn-info{\r\n  background-image:url(/assets/imagenes/BtnCeleste.jpg);\r\n}\r\n\r\n.btn-dark{\r\n  background-image:url(/assets/imagenes/BtnDark.jpg);\r\n}\r\n\r\n.btn-white{\r\n  background-image:url(/assets/imagenes/BtnWhite.jpg);\r\n}\r\n\r\n.centroDePagina\r\n{  \r\n  margin: 0 auto;\r\n  margin-top: 150px;\r\n}\r\n\r\n.centroDePagina2\r\n{  \r\n  margin: 2em auto;\r\n  padding: 2em;\r\n}\r\n\r\n.centroDePagina3\r\n{  \r\n  margin: 0;\r\n  padding: 0;\r\n  position: absolute;\r\n  top: 10%;\r\n  left: 10%;  \r\n  bottom: 10%;\r\n  right: 10%;  \r\n}\r\n\r\n\r\n\r\n", ""]);
+exports.push([module.i, "body\r\n{ \r\n  background-image: url(" + __webpack_require__("../../../../../src/assets/imagenes/TP_Fondo.jpg") + ");\r\n  background-position: top center;\r\n  background-attachment: fixed;\r\n  background-size: 100% ;\r\n}\r\n\r\n.menuimagen{\r\n  background-image:url(" + __webpack_require__("../../../../../src/assets/imagenes/MainMenu2.png") + ");\r\n  background-repeat: no-repeat;\r\n  background-size: 70%;\r\n}\r\n\r\n.jumboCode{\r\n  background-image:url(" + __webpack_require__("../../../../../src/assets/imagenes/junboMainMenu.jpg") + ");\r\n  background-repeat: no-repeat;\r\n  background-attachment: local;\r\n  background-size: 100% ;\r\n}\r\n\r\n.btn-primary{\r\n  background-image:url(" + __webpack_require__("../../../../../src/assets/imagenes/BtnAzul.jpg") + ");\r\n}\r\n\r\n.btn-success{\r\n  background-image:url(" + __webpack_require__("../../../../../src/assets/imagenes/BtnVerde.jpg") + ");\r\n}\r\n\r\n.btn-danger{\r\n  background-image:url(" + __webpack_require__("../../../../../src/assets/imagenes/BtnRojo.jpg") + ");\r\n}\r\n\r\n.btn-warning{\r\n  background-image:url(" + __webpack_require__("../../../../../src/assets/imagenes/BtnAmarillo.jpg") + ");\r\n}\r\n\r\n.btn-info{\r\n  background-image:url(" + __webpack_require__("../../../../../src/assets/imagenes/BtnCeleste.jpg") + ");\r\n}\r\n\r\n.btn-dark{\r\n  background-image:url(" + __webpack_require__("../../../../../src/assets/imagenes/BtnDark.jpg") + ");\r\n}\r\n\r\n.btn-white{\r\n  background-image:url(" + __webpack_require__("../../../../../src/assets/imagenes/BtnWhite.jpg") + ");\r\n}\r\n\r\n.centroDePagina\r\n{  \r\n  margin: 0 auto;\r\n  margin-top: 150px;\r\n}\r\n\r\n.centroDePagina2\r\n{  \r\n  margin: 2em auto;\r\n  padding: 2em;\r\n}\r\n\r\n.centroDePagina3\r\n{  \r\n  margin: 0;\r\n  padding: 0;\r\n  position: absolute;\r\n  top: 10%;\r\n  left: 10%;  \r\n  bottom: 10%;\r\n  right: 10%;  \r\n}\r\n\r\n\r\n\r\n", ""]);
 
 // exports
 
