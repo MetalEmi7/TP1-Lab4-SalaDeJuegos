@@ -4,7 +4,7 @@
 
           <div class="float-left">
             <button class="btn btn-white text-dark" routerLink="/">Pagina Principal</button>
-            <button class="btn btn-dark" type="button" data-toggle="modal" data-target="#FrmLogin" *ngIf="!Logueado" >  Log in      </button>
+            <button class="btn btn-dark" data-toggle="modal" data-target="#dropdown" *ngIf="!Logueado" >  Log in      </button>
             <button class="btn btn-danger" *ngIf="Logueado" type="button" (click)="desLoguearse()" >Log out</button>
           </div>
           
@@ -18,8 +18,40 @@
 </div>
 
 
+<!-- Example split danger button -->
 
-  <div class="modal fade" id="FrmLogin" tabindex="-1" role="dialog" aria-labelledby="FrmLoginLabel" aria-hidden="true">
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Login
+    </button>
+    <div class="dropdown-menu fade">
+        <form class="px-4 py-3">
+          <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Nombre de cuenta:</label>
+                <input type="text" class="form-control" id="TxtLoginUsuario" name="TxtNombre" [(ngModel)]="form.nombre" >
+          </div>  
+
+          <div class="form-group">
+                <label for="message-text" class="col-form-label">Contraseña:</label>
+                <input type="password" class="form-control" id="TxtLoginPass" name="TxtPass" [(ngModel)]="form.password">
+          </div> 
+
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input">
+              Remember me
+            </label>
+          </div>
+        </form>
+
+        <div class="dropdown-divider"></div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="Loguearse()" >Log in</button>
+        <button type="button" class="btn btn-primary" routerLink="registro" >Crear una cuenta</button>
+        
+      </div>
+  </div>
+
+  <div class="modal fade" id="FrmLogin" tabindex="-1" role="dialog" aria-labelledby="FrmLoginLabel" aria-hidden="false">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
   
@@ -59,4 +91,3 @@
       </div>    
     </div>
   </div>
-  
