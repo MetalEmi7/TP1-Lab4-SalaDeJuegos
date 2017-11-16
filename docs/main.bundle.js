@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/adivina-el-numero/adivina-el-numero.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<html>\n  <body> <app-menu-strip></app-menu-strip>\n\n<div class=\"container\" align=\"center\" >\n    <button class=\"btn btn-primary btn-lg\" routerLink=\"/salaDeJuegos\" >Volver atras</button>\n</div>\n\n<div class=\"container row justify-content-md-center centroDePagina2\">\n\n        <div align=\"Center\" class=\"col sm-6\">\n        <div class=\"card mb-3\">\n            <img class=\"card-img-top\" src=\"/assets/imagenes/AdivinaElNumero.jpg\" alt=\"Card image cap\" width=\"500\" height=\"200\" >\n            <div class=\"card-body\">\n                <h4 class=\"card-text\">{{unJuego.nombreJuego}} </h4>\n                Descripcion: {{unJuego.descripcion}}\n            </div>\n        </div>\n        </div>\n\n        <div class=\"alert bg-primary col sm-6\">\n\n            <div class=\"clearfix\">\n                <p class=\"text-white float-left\"><strong>Adivine el numero:</strong></p>\n                <p class=\"text-white float-right text-warning\" ><strong>Intentos: {{intentos_Usuario}} / {{intentos_Sistema}}</strong></p>\n            </div>\n\n            <div align=\"Center\" class=\"col sm-6\">\n            <div class=\"row\">\n\n                <div class=\"col-sm-9\" >\n                    <input class=\"form-control\" type=\"text\" placeholder=\"Introduzca un numero\" *ngIf=\"this.unJuego.juega\" name=\"TxtNumUser\" [(ngModel)]=\"numero_Usuario\" (keypress)=\"keyPressEnter($event)\" >\n                </div> \n                \n                <div class=\"col-sm-3\">\n                    <button class=\"btn btn-success btn-block\" name=\"BtnAdivinar\" (click)=\"Adivinar()\" *ngIf=\"this.unJuego.juega\">Adivinar</button>  \n                </div>\n\n                <button class=\"btn btn-info btn-block text-dark\" name=\"BtnNuevo\" (click)=\"GenerarNum()\" *ngIf=\"!this.unJuego.juega\">Juego nuevo</button>\n            </div>\n        </div>\n        \n\n        <br>\n        <h5 align=\"center\" id=\"LblMensaje\" class=\"text-white\" ><strong>{{unJuego.mensaje}}</strong> </h5>\n        <br>\n\n    </div>\n</div>\n\n\n  </body>\n</html>"
+module.exports = "<html>\n    <body> <app-menu-strip [puntosTotales]=\"unJuego.puntajeTotal\" ></app-menu-strip>\n\n    <div class=\"container\" align=\"center\" >\n        <button class=\"btn btn-primary btn-lg\" routerLink=\"/salaDeJuegos\" >Volver atras</button>\n    </div>\n\n<div class=\"container row justify-content-md-center centroDePagina2\">\n    \n        <div align=\"Center\" class=\"col sm-6\">\n        <div class=\"card mb-3\">\n            <img class=\"card-img-top\" src=\"/assets/imagenes/AdivinaElNumero.jpg\" alt=\"Card image cap\" width=\"500\" height=\"200\" >\n            <div class=\"card-body\">\n                <h4 class=\"card-text\">{{unJuego.nombreJuego}} </h4>\n                Descripcion: {{unJuego.descripcion}}\n            </div>\n        </div>\n        </div>\n\n    <div class=\"alert bg-primary col sm-6\">\n        <div align=\"center\" class=\"col sm-6\">\n\n            <div class=\"clearfix\">\n                <p class=\"text-white float-left\"><strong>Adivine el numero:</strong></p>\n                <p class=\"text-white float-right text-dark\" ><strong>Intentos: {{intentos_Usuario}} / {{intentos_Sistema}}</strong></p>\n            </div>\n            \n            <div class=\"row\">\n                <div class=\"col-sm-9\" >\n                <input class=\"form-control\" type=\"text\" placeholder=\"Introduzca un numero\" *ngIf=\"this.unJuego.juega\" name=\"TxtNumUser\" [(ngModel)]=\"numero_Usuario\" (keypress)=\"keyPressEnter($event)\" >\n                </div> \n                \n                <div class=\"col-sm-3\">\n                <button class=\"btn btn-success btn-block\" name=\"BtnAdivinar\" (click)=\"Adivinar()\" *ngIf=\"this.unJuego.juega\">Adivinar</button>  \n                </div>\n\n                <div class=\"col-sm-12\">\n                <button class=\"btn btn-info btn-block text-dark\" name=\"BtnNuevo\" (click)=\"GenerarNum()\" *ngIf=\"!this.unJuego.juega\"><strong>Juego nuevo</strong></button>\n                </div>\n            </div>\n\n        </div>\n\n        <br>\n        <h5 align=\"center\" id=\"LblMensaje\" class=\"text-white\">{{unJuego.mensaje}}</h5>\n        <br>\n\n    </div>\n</div>\n\n\n    </body>\n</html>"
 
 /***/ }),
 
@@ -109,6 +109,7 @@ var AdivinaElNumeroComponent = (function () {
                 }
             }
             this.intentos_Usuario++;
+            this.numero_Usuario = null;
         }
         if (this.intentos_Usuario >= this.intentos_Sistema && this.unJuego.juega == true) {
             this.finDelJuego();
@@ -120,8 +121,9 @@ var AdivinaElNumeroComponent = (function () {
     };
     AdivinaElNumeroComponent.prototype.finDelJuego = function () {
         this.unJuego.juega = false;
+        this.unJuego.puntajeTotal = Number.parseInt(localStorage.getItem("puntos").toString());
         this.unJuego.puntajeTotal += this.puntos;
-        localStorage.setItem("puntos", this.puntos.toString());
+        localStorage.setItem("puntos", this.unJuego.puntajeTotal.toString());
         document.getElementById("LblMensaje").setAttribute("class", "text-white");
         if (this.intentos_Usuario == 0)
             this.unJuego.mensaje += "adivinaste al primer intento, sumas " + this.puntos + " Pts a tu cuenta. ";
@@ -185,7 +187,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/agilidad/agilidad.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<html>\n      <body> <app-menu-strip></app-menu-strip>\n      \n            <div class=\"container\" align=\"center\" >\n                        <button class=\"btn btn-primary btn-lg\" routerLink=\"/salaDeJuegos\" >Volver atras</button>\n                </div>\n\n<div class=\"container centroDePagina2\">\n<div class=\"row justify-content-md-center\">\n      <div class=\"col sm-6\">\n            <div class=\"card mb-3\">\n                  <img class=\"card-img-top\" src=\"/assets/imagenes/Agilidad.jpg\" alt=\"Card image cap\" width=\"500\" height=\"200\" >\n                  <div class=\"card-body\">\n                        <h4 class=\"card-text\">{{unJuego.nombreJuego}} </h4>\n                        Descripcion: {{unJuego.descripcion}}\n                  </div>\n            </div>\n      </div>\n\n      \n      <div align=\"Center\" class=\"col sm-6\">\n                  <h4 class=\"text-white\">Jugador: {{this.unJuego.jugador}}</h4>\n                  <div class=\"row justify-content-md-center\" >\n                        <div class=\"col col-lg-2\">  <h1 class=\"text-white\">{{numUno}}</h1>           </div>\n                        <div class=\"col-md-auto\">  <h1 class=\"text-white\">{{operador}}</h1>           </div>\n                        <div class=\"col col-lg-2\">  <h1 class=\"text-white\">{{numDos}}</h1>           </div>\n                  </div>\n\n                  <div class=\"row\">\n                        <div class=\"col-sm-9\" >\n                              <input class=\"form-control\" *ngIf=\"this.unJuego.juega\" [(ngModel)]=\"resultadoUsuario\" type=\"text\" placeholder=\"ingrese numero\" name=\"numeroIngresado\" (keypress)=\"teclaEnter($event)\"/>\n                        </div>\n                        \n                        <div class=\"col-sm-3\">  \n                              <button *ngIf=\"!ocultarVerificar\" (click)=\"verificar()\" class=\"btn btn-primary btn-block\">Verificar {{Tiempo}} </button>\n                        </div>\n\n                        <button *ngIf=\"ocultarVerificar\" (click)=\"NuevoJuego()\" class=\"btn btn-warning btn-block\">Nuevo</button>\n                  </div>\n            \n\n                  <br>\n                  <h1 align=\"center\" class=\"text-white\" >{{unJuego.mensaje}}</h1>\n                  <br>\n      </div>\n</div>\n</div> \n\n</body>\n</html>"
+module.exports = "<html>\n      <body> <app-menu-strip [puntosTotales]=\"unJuego.puntajeTotal\" ></app-menu-strip>\n      \n            <div class=\"container\" align=\"center\" >\n                        <button class=\"btn btn-primary btn-lg\" routerLink=\"/salaDeJuegos\" >Volver atras</button>\n                </div>\n\n<div class=\"container centroDePagina2\">\n<div class=\"row justify-content-md-center\">\n\n      <div class=\"col sm-6\">\n      <div class=\"card mb-3\">\n            <img class=\"card-img-top\" src=\"/assets/imagenes/Agilidad.jpg\" alt=\"Card image cap\" width=\"500\" height=\"200\" >\n            <div class=\"card-body\">\n                  <h4 class=\"card-text\">{{unJuego.nombreJuego}} </h4>\n                  Descripcion: {{unJuego.descripcion}}\n            </div>\n      </div>\n      </div>\n\n\n\n      \n      <div class=\"alert bg-primary col sm-6\">\n      <div align=\"center\" class=\"col sm-6\">\n\n            \n            <p class=\"text-white\" align=\"left\"><strong> Operacion a resolver </strong></p> \n            \n            <div class=\"justify-content alert bg-dark\">\n                  <div class=\"row md-center\">\n                        <div class=\"col col-lg-2\">  <h1 class=\"text-white\">{{numUno}}</h1>           </div>\n                        <div class=\"col-md-auto\">  <h1 class=\"text-white\">{{operador}}</h1>          </div>\n                        <div class=\"col col-lg-2\">  <h1 class=\"text-white\">{{numDos}}</h1>           </div>\n                  </div>\n            </div>\n\n            <div class=\"clearfix\">\n                  <p class=\"text-white float-left\"><strong>Resultado:</strong></p>\n                  <p class=\"text-white float-right text-warning\" ><strong>Pts: {{puntos}} </strong></p>\n                  <p class=\"text-white text-dark\"><strong>Intentos: {{intentos_Usuario}} / {{intentos_Sistema}} </strong></p>\n            </div> \n\n\n            <div class=\"row\">\n                  <div class=\"col-sm-9\" >                  \n                  <input class=\"form-control\" [(ngModel)]=\"resultadoUsuario\" type=\"text\" placeholder=\"Ingrese resultado\" name=\"numeroIngresado\" (keypress)=\"keyPressEnter($event)\"/>\n                  </div>\n                        \n                  <div class=\"col-sm-3\">  \n                  <button *ngIf=\"unJuego.juega\"  (click)=\"verificar()\" class=\"btn btn-success btn-block\"> <strong>Verificar {{Tiempo}}</strong> </button>\n                  <button *ngIf=\"!unJuego.juega\" (click)=\"prepararJuego()\" class=\"btn btn-info btn-block text-dark\"><strong>Nuevo</strong></button>\n                  </div>\n\n            </div>            \n\n            <br>\n            <h5 align=\"center\" id=\"LblMensaje\" class=\"text-white\" >{{unJuego.mensaje}}</h5>\n            <br>\n            \n      </div>\n      </div>\n</div>\n</div> \n\n</body>\n</html>"
 
 /***/ }),
 
@@ -216,35 +218,33 @@ var AgilidadComponent = (function () {
         this.numUno = 0;
         this.operador = "?";
         this.numDos = 0;
+        this.ocultarVerificar = false;
+        this.intentos_Usuario = 0;
+        this.intentos_Sistema = 5;
+        this.aciertosPositivos = 0;
         this.event_emitter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
-        this.unJuego = new __WEBPACK_IMPORTED_MODULE_1__entidades_juego__["a" /* Juego */](localStorage.getItem("jugador"), "Agilidad aritmetica", "Debe calcular y responder correcta y rapidamente la operacion que el sistema tiene preparado para usted.", "Esperando a que empiece el juego...");
-        this.prepararJuego();
+        this.unJuego = new __WEBPACK_IMPORTED_MODULE_1__entidades_juego__["a" /* Juego */](localStorage.getItem("jugador"), "Agilidad aritmetica", "Debe calcular y responder correcta y rapidamente la operacion que el sistema tiene preparado para usted.", "Haga clic en el TextBox y presione la tecla 'Enter' para iniciar el juego, Para verificar el resultado vuelva a precionar la tecla 'Enter' hasta que termine el juego.");
     }
     AgilidadComponent.prototype.prepararJuego = function () {
-        this.ocultarVerificar = true;
-        this.Tiempo = 5;
-        console.info("Inicio agilidad");
-        this.unJuego.mensaje = "Esperando...";
-    };
-    AgilidadComponent.prototype.NuevoJuego = function () {
-        var _this = this;
-        this.ocultarVerificar = false;
+        this.puntos = 0;
         this.unJuego.juega = true;
-        this.repetidor = setInterval(function () {
-            _this.Tiempo--;
-            console.log("llega", _this.Tiempo);
-            if (_this.Tiempo == 0) {
-                _this.unJuego.juega = false;
-                clearInterval(_this.repetidor);
-                _this.verificar();
-                _this.ocultarVerificar = true;
-                _this.Tiempo = 5;
-            }
-            //this.resetBotones();
-        }, 900);
+        this.intentos_Usuario = 0;
+        this.unJuego.mensaje = "Para verificar el resultado vuelva a precionar la tecla 'Enter'.";
+        //this.Tiempo = 7;
         this.generarCalculo();
+        /*
+        this.repetidor = setInterval(()=>
+        {
+            this.Tiempo--;
+            console.log("llega", this.Tiempo);
+    
+            if(this.Tiempo == 0)
+            {this.reiniciarCuentaAtras();}
+        }, 900);
+        */
     };
     AgilidadComponent.prototype.generarCalculo = function () {
+        console.log("entro 3");
         this.aux_operador = Math.floor(Math.random() * ((4 + 1) - 1) + 1);
         switch (this.aux_operador) {
             case 1:
@@ -286,33 +286,68 @@ var AgilidadComponent = (function () {
                 this.resultadoSistema = this.numUno / this.numDos;
                 break;
         }
+        console.log("RDO: " + this.resultadoSistema);
     };
     AgilidadComponent.prototype.verificar = function () {
+        if (this.intentos_Usuario < this.intentos_Sistema) {
+            //this.reiniciarCuentaAtras();
+            console.log("RDO: " + this.resultadoSistema);
+            if (this.resultadoUsuario == this.resultadoSistema) {
+                this.puntos += 25;
+                this.aciertosPositivos++;
+                document.getElementById("LblMensaje").setAttribute("class", "text-white");
+                this.unJuego.mensaje = "Correcto! calcule el siguiente calculo...";
+            }
+            else {
+                document.getElementById("LblMensaje").setAttribute("class", "text-danger");
+                this.unJuego.mensaje = "Incorrecto! era " + this.resultadoSistema + " calcule el siguiente calculo...";
+            }
+        }
+        this.intentos_Usuario++;
+        this.resultadoUsuario = null;
+        if (this.intentos_Usuario < this.intentos_Sistema)
+            this.generarCalculo();
+        if (this.intentos_Usuario >= this.intentos_Sistema) {
+            this.finDelJuego();
+        }
+    };
+    AgilidadComponent.prototype.finDelJuego = function () {
         this.unJuego.juega = false;
-        clearInterval(this.repetidor);
-        this.ocultarVerificar = true;
-        this.Tiempo = 5;
-        if (this.resultadoUsuario == this.resultadoSistema) {
+        this.unJuego.puntajeTotal = Number.parseInt(localStorage.getItem("puntos").toString());
+        this.unJuego.puntajeTotal += this.puntos;
+        localStorage.setItem("puntos", this.unJuego.puntajeTotal.toString());
+        if (this.aciertosPositivos == this.intentos_Sistema) {
+            this.unJuego.mensaje = "Excelente puntuacion! sumo un total de " + this.puntos + " Pts. ";
             this.unJuego.resultado = true;
-            this.unJuego.mensaje = "Usted gano";
-            console.log("Usted gano");
+        }
+        else if (this.aciertosPositivos > 0) {
+            this.unJuego.mensaje = "Sumo un total de " + this.puntos + " Pts. ";
+            this.unJuego.resultado = true;
         }
         else {
+            this.unJuego.mensaje = "Usted perdio!!! no pudo acertar ninguna cuenta. ";
             this.unJuego.resultado = false;
-            this.unJuego.mensaje = "Usted perdio";
-            console.log("Usted perdio");
         }
-        //RESETEAR TODO?
-        this.resultadoUsuario = null;
+        this.unJuego.mensaje += "Haga clic en el TextBox y presione la tecla 'Enter' o haga click en 'Nuevo' para volver a jugar.";
+        this.resetVariables();
     };
-    AgilidadComponent.prototype.teclaEnter = function (e) {
+    AgilidadComponent.prototype.resetVariables = function () {
+        this.resultadoUsuario = null;
+        this.resultadoSistema = null;
+        this.numUno = 0;
+        this.operador = "?";
+        this.numDos = 0;
+        this.aciertosPositivos = 0;
+        document.getElementById("LblMensaje").setAttribute("class", "text-white");
+    };
+    AgilidadComponent.prototype.keyPressEnter = function (e) {
         console.log(e);
         if (e.key == "Enter") {
-            this.unJuego.juega = false;
-            clearInterval(this.repetidor);
-            this.verificar();
-            this.ocultarVerificar = true;
-            this.Tiempo = 5;
+            if (this.unJuego.juega == false)
+                this.prepararJuego();
+            else {
+                this.verificar();
+            }
         }
     };
     return AgilidadComponent;
@@ -356,7 +391,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/anagrama/anagrama.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "    <html>\r\n    <body> <app-menu-strip></app-menu-strip>\r\n        \r\n        <div class=\"container\" align=\"center\" >\r\n        <button class=\"btn btn-primary btn-lg\" routerLink=\"/salaDeJuegos\" >Volver atras</button>\r\n        </div>\r\n        \r\n        <div class=\"container row justify-content-md-center centroDePagina2\">\r\n\r\n                <div align=\"Center\" class=\"col sm-6\">\r\n                <div class=\"card mb-3\">\r\n                    <img class=\"card-img-top\" src=\"/assets/imagenes/Anagrama.jpg\" alt=\"Card image cap\" width=\"500\" height=\"200\" >\r\n                    <div class=\"card-body\">\r\n                    <h4 class=\"card-text\">{{unJuego.nombreJuego}} </h4>\r\n                    Descripcion: {{unJuego.descripcion}}\r\n                    </div>\r\n                </div>\r\n                </div>\r\n        \r\n                <div class=\"alert bg-primary col sm-6\">\r\n                <div align=\"Center\" class=\"col sm-6\">\r\n\r\n                        <p class=\"text-white\" align=\"left\"><strong>Palabra mezclada</strong></p>\r\n                        <div class=\"alert bg-dark text-white\" >\r\n                        <h3>{{palabra_Mezclada}} </h3>                        \r\n                        </div> \r\n\r\n                        <div class=\"clearfix\">\r\n                        <p class=\"text-white float-left\"><strong>Escriba que palabra es:</strong></p>\r\n                        <p class=\"text-white float-right text-warning\" ><strong>Pts: {{puntos}} / 50</strong></p>\r\n                        </div> \r\n                        \r\n                        <div class=\"row\">                       \r\n                            \r\n                        <div class=\"col-sm-9\" >\r\n                        <input class=\"form-control\" type=\"text\" placeholder=\"Introduzca un numero\" *ngIf=\"this.unJuego.juega\" name=\"TxtNumUser\" [(ngModel)]=\"palabra_Usuario\" (keypress)=\"keyPressEnter($event)\" >\r\n                        </div> \r\n                            \r\n                        <div class=\"col-sm-3\">\r\n                        <button class=\"btn btn-success btn-block BtnAzul\" name=\"BtnAdivinar\" (click)=\"verificar()\" *ngIf=\"this.unJuego.juega\">Verificar</button>  \r\n                        </div>\r\n\r\n                        <div class=\"col-sm-12\">\r\n                        <button class=\"btn btn-info btn-block text-dark\" name=\"BtnNuevo\" (click)=\"generarJuego()\" *ngIf=\"!this.unJuego.juega\"><strong> Juego nuevo </strong></button>\r\n                        </div>\r\n                    </div>\r\n        \r\n                <br>\r\n                <h5 align=\"center\" id=\"LblMensaje\" class=\"text-white\" ><strong>{{unJuego.mensaje}}</strong> </h5>\r\n                <br>\r\n                </div>\r\n                </div>\r\n        </div>\r\n    </body>\r\n    </html>"
+module.exports = "    <html>\r\n    <body> <app-menu-strip [puntosTotales]=\"unJuego.puntajeTotal\" ></app-menu-strip>\r\n        \r\n        <div class=\"container\" align=\"center\" >\r\n        <button class=\"btn btn-primary btn-lg\" routerLink=\"/salaDeJuegos\" >Volver atras</button>\r\n        </div>\r\n        \r\n        <div class=\"container row justify-content-md-center centroDePagina2\">\r\n\r\n                <div align=\"Center\" class=\"col sm-6\">\r\n                <div class=\"card mb-3\">\r\n                    <img class=\"card-img-top\" src=\"/assets/imagenes/Anagrama.jpg\" alt=\"Card image cap\" width=\"500\" height=\"200\" >\r\n                    <div class=\"card-body\">\r\n                    <h4 class=\"card-text\">{{unJuego.nombreJuego}} </h4>\r\n                    Descripcion: {{unJuego.descripcion}}\r\n                    </div>\r\n                </div>\r\n                </div>\r\n        \r\n\r\n\r\n\r\n\r\n                <div class=\"alert bg-primary col sm-6\">\r\n                <div align=\"center\" class=\"col sm-6\">\r\n\r\n                        <p class=\"text-white\" align=\"left\"><strong>Palabra mezclada</strong></p>\r\n                        <div class=\"alert bg-dark text-white\" >\r\n                        <h3>{{palabra_Mezclada}} </h3>                        \r\n                        </div> \r\n\r\n                        <div class=\"clearfix\">\r\n                        <p class=\"text-white float-left\"><strong>Escriba que palabra es:</strong></p>\r\n                        <p class=\"text-white float-right text-warning\" ><strong>Pts: {{puntos}} / 50</strong></p>\r\n                        <p class=\"text-white text-dark\"><strong>Intentos: {{intentos_Usuario}} / {{intentos_Sistema}} </strong></p>\r\n                        </div> \r\n                        \r\n                        <div class=\"row\">                       \r\n                            \r\n                        <div class=\"col-sm-9\" >\r\n                        <input class=\"form-control\" type=\"text\" placeholder=\"Introduzca la palabra\" *ngIf=\"this.unJuego.juega\" name=\"TxtNumUser\" [(ngModel)]=\"palabra_Usuario\" (keypress)=\"keyPressEnter($event)\" >\r\n                        </div> \r\n                            \r\n                        <div class=\"col-sm-3\">\r\n                        <button class=\"btn btn-success btn-block BtnAzul\" name=\"BtnAdivinar\" (click)=\"verificar()\" *ngIf=\"this.unJuego.juega\">Verificar</button>  \r\n                        </div>\r\n\r\n                        <div class=\"col-sm-12\">\r\n                        <button class=\"btn btn-info btn-block text-dark\" name=\"BtnNuevo\" (click)=\"generarJuego()\" *ngIf=\"!this.unJuego.juega\"><strong> Juego nuevo </strong></button>\r\n                        </div>\r\n                    </div>\r\n        \r\n                <br>\r\n                <h5 align=\"center\" id=\"LblMensaje\" class=\"text-white\" >{{unJuego.mensaje}} </h5>\r\n                <br>\r\n\r\n                </div>\r\n                </div>\r\n        </div>\r\n    </body>\r\n    </html>"
 
 /***/ }),
 
@@ -448,8 +483,9 @@ var AnagramaComponent = (function () {
     };
     AnagramaComponent.prototype.finDelJuego = function () {
         this.unJuego.juega = false;
+        this.unJuego.puntajeTotal = Number.parseInt(localStorage.getItem("puntos").toString());
         this.unJuego.puntajeTotal += this.puntos;
-        localStorage.setItem("puntos", this.puntos.toString());
+        localStorage.setItem("puntos", this.unJuego.puntajeTotal.toString());
         if (this.aciertosPositivos == this.intentos_Sistema) {
             this.unJuego.mensaje = "Excelente puntuacion! sumo un total de " + this.puntos + " Pts. ";
             this.unJuego.resultado = true;
@@ -649,7 +685,7 @@ var Juego = (function () {
         this.juega = false;
     }
     Juego.prototype.toString = function () {
-        return "[Juego]: " + this.nombreJuego + " [Jugador]: " + this.jugador + " - " + this.FechaYHora.toLocaleDateString() + " - " + this.FechaYHora.toLocaleTimeString();
+        return "[Juego]: " + this.nombreJuego + " [Jugador]: " + this.jugador + " - " + this.FechaYHora.toLocaleDateString() + " - " + this.FechaYHora.toLocaleTimeString() + " - " + this.resultado + " - " + this.puntajeTotal;
     };
     return Juego;
 }());
@@ -740,7 +776,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/juego-de-colores/juego-de-colores.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<html>\n<body> <app-menu-strip></app-menu-strip>\n    \n    <div class=\"container\" align=\"center\" >\n            <button class=\"btn btn-primary btn-lg\" routerLink=\"/salaDeJuegos\" >Volver atras</button>\n    </div>\n\n    <div class=\"container row justify-content-md-center centroDePagina2\">\n        <div class=\"col sm-6\">\n            <div class=\"card mb-3\">\n                <img class=\"card-img-top\" src=\"/assets/imagenes/JuegoColores.jpg\" alt=\"Card image cap\" width=\"500\" height=\"200\" >\n\n                <div class=\"card-body\"><h4 class=\"card-text\">{{unJuego.nombreJuego}} </h4>\n                    Descripcion: {{unJuego.descripcion}}\n                </div>\n            </div>\n        </div>\n\n\n\n\n        <div class=\"col sm-6\">\n                <h4 class=\"text-white\" align=\"center\">Jugador: {{this.unJuego.jugador}}</h4>\n            <div class=\"card bg-{{colorFondo}}\">\n\n            <div class=\"card-header\" align=\"center\"> <h3>{{elSistemaPide}}</h3>\n            </div>\n\n            <div class=\"card-body\"> \n\n                <br><br>    \n                <h1 class=\"card-title text-{{colorLetra}}\" align=\"center\"> {{Palabra}} </h1>\n                <br><br>\n\n                <hr>\n\n                <input class=\"form-control\" type=\"text\" placeholder=\"Introduzca el color\" *ngIf=\"this.unJuego.juega\" id=\"TxtRespuesta\" [(ngModel)]=\"respuestaUsuario\" (keypress)=\"keyPressEnter($event)\">\n                <button class=\"btn btn-dark btn-block\" name=\"BtnAdivinar\" (click)=\"prepararJuego()\" *ngIf=\"!this.unJuego.juega\">Comenzar</button>    \n            </div>            \n\n            </div>\n            <h1 align=\"center\" class=\"text-white\" >{{unJuego.mensaje}}</h1>\n\n        </div>\n\n    </div>\n\n  </body>\n</html>"
+module.exports = "<html>\n<body> <app-menu-strip [puntosTotales]=\"unJuego.puntajeTotal\" ></app-menu-strip>\n    \n    <div class=\"container\" align=\"center\" >\n            <button class=\"btn btn-primary btn-lg\" routerLink=\"/salaDeJuegos\" >Volver atras</button>\n    </div>\n\n    <div class=\"container row justify-content-md-center centroDePagina2\">\n        <div class=\"col sm-6\">\n            <div class=\"card mb-3\">\n                <img class=\"card-img-top\" src=\"/assets/imagenes/JuegoColores.jpg\" alt=\"Card image cap\" width=\"500\" height=\"200\" >\n\n                <div class=\"card-body\"><h4 class=\"card-text\">{{unJuego.nombreJuego}} </h4>\n                    Descripcion: {{unJuego.descripcion}}\n                </div>\n            </div>\n        </div>\n\n\n\n\n        <div class=\"col sm-6\">\n            <div class=\"card bg-{{colorFondo}}\">\n\n            <div class=\"card-header\" align=\"center\"> <h3>{{elSistemaPide}}</h3>\n            </div>\n\n            <div class=\"card-body\"> \n                        <div class=\"clearfix\">\n                        <p class=\"text-white float-right text-dark\" ><strong>Pts: {{puntos}}</strong></p>\n                        <p class=\"text-white text-dark\"><strong>Colores: {{intentos_Usuario}} / {{intentos_Sistema}} </strong></p>\n                        </div> \n                   \n                <h1 class=\"card-title text-{{colorLetra}}\" align=\"center\"> {{Palabra}} </h1>\n                \n\n                <hr>\n                <input class=\"form-control\" type=\"text\" placeholder=\"Introduzca el color\" *ngIf=\"this.unJuego.juega\" id=\"TxtRespuesta\" [(ngModel)]=\"respuestaUsuario\" (keypress)=\"keyPressEnter($event)\">\n                <button class=\"btn btn-dark btn-block\" name=\"BtnAdivinar\" (click)=\"prepararJuego()\" *ngIf=\"!this.unJuego.juega\">Juego nuevo</button>  \n                <h5 align=\"center\" id=\"LblMensaje\" class=\"text-white\"><strong>{{unJuego.mensaje}}</strong></h5>  \n            </div>            \n\n            </div>\n\n\n        </div>\n\n    </div>\n\n  </body>\n</html>"
 
 /***/ }),
 
@@ -772,22 +808,26 @@ var JuegoDeColoresComponent = (function () {
         this.colorFondo = "secondary";
         this.colorLetra = "dark";
         this.Palabra = "Negro";
-        this.cont = 0;
-        this.cuantasVeces = 10;
-        this.ptsParaGanar = 0;
+        this.intentos_Usuario = 0;
+        this.intentos_Sistema = 5;
+        this.aciertosPositivos = 0;
         this.event_emitter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.unJuego = new __WEBPACK_IMPORTED_MODULE_1__entidades_juego__["a" /* Juego */](localStorage.getItem("jugador"), "Juego de Colores", "Responda que color le pide el sistema 10 veces seguidas, le pedira COLOR DE FONDO, COLOR DE LA LETRA y LA PALABRA ESCRITA (mencionara un color)", "Esperando a empezar el juego...");
     }
     JuegoDeColoresComponent.prototype.prepararJuego = function () {
+        this.puntos = 0;
         this.unJuego.juega = true;
+        this.intentos_Usuario = 0;
+        this.aciertosPositivos = 0;
+        this.unJuego.mensaje = "Escriba el color que se le pide y presione la tecla 'Enter' para verificar las respuestas hasta terminar.";
         this.jugar();
     };
     JuegoDeColoresComponent.prototype.keyPressEnter = function (e) {
         if (e.key == "Enter") {
             this.verificar();
-            this.jugar();
         }
     };
+    //Equivalente a GenerarJugada();
     JuegoDeColoresComponent.prototype.jugar = function () {
         this.elSistemaPide = this.quePide();
         this.colorLetra = this.generarColor();
@@ -838,15 +878,20 @@ var JuegoDeColoresComponent = (function () {
         }
     };
     JuegoDeColoresComponent.prototype.verificar = function () {
-        this.cont++;
-        if (this.cont <= this.cuantasVeces) {
+        this.intentos_Usuario++;
+        if (this.intentos_Usuario <= this.intentos_Sistema) {
             if (this.unJuego.juega == true) {
                 switch (this.elSistemaPide) {
                     case "QUE PALABRA DICE":
-                        if (this.respuestaUsuario.toLowerCase() == this.Palabra.toLowerCase()) {
-                            //this.cont++;      
-                            this.ptsParaGanar++;
-                            console.log("punto");
+                        if (this.respuestaUsuario.toLowerCase() == this.Palabra.toLowerCase() && this.respuestaUsuario.toLowerCase() != "") {
+                            this.puntos += 10;
+                            this.aciertosPositivos++;
+                            document.getElementById("LblMensaje").setAttribute("class", "text-white");
+                            this.unJuego.mensaje = "Correcto!!! Ahora el siguiente color.";
+                        }
+                        else {
+                            document.getElementById("LblMensaje").setAttribute("class", "text-danger");
+                            this.unJuego.mensaje = "Incorrecto!!! era " + this.Palabra;
                         }
                         break;
                     case "COLOR DE FONDO":
@@ -865,9 +910,14 @@ var JuegoDeColoresComponent = (function () {
                                 break;
                         }
                         if (this.respuestaUsuario.toLowerCase() == this.respuestaSistema.toLowerCase()) {
-                            //this.cont++;      
-                            this.ptsParaGanar++;
-                            console.log("punto");
+                            this.puntos += 10;
+                            this.aciertosPositivos++;
+                            document.getElementById("LblMensaje").setAttribute("class", "text-white");
+                            this.unJuego.mensaje = "Correcto!!! Ahora el siguiente color.";
+                        }
+                        else {
+                            document.getElementById("LblMensaje").setAttribute("class", "text-dark");
+                            this.unJuego.mensaje = "Incorrecto!!! era " + this.respuestaSistema;
                         }
                         break;
                     case "COLOR DE LA LETRA":
@@ -886,39 +936,53 @@ var JuegoDeColoresComponent = (function () {
                                 break;
                         }
                         if (this.respuestaUsuario.toLowerCase() == this.respuestaSistema.toLowerCase()) {
-                            //this.cont++;      
-                            this.ptsParaGanar++;
-                            console.log("punto");
+                            this.puntos += 10;
+                            this.aciertosPositivos++;
+                            document.getElementById("LblMensaje").setAttribute("class", "text-white");
+                            this.unJuego.mensaje = "Correcto!!! Ahora el siguiente color.";
+                        }
+                        else {
+                            document.getElementById("LblMensaje").setAttribute("class", "text-dark");
+                            this.unJuego.mensaje = "Incorrecto!!! era " + this.respuestaSistema;
                         }
                         break;
                 }
             }
         }
-        if (this.cont == this.cuantasVeces) {
-            if (this.ptsParaGanar == 10) {
-                this.unJuego.resultado = true;
-                alert("USTED HA GANADO");
-                this.unJuego.mensaje = "Usted gano!";
-            }
-            else {
-                this.unJuego.resultado = false;
-                this.unJuego.mensaje = "Usted perdio!";
-            }
-            console.log("");
-            this.reiniciarControles();
-            this.unJuego.juega = false;
-        }
         this.respuestaUsuario = "";
+        if (this.intentos_Usuario < this.intentos_Sistema)
+            this.jugar();
+        if (this.intentos_Usuario >= this.intentos_Sistema) {
+            this.finDelJuego();
+        }
     };
-    JuegoDeColoresComponent.prototype.reiniciarControles = function () {
-        this.elSistemaPide = "Esperando...";
+    JuegoDeColoresComponent.prototype.finDelJuego = function () {
+        this.unJuego.juega = false;
+        this.unJuego.puntajeTotal = Number.parseInt(localStorage.getItem("puntos").toString());
+        this.unJuego.puntajeTotal += this.puntos;
+        localStorage.setItem("puntos", this.unJuego.puntajeTotal.toString());
+        if (this.aciertosPositivos == this.intentos_Sistema) {
+            this.unJuego.mensaje = "Excelente puntuacion! sumo un total de " + this.puntos + " Pts. ";
+            this.unJuego.resultado = true;
+        }
+        else if (this.aciertosPositivos > 0) {
+            this.unJuego.mensaje = "Sumo un total de " + this.puntos + " Pts. ";
+            this.unJuego.resultado = true;
+        }
+        else {
+            this.unJuego.mensaje = "Usted perdio!!! no pudo acertar ningun color. ";
+            this.unJuego.resultado = false;
+        }
+        this.unJuego.mensaje += "Haga click en el boton 'Juego nuevo' para volver a jugar.";
+        this.resetVariables();
+    };
+    JuegoDeColoresComponent.prototype.resetVariables = function () {
+        document.getElementById("LblMensaje").setAttribute("class", "text-white");
+        this.elSistemaPide = " - Juego de colores - ";
         this.colorFondo = "secondary";
         this.colorLetra = "dark";
         this.Palabra = "Negro";
-        //NO ESTA REINICIANDO LOS COLORES... NOSE POR QUE!!!
-        this.cont = 0;
-        this.ptsParaGanar = 0;
-        //Esto si anda :P
+        this.aciertosPositivos = 0;
     };
     return JuegoDeColoresComponent;
 }());
@@ -1150,7 +1214,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/main-menu/main-menu.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<html>\r\n  <body>\r\n     <app-menu-strip></app-menu-strip>\r\n\r\n  <div class=\"container\">\r\n\r\n        <div class=\"jumbotron\">\r\n          <h1 class=\"display-3\">Bienvenidos al TP: Sala de juegos</h1>\r\n          <p class=\"lead\">Este es un proyecto de Trabajo practico desarrollado con el fin de promocionar Laboratorio 4.</p>\r\n          <hr class=\"my-4\">\r\n          <p>Fue desarrollado con Bootstrap e imagenes mediante Corel x7.</p>\r\n          <p class=\"lead\">\r\n            <a class=\"btn btn-primary btn-lg BtnAzul\" href=\"https://github.com/MetalEmi7/TP1-Lab4-SalaDeJuegos\" role=\"button\">Repositorio del TP</a>\r\n          </p>\r\n        </div>\r\n\r\n    \r\n\r\n        <div class=\"card-deck\">\r\n\r\n          <div class=\"card\">\r\n            <img class=\"card-img-top\" src=\"../../assets/imagenes/SalaDeJuegos.jpg\" alt=\"Card image cap\">\r\n            <div class=\"card-body \">\r\n              <h4 class=\"card-title\">Sala de juegos</h4>\r\n              <p class=\"card-text\">Encontraran un conjunto de juegos de tipo cognitivos, cada uno registran los resultados y sus puntos logrados en un historial.</p>\r\n              <p class=\"card-text\"><button class=\"btn btn-primary\" name=\"BtnSalaDeJuegos\" routerLink=\"/salaDeJuegos\">Entrar</button> </p>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"card \">\r\n            <img class=\"card-img-top\" src=\"../../assets/imagenes/Listado.jpg\" alt=\"Card image cap\">\r\n            <div class=\"card-body \">\r\n              <h4 class=\"card-title\">Listado</h4>\r\n              <p class=\"card-text\">Muestra todos los resultados de todos los jugadores con filtros.</p>\r\n              <p class=\"card-text\"><button class=\"btn btn-primary\" name=\"BtnSalaDeJuegos\" routerLink=\"/listado\">Entrar</button> </p>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"card \">\r\n            <img class=\"card-img-top\" src=\"../../assets/imagenes/quienSoy.jpg\" alt=\"Card image cap\">\r\n            <div class=\"card-body \">\r\n              <h4 class=\"card-title\">Quien soy</h4>\r\n              <p class=\"card-text\">Un estudiande a termino de la carrera de Tecnico Superior en Programacion.</p>\r\n              <p class=\"card-text\"><button class=\"btn btn-primary\" name=\"BtnSalaDeJuegos\" routerLink=\"/quienSoy\">Detalles</button> </p>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n\r\n  </div>  \r\n  \r\n  </body>\r\n</html>"
+module.exports = "<html>\r\n  <body>\r\n     <app-menu-strip></app-menu-strip>\r\n\r\n  <div class=\"container\">\r\n\r\n        <div class=\"jumbotron\">\r\n          <h1 class=\"display-3\">Bienvenidos al TP: Sala de juegos</h1>\r\n          <p class=\"lead\">Este es un proyecto de Trabajo practico desarrollado con el fin de promocionar Laboratorio 4.</p>\r\n          <hr class=\"my-4\">\r\n          <p>Fue desarrollado con esfuerzo y dedicacion, espero que lo disfruten.</p>\r\n          <p class=\"lead\">\r\n            <a class=\"btn btn-primary btn-lg BtnAzul\" href=\"https://github.com/MetalEmi7/TP1-Lab4-SalaDeJuegos\" role=\"button\">Repositorio del TP</a>\r\n          </p>\r\n        </div>\r\n\r\n    \r\n\r\n        <div class=\"card-deck\">\r\n\r\n          <div class=\"card\">\r\n            <img class=\"card-img-top\" src=\"../../assets/imagenes/SalaDeJuegos.jpg\" alt=\"Card image cap\">\r\n            <div class=\"card-body \">\r\n              <h4 class=\"card-title\">Sala de juegos</h4>\r\n              <p class=\"card-text\">Encontraran un conjunto de juegos de tipo cognitivos, cada uno registran los resultados y sus puntos logrados en un historial.</p>\r\n              <p class=\"card-text\"><button class=\"btn btn-primary\" name=\"BtnSalaDeJuegos\" routerLink=\"/salaDeJuegos\">Entrar</button> </p>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"card \">\r\n            <img class=\"card-img-top\" src=\"../../assets/imagenes/Listado.jpg\" alt=\"Card image cap\">\r\n            <div class=\"card-body \">\r\n              <h4 class=\"card-title\">Listado</h4>\r\n              <p class=\"card-text\">Muestra todos los resultados de todos los jugadores con filtros.</p>\r\n              <p class=\"card-text\"><button class=\"btn btn-primary\" name=\"BtnSalaDeJuegos\" routerLink=\"/listado\">Entrar</button> </p>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"card \">\r\n            <img class=\"card-img-top\" src=\"../../assets/imagenes/CardQuienSoy.jpg\" alt=\"Card image cap\">\r\n            <div class=\"card-body \">\r\n              <h4 class=\"card-title\">Quien soy</h4>\r\n              <p class=\"card-text\">Un estudiande a termino de la carrera de Tecnico Superior en Programacion.</p>\r\n              <p class=\"card-text\"><button class=\"btn btn-primary\" name=\"BtnSalaDeJuegos\" routerLink=\"/quienSoy\">Detalles</button> </p>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n\r\n  </div>  \r\n  \r\n  </body>\r\n</html>"
 
 /***/ }),
 
@@ -1170,9 +1234,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var MainMenuComponent = (function () {
     function MainMenuComponent() {
     }
-    MainMenuComponent.prototype.ngOnInit = function () {
-        localStorage.setItem("jugador", "Anonimo");
-    };
+    MainMenuComponent.prototype.ngOnInit = function () { };
     return MainMenuComponent;
 }());
 MainMenuComponent = __decorate([
@@ -1208,7 +1270,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/menu-strip/menu-strip.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"sticky-top\">\n    <div class=\"alert menuimagen\">\n        <div class=\"clearfix\">\n\n          <div class=\"float-left\">\n            <button class=\"btn btn-white text-dark\" routerLink=\"/\">Pagina Principal</button>\n            <button class=\"btn btn-dark\" type=\"button\" data-toggle=\"modal\" data-target=\"#FrmLogin\" *ngIf=\"!Logueado\" >  Log in      </button>\n            <button class=\"btn btn-danger\" *ngIf=\"Logueado\" type=\"button\" (click)=\"desLoguearse()\" >Log out</button>\n          </div>\n          \n          <div class=\"float-right\">\n            <strong class=\"text-white\">Jugador: {{cuenta}}</strong>\n            <strong class=\"text-warning\">Pts Totales: {{puntosTotales}}</strong>\n          <div>\n\n        </div>\n    </div>\n</div>\n\n\n\n  <div class=\"modal fade\" id=\"FrmLogin\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"FrmLoginLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog\" role=\"document\">\n      <div class=\"modal-content\">\n  \n  \n          <div class=\"modal-header bg-primary \">\n            <h5 class=\"modal-title\"> <strong> Login </strong> </h5>\n\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n              <span aria-hidden=\"true\">&times;</span>\n            </button>\n          </div>\n  \n\n        <div class=\"modal-body\">\n          <form>\n\n            <div class=\"form-group\">\n              <label for=\"recipient-name\" class=\"col-form-label\">Nombre de cuenta:</label>\n              <input type=\"text\" class=\"form-control\" id=\"TxtLoginUsuario\" name=\"TxtNombre\" [(ngModel)]=\"form.nombre\" >\n            </div>    \n  \n\n            <div class=\"form-group\">\n              <label for=\"message-text\" class=\"col-form-label\">Contraseña:</label>\n              <input type=\"password\" class=\"form-control\" id=\"TxtLoginPass\" name=\"TxtPass\" [(ngModel)]=\"form.password\">\n            </div> \n\n          </form>\n        <div>      \n\n      \n        <div class=\"modal-footer\">\n          <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\" (click)=\"Loguearse()\" >Log in</button>\n          <button type=\"button\" class=\"btn btn-primary\" routerLink=\"registro\" >Crear una cuenta</button>\n        </div> \n\n      </div>    \n    </div>\n  </div>\n  "
+module.exports = "<div class=\"sticky-top\">\n    <div class=\"alert menuimagen\">\n        <div class=\"clearfix\">\n\n          <div class=\"float-left\">\n            <button class=\"btn btn-white text-dark\" routerLink=\"/\">Pagina Principal</button>\n            <button class=\"btn btn-danger\" *ngIf=\"Logueado\" type=\"button\" (click)=\"desLoguearse()\" >Log out</button>\n\n                                        <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Login</button>\n                        \n                            <div class=\"dropdown-menu\">\n                                <form class=\"px-4 py-3\">\n                                  <div class=\"form-group\">\n                                    <label for=\"recipient-name\" class=\"col-form-label\">Nombre de cuenta:</label>\n                                    <input type=\"text\" class=\"form-control\" id=\"TxtLoginUsuario\" name=\"TxtNombre\" [(ngModel)]=\"form.nombre\" >\n                                  </div>  \n                        \n                                  <div class=\"form-group\">\n                                    <label for=\"message-text\" class=\"col-form-label\">Contraseña:</label>\n                                    <input type=\"password\" class=\"form-control\" id=\"TxtLoginPass\" name=\"TxtPass\" [(ngModel)]=\"form.password\">\n                                  </div> \n                        \n                                  <div class=\"form-group\">\n                                    <button type=\"button\" class=\"btn btn-primary\" (click)=\"datosAdmin()\">usar cuenta admin</button>\n                                    <button type=\"button\" class=\"btn btn-secondary\" (click)=\"Loguearse()\" >Log in</button>\n                                  </div>\n                        \n                                </form>        \n                            </div>\n          </div>\n\n          <div class=\"float-right\">\n            <strong class=\"text-white\">Jugador: {{cuenta}}</strong>\n            <strong class=\"text-warning\">Pts Totales: {{puntosTotales}}</strong>\n          <div>\n\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -1234,66 +1296,57 @@ var MenuStripComponent = (function () {
     function MenuStripComponent(datos) {
         this.datos = datos;
         this.Logueado = false;
-        this.puntosTotales = 0;
         this.form = {
-            nombre: "avolker0",
-            password: "9123725639",
+            nombre: "",
+            password: "",
             mail: "",
             sexo: "",
             foto: ""
         };
-        //Usuario de prueba
-        this.user = {
-            cuit: 91237256393,
-            usuario: "avolker0",
-            email: "fdelamar0@wikipedia.org",
-            puntaje: 3466,
-            fecha: "12/03/2017",
-            sexo: "M",
-            gano: false
-        };
     }
     MenuStripComponent.prototype.Loguearse = function () {
-        //PARA JUGADORES
-        /*
-        this.datos.verificarLogin()
-        .then(data=>{
-    
-          data.forEach(element => {
-            if (this.form.password == element.password && this.form.nombre == element.nombre)
-            {
-              this.Logueado = true;
-              localStorage.setItem("jugador", element.nombre);
-              console.log(element);
-            }
-          });
-    
-        })
-        .catch(error=> console.log(error))
-        */
-        var _this = this;
-        //PARA USUARIOS
-        this.datos.verificarLogin()
-            .then(function (data) {
-            data.forEach(function (element) {
-                if (_this.user.cuit == element.cuit && _this.user.usuario == element.usuario) {
-                    _this.Logueado = true;
-                    localStorage.setItem("jugador", element.usuario);
-                    console.log(element);
-                }
-            });
-        })
-            .catch(function (error) { return console.log(error); });
+        var auxNombre = this.form.nombre;
+        var auxPassword = this.form.password;
+        if (this.form.nombre == auxNombre && this.form.password == auxPassword) {
+            localStorage.setItem("jugador", this.form.nombre);
+            this.Logueado = true;
+            this.cuenta = localStorage.getItem("jugador");
+            this.puntosTotales = Number.parseInt(localStorage.getItem("puntos"));
+            console.log(localStorage.getItem("jugador"));
+        }
     };
     MenuStripComponent.prototype.desLoguearse = function () {
         this.Logueado = false;
         localStorage.setItem("jugador", "Anonimo");
+        localStorage.setItem("puntos", "0");
+        this.cuenta = localStorage.getItem("jugador");
+        this.puntosTotales = localStorage.getItem("puntos");
+    };
+    MenuStripComponent.prototype.datosAdmin = function () {
+        this.form.nombre = "Admin";
+        this.form.password = "123456";
     };
     MenuStripComponent.prototype.ngOnInit = function () {
-        this.cuenta = localStorage.getItem("jugador");
+        if (localStorage.getItem("jugador") != "Anonimo") {
+            this.Logueado = true;
+            this.cuenta = localStorage.getItem("jugador");
+            this.puntosTotales = Number.parseInt(localStorage.getItem("puntos"));
+            console.log(localStorage.getItem("jugador"));
+            console.log(localStorage.getItem("puntos"));
+        }
+        else {
+            localStorage.setItem("jugador", "Anonimo");
+            localStorage.setItem("puntos", "0");
+            this.cuenta = localStorage.getItem("jugador");
+            this.puntosTotales = localStorage.getItem("puntos");
+        }
     };
     return MenuStripComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], MenuStripComponent.prototype, "puntosTotales", void 0);
 MenuStripComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-menu-strip',
@@ -1329,7 +1382,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/piedra-papel-tijera/piedra-papel-tijera.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<html>\n<body> <app-menu-strip></app-menu-strip>\n    \n    <div class=\"container\" align=\"center\" >\n            <button class=\"btn btn-primary btn-lg\" routerLink=\"/salaDeJuegos\" >Volver atras</button>\n    </div>\n\n    <div class=\"container row justify-content-md-center centroDePagina2\"> \n    <div class=\"col sm-6\">            \n        <div class=\"card mb-3\">\n            <img class=\"card-img-top\" src=\"/assets/imagenes/PPT.jpg\" alt=\"Card image cap\" width=\"500\" height=\"200\" >\n            <div class=\"card-body\">\n            <h4 class=\"card-text\">{{unJuego.nombreJuego}} </h4>\n            Descripcion: {{unJuego.descripcion}}\n            </div>\n        </div>\n    </div>\n\n    <div class=\"col sm-6\">\n        <div class=\"row justify-content-md-center\">\n            <div class=\"col-6 col-md-3\">\n                <div align=\"center\">\n                    <h6 class=\"text-white\">{{this.unJuego.jugador}}</h6>\n                    <button class=\"btn btn-outline-primary\" id=\"BtnPiedra_user\" > <img src=\"assets/imagenes/Piedra papel o tijera/Piedra.jpg\" alt=\"Piedra\"    class=\"rounded\" width=50 (click)=\"QueHay($event)\"> </button><br><br>\n                    <button class=\"btn btn-outline-primary\" id=\"BtnPapel_user\" > <img src=\"assets/imagenes/Piedra papel o tijera/Papel.jpg\"  alt=\"Papel\"     class=\"rounded\" width=50 (click)=\"QueHay($event)\"> </button><br><br>\n                    <button class=\"btn btn-outline-primary\" id=\"BtnTijera_user\" > <img src=\"assets/imagenes/Piedra papel o tijera/Tijera.jpg\" alt=\"Tijera\"    class=\"rounded\" width=50 (click)=\"QueHay($event)\"> </button><br><br>\n                </div>\n            </div>\n\n            <div class=\"col-md-auto\">                \n            </div>\n\n            <div class=\"col-6 col-md-3\">\n                <div align=\"center\">\n                    <h6 class=\"text-white\">Sistema</h6>\n                    <button class=\"btn btn-outline-danger\" id=\"BtnPiedra\" disabled> <img src=\"assets/imagenes/Piedra papel o tijera/Piedra.jpg\" alt=\"Piedra\" class=\"rounded\" width=50> </button><br><br>\n                    <button class=\"btn btn-outline-danger\" id=\"BtnPapel\" disabled> <img src=\"assets/imagenes/Piedra papel o tijera/Papel.jpg\" alt=\"Papel\" class=\"rounded\" width=50></button><br><br>\n                    <button class=\"btn btn-outline-danger\" id=\"BtnTijera\" disabled> <img src=\"assets/imagenes/Piedra papel o tijera/Tijera.jpg\" alt=\"Tijera\" class=\"rounded\" width=50></button><br><br>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"row\"> <button *ngIf=\"unJuego.juega\" class=\"btn btn-primary btn-lg btn-block\" (click)=\"verificarJugada()\"> Jugar </button> </div>\n        <div class=\"row\"> <button *ngIf=\"!unJuego.juega\" class=\"btn btn-warning btn-lg btn-block\" (click)=\"reiniciarJuego()\"> Intentar otra vez </button> </div>\n\n        <br>\n        <h1 align=\"center\" class=\"text-white\" >{{unJuego.mensaje}}</h1>\n        <br>\n    </div>\n\n</div>\n\n\n\n        \n</body>\n</html>"
+module.exports = "<html>\n<body> <app-menu-strip [puntosTotales]=\"unJuego.puntajeTotal\" ></app-menu-strip>\n    \n    <div class=\"container\" align=\"center\" >\n            <button class=\"btn btn-primary btn-lg\" routerLink=\"/salaDeJuegos\" >Volver atras</button>\n    </div>\n\n\n    <div class=\"container row justify-content-md-center centroDePagina2\"> \n    <div class=\"col sm-6\">            \n        <div class=\"card mb-3\">\n            <img class=\"card-img-top\" src=\"/assets/imagenes/PPT.jpg\" alt=\"Card image cap\" width=\"500\" height=\"200\" >\n            <div class=\"card-body\">\n            <h4 class=\"card-text\">{{unJuego.nombreJuego}} </h4>\n            Descripcion: {{unJuego.descripcion}}\n            </div>\n        </div>\n    </div>\n\n\n    <div class=\"alert bg-dark col sm-6\">\n        <div class=\"row justify-content-md-center\">\n            <div class=\"col-6 col-md-3\">\n                <div align=\"center\">\n                    <h6 class=\"text-white\">{{this.unJuego.jugador}}</h6>\n                    <button class=\"btn btn-outline-primary\" id=\"BtnPiedra_user\" > <img src=\"assets/imagenes/Piedra papel o tijera/Piedra.jpg\" alt=\"Piedra\"    class=\"rounded\" width=50 (click)=\"QueHay($event)\"> </button><br><br>\n                    <button class=\"btn btn-outline-primary\" id=\"BtnPapel_user\" > <img src=\"assets/imagenes/Piedra papel o tijera/Papel.jpg\"  alt=\"Papel\"     class=\"rounded\" width=50 (click)=\"QueHay($event)\"> </button><br><br>\n                    <button class=\"btn btn-outline-primary\" id=\"BtnTijera_user\" > <img src=\"assets/imagenes/Piedra papel o tijera/Tijera.jpg\" alt=\"Tijera\"    class=\"rounded\" width=50 (click)=\"QueHay($event)\"> </button><br><br>\n                </div>\n            </div>\n\n            <div class=\"col-md-auto\">                \n            </div>\n\n            <div class=\"col-6 col-md-3\">\n                <div align=\"center\">\n                    <h6 class=\"text-white\">Sistema</h6>\n                    <button class=\"btn btn-outline-danger\" id=\"BtnPiedra\" disabled> <img src=\"assets/imagenes/Piedra papel o tijera/Piedra.jpg\" alt=\"Piedra\" class=\"rounded\" width=50> </button><br><br>\n                    <button class=\"btn btn-outline-danger\" id=\"BtnPapel\" disabled> <img src=\"assets/imagenes/Piedra papel o tijera/Papel.jpg\" alt=\"Papel\" class=\"rounded\" width=50></button><br><br>\n                    <button class=\"btn btn-outline-danger\" id=\"BtnTijera\" disabled> <img src=\"assets/imagenes/Piedra papel o tijera/Tijera.jpg\" alt=\"Tijera\" class=\"rounded\" width=50></button><br><br>\n                </div>\n            </div>\n        </div>\n\n<!--\n        <div class=\"row\">\n        <div class=\"col-md-12\">\n            <button *ngIf=\"unJuego.juega\" class=\"btn btn-primary btn-lg btn-block\" (click)=\"verificarJugada()\"> Jugar </button>\n        </div>\n        </div>\n-->      \n        <div class=\"row\">\n        <div class=\"col-md-12\">\n            <button *ngIf=\"!unJuego.juega\" class=\"btn btn-info btn-lg btn-block text-dark\" (click)=\"reiniciarJuego()\"><strong> Intentar otra vez </strong></button>\n        </div>\n        </div>\n\n        <br>\n        <h5 align=\"center\" id=\"LblMensaje\" class=\"text-white\" ><strong>  {{unJuego.mensaje}}</strong> </h5>\n        <br>\n    </div>\n\n</div>\n\n\n\n        \n</body>\n</html>"
 
 /***/ }),
 
@@ -1359,11 +1412,12 @@ var PiedraPapelTijeraComponent = (function () {
         this.jugadaUsuario = null;
         this.Modo_Testeo = true;
         this.event_emitter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
-        this.unJuego = new __WEBPACK_IMPORTED_MODULE_1__entidades_juego__["a" /* Juego */](localStorage.getItem("jugador"), "Piedra, Pepel o Tijera", "Debe elegir piedra papel o tijera y ganarle al sistema.", "Esperando...");
+        this.unJuego = new __WEBPACK_IMPORTED_MODULE_1__entidades_juego__["a" /* Juego */](localStorage.getItem("jugador"), "Piedra, Pepel o Tijera", "Debe elegir piedra papel o tijera y ganarle al sistema.", "Haga click en la alguno de los botones (en la piedra, en el papel o en la tijera) para realizar su jugada.");
         this.prepararJuego();
     }
     PiedraPapelTijeraComponent.prototype.prepararJuego = function () {
-        this.unJuego.mensaje = "Esperando...";
+        this.puntos = 0;
+        this.unJuego.mensaje = "Haga click en la alguno de los botones (en la piedra, en el papel o en la tijera) para realizar su jugada.";
         this.unJuego.juega = true;
         this.jugadaUsuario = null;
         this.generarJugada();
@@ -1386,71 +1440,87 @@ var PiedraPapelTijeraComponent = (function () {
         console.log(this.jugadaSistema);
     };
     PiedraPapelTijeraComponent.prototype.verificarJugada = function () {
-        if (this.jugadaUsuario != this.jugadaSistema) {
-            if (this.jugadaUsuario == "Piedra") {
-                if (this.jugadaSistema == "Tijera") {
-                    this.unJuego.resultado = true;
-                    this.unJuego.mensaje = "Usted ha ganado";
+        if (this.unJuego.juega == true) {
+            if (this.jugadaUsuario != this.jugadaSistema) {
+                if (this.jugadaUsuario == "Piedra") {
+                    if (this.jugadaSistema == "Tijera") {
+                        this.unJuego.resultado = true;
+                        document.getElementById("LblMensaje").setAttribute("class", "text-white");
+                        this.unJuego.mensaje = "Usted ha ganado";
+                        this.puntos += 15;
+                    }
+                    else {
+                        this.unJuego.resultado = false;
+                        document.getElementById("LblMensaje").setAttribute("class", "text-danger");
+                        this.unJuego.mensaje = "Usted perdio";
+                    }
                 }
-                else {
-                    this.unJuego.resultado = false;
-                    this.unJuego.mensaje = "Usted perdio";
+                if (this.jugadaUsuario == "Tijera") {
+                    if (this.jugadaSistema == "Papel") {
+                        this.unJuego.resultado = true;
+                        document.getElementById("LblMensaje").setAttribute("class", "text-white");
+                        this.unJuego.mensaje = "Usted ha ganado";
+                        this.puntos += 15;
+                    }
+                    else {
+                        this.unJuego.resultado = false;
+                        document.getElementById("LblMensaje").setAttribute("class", "text-danger");
+                        this.unJuego.mensaje = "Usted perdio";
+                    }
+                }
+                if (this.jugadaUsuario == "Papel") {
+                    if (this.jugadaSistema == "Piedra") {
+                        this.unJuego.resultado = true;
+                        document.getElementById("LblMensaje").setAttribute("class", "text-white");
+                        this.unJuego.mensaje = "Usted ha ganado";
+                        this.puntos += 15;
+                    }
+                    else {
+                        this.unJuego.resultado = false;
+                        document.getElementById("LblMensaje").setAttribute("class", "text-danger");
+                        this.unJuego.mensaje = "Usted perdio";
+                    }
                 }
             }
-            if (this.jugadaUsuario == "Tijera") {
-                if (this.jugadaSistema == "Papel") {
-                    this.unJuego.resultado = true;
-                    this.unJuego.mensaje = "Usted ha ganado";
-                }
-                else {
-                    this.unJuego.resultado = false;
-                    this.unJuego.mensaje = "Usted perdio";
-                }
+            else {
+                this.unJuego.resultado = false;
+                this.unJuego.mensaje = "Empate";
+                this.puntos += 5;
             }
-            if (this.jugadaUsuario == "Papel") {
-                if (this.jugadaSistema == "Piedra") {
-                    this.unJuego.resultado = true;
-                    this.unJuego.mensaje = "Usted ha ganado";
-                }
-                else {
-                    this.unJuego.resultado = false;
-                    this.unJuego.mensaje = "Usted perdio";
-                }
+            this.unJuego.mensaje += ". Sumo " + this.puntos + "Pts., haga click en 'Intentar otra vez' e intente con otra jugada.";
+            switch (this.jugadaSistema) {
+                case "Piedra":
+                    document.getElementById("BtnPiedra").setAttribute("class", "btn btn-danger active");
+                    break;
+                case "Papel":
+                    document.getElementById("BtnPapel").setAttribute("class", "btn btn-danger active");
+                    break;
+                case "Tijera":
+                    document.getElementById("BtnTijera").setAttribute("class", "btn btn-danger active");
+                    break;
             }
+            console.log("PUTA MADRE");
+            this.finDelJuego();
         }
-        else {
-            this.unJuego.resultado = false;
-            this.unJuego.mensaje = "Empate";
-        }
-        switch (this.jugadaSistema) {
-            case "Piedra":
-                document.getElementById("BtnPiedra").setAttribute("class", "btn btn-danger active");
-                break;
-            case "Papel":
-                document.getElementById("BtnPapel").setAttribute("class", "btn btn-danger active");
-                break;
-            case "Tijera":
-                document.getElementById("BtnTijera").setAttribute("class", "btn btn-danger active");
-                break;
-        }
-        console.log(this.unJuego.mensaje);
-        this.unJuego.juega = false;
     };
     PiedraPapelTijeraComponent.prototype.QueHay = function (val) {
-        this.jugadaUsuario = val.target.alt;
-        console.log(this.jugadaUsuario);
-        this.desmarcarBotones();
-        switch (this.jugadaUsuario) {
-            case "Piedra":
-                document.getElementById("BtnPiedra_user").setAttribute("class", "btn btn-primary active");
-                break;
-            case "Papel":
-                document.getElementById("BtnPapel_user").setAttribute("class", "btn btn-primary active");
-                break;
-            case "Tijera":
-                document.getElementById("BtnTijera_user").setAttribute("class", "btn btn-primary active");
-                break;
+        if (this.unJuego.juega == true) {
+            this.jugadaUsuario = val.target.alt;
+            console.log(this.jugadaUsuario);
+            this.desmarcarBotones();
+            switch (this.jugadaUsuario) {
+                case "Piedra":
+                    document.getElementById("BtnPiedra_user").setAttribute("class", "btn btn-primary active");
+                    break;
+                case "Papel":
+                    document.getElementById("BtnPapel_user").setAttribute("class", "btn btn-primary active");
+                    break;
+                case "Tijera":
+                    document.getElementById("BtnTijera_user").setAttribute("class", "btn btn-primary active");
+                    break;
+            }
         }
+        this.verificarJugada();
     };
     PiedraPapelTijeraComponent.prototype.desmarcarBotones = function () {
         document.getElementById("BtnPiedra_user").setAttribute("class", "btn btn-outline-primary");
@@ -1459,6 +1529,12 @@ var PiedraPapelTijeraComponent = (function () {
         document.getElementById("BtnPiedra").setAttribute("class", "btn btn-outline-danger");
         document.getElementById("BtnPapel").setAttribute("class", "btn btn-outline-danger");
         document.getElementById("BtnTijera").setAttribute("class", "btn btn-outline-danger");
+    };
+    PiedraPapelTijeraComponent.prototype.finDelJuego = function () {
+        this.unJuego.juega = false;
+        this.unJuego.puntajeTotal = Number.parseInt(localStorage.getItem("puntos"));
+        this.unJuego.puntajeTotal += this.puntos;
+        localStorage.setItem("puntos", this.unJuego.puntajeTotal.toString());
     };
     PiedraPapelTijeraComponent.prototype.reiniciarJuego = function () {
         this.prepararJuego();
@@ -1724,7 +1800,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/sala-de-juegos/sala-de-juegos.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<body> <app-menu-strip></app-menu-strip>\r\n<div class=\"container centroDePagina2\" *ngIf=\"CtrlCarousel\"> \r\n    \r\n    \r\n\r\n    <div class=\"alert alert-primary\">\r\n    <strong>Pantalla de seleccion:</strong>\r\n    Elige tu juego y suma puntos a tu cuenta por cada victoria. Cada juego tiene diferentes puntuaciones que varian segun la mecanica del mismo. \r\n    </div>\r\n\r\n    \r\n\r\n  <div id=\"carouselExampleIndicators\" class=\"carousel slide\" data-ride=\"carousel\" >\r\n    <ol class=\"carousel-indicators\">\r\n      <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\" class=\"active\"></li>\r\n      <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"1\"></li>\r\n      <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"2\"></li>\r\n      <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"3\"></li>\r\n      <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"4\"></li>\r\n    </ol>\r\n\r\n\r\n\r\n    <div class=\"carousel-inner rounded\">\r\n      <div class=\"carousel-item active\" >\r\n        <img class=\"d-block w-100\" src=\"/assets/imagenes/Carousel_Anagrama.jpg\" alt=\"Anagrama\" height=\"300\" routerLink=\"/adivina\" (click)=\"irAJuego($event)\">\r\n          <div class=\"carousel d-none d-md-block\">   \r\n\r\n              <div class=\"carousel-caption d-none d-md-block\" role=\"alert\">\r\n                  <hr>\r\n                  Pruebe que tan bueno es develando las palabras con sus letras desordenadas.\r\n              </div> \r\n\r\n          </div>\r\n      </div>\r\n\r\n      <div class=\"carousel-item \">\r\n          <img class=\"d-block w-100\" src=\"/assets/imagenes/Carousel_AdivinaElNumero.jpg\" alt=\"Adivina\" height=\"300\" (click)=\"irAJuego($event)\">\r\n            <div class=\"carousel d-none d-md-block\">\r\n\r\n                <div class=\"carousel-caption d-none d-md-block\" role=\"alert\">\r\n                    <hr>\r\n                    <p class=\"mb-0\">adivine cual es el numero secreto que el sistema tiene preparado para usted.</p>\r\n                </div>    \r\n\r\n            </div>\r\n        </div>      \r\n\r\n      <div class=\"carousel-item \">\r\n        <img class=\"d-block w-100\" src=\"/assets/imagenes/Carousel_Agilidad.jpg\" alt=\"Agilidad\" height=\"300\" (click)=\"irAJuego($event)\">\r\n        <div class=\"carousel d-none d-md-block\">   \r\n\r\n            <div class=\"carousel-caption d-none d-md-block\" role=\"alert\">\r\n                <hr>\r\n                <p class=\"mb-0\">En este juego su oponente sera una operacion simple entre 2 numeros, que puede salir mal?</p>\r\n            </div> \r\n\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"carousel-item \">\r\n          <img class=\"d-block w-100\" src=\"/assets/imagenes/Carousel_PPT.jpg\" alt=\"PPT\" height=\"300\" (click)=\"irAJuego($event)\">\r\n            <div class=\"carousel d-none d-md-block\">   \r\n\r\n                <div class=\"carousel-caption d-none d-md-block\" role=\"alert\">\r\n                    <hr>\r\n                    <p class=\"mb-0\">Logre ganarle al sistema.</p>\r\n                </div>\r\n  \r\n            </div>\r\n        </div>      \r\n\r\n      <div class=\"carousel-item \">\r\n        <img class=\"d-block w-100\" src=\"/assets/imagenes/Carousel_JuegoColores.jpg\" alt=\"JuegoDeColores\" height=\"300\" (click)=\"irAJuego($event)\">\r\n        <div class=\"carousel d-none d-md-block\">  \r\n\r\n                <div class=\"carousel-caption d-none d-md-block\" role=\"alert\">\r\n                    <hr>\r\n                    <p class=\"mb-0\">Escriba el color que el sistema le pide para ganar este juego.</p>\r\n                </div> \r\n\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <a class=\"carousel-control-prev\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"prev\">\r\n      <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\r\n      <span class=\"sr-only\">Anterior</span>\r\n    </a>\r\n    <a class=\"carousel-control-next\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"next\">\r\n      <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\r\n      <span class=\"sr-only\">Siguiente</span>\r\n    </a>\r\n  </div>\r\n\r\n</div>\r\n</body>\r\n"
+module.exports = "<app-menu-strip></app-menu-strip>\r\n<div class=\"container centroDePagina2\" *ngIf=\"CtrlCarousel\"> \r\n    \r\n    \r\n\r\n    <div class=\"alert alert-primary\">\r\n    <strong>Pantalla de seleccion:</strong>\r\n    Elige tu juego y suma puntos a tu cuenta por cada victoria. Cada juego tiene diferentes puntuaciones que varian segun la mecanica del mismo. \r\n    </div>\r\n\r\n    \r\n\r\n  <div id=\"carouselExampleIndicators\" class=\"carousel slide\" data-ride=\"carousel\" >\r\n    <ol class=\"carousel-indicators\">\r\n      <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\" class=\"active\"></li>\r\n      <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"1\"></li>\r\n      <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"2\"></li>\r\n      <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"3\"></li>\r\n      <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"4\"></li>\r\n    </ol>\r\n\r\n\r\n\r\n    <div class=\"carousel-inner rounded\">\r\n      <div class=\"carousel-item active\" >\r\n        <img class=\"d-block w-100\" src=\"/assets/imagenes/Carousel_Anagrama.jpg\" alt=\"Anagrama\" height=\"300\" routerLink=\"/adivina\" (click)=\"irAJuego($event)\">\r\n          <div class=\"carousel d-none d-md-block\">   \r\n\r\n              <div class=\"carousel-caption d-none d-md-block\" role=\"alert\">\r\n                  <hr>\r\n                  Pruebe que tan bueno es develando las palabras con sus letras desordenadas.\r\n              </div> \r\n\r\n          </div>\r\n      </div>\r\n\r\n      <div class=\"carousel-item \">\r\n          <img class=\"d-block w-100\" src=\"/assets/imagenes/Carousel_AdivinaElNumero.jpg\" alt=\"Adivina\" height=\"300\" (click)=\"irAJuego($event)\">\r\n            <div class=\"carousel d-none d-md-block\">\r\n\r\n                <div class=\"carousel-caption d-none d-md-block\" role=\"alert\">\r\n                    <hr>\r\n                    <p class=\"mb-0\">adivine cual es el numero secreto que el sistema tiene preparado para usted.</p>\r\n                </div>    \r\n\r\n            </div>\r\n        </div>      \r\n\r\n      <div class=\"carousel-item \">\r\n        <img class=\"d-block w-100\" src=\"/assets/imagenes/Carousel_Agilidad.jpg\" alt=\"Agilidad\" height=\"300\" (click)=\"irAJuego($event)\">\r\n        <div class=\"carousel d-none d-md-block\">   \r\n\r\n            <div class=\"carousel-caption d-none d-md-block\" role=\"alert\">\r\n                <hr>\r\n                <p class=\"mb-0\">En este juego su oponente sera una operacion simple entre 2 numeros, que puede salir mal?</p>\r\n            </div> \r\n\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"carousel-item \">\r\n          <img class=\"d-block w-100\" src=\"/assets/imagenes/Carousel_PPT.jpg\" alt=\"PPT\" height=\"300\" (click)=\"irAJuego($event)\">\r\n            <div class=\"carousel d-none d-md-block\">   \r\n\r\n                <div class=\"carousel-caption d-none d-md-block\" role=\"alert\">\r\n                    <hr>\r\n                    <p class=\"mb-0\">Logre ganarle al sistema.</p>\r\n                </div>\r\n  \r\n            </div>\r\n        </div>      \r\n\r\n      <div class=\"carousel-item \">\r\n        <img class=\"d-block w-100\" src=\"/assets/imagenes/Carousel_JuegoColores.jpg\" alt=\"JuegoDeColores\" height=\"300\" (click)=\"irAJuego($event)\">\r\n        <div class=\"carousel d-none d-md-block\">  \r\n\r\n                <div class=\"carousel-caption d-none d-md-block\" role=\"alert\">\r\n                    <hr>\r\n                    <p class=\"mb-0\">Escriba el color que el sistema le pide para ganar este juego.</p>\r\n                </div> \r\n\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <a class=\"carousel-control-prev\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"prev\">\r\n      <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\r\n      <span class=\"sr-only\">Anterior</span>\r\n    </a>\r\n    <a class=\"carousel-control-next\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"next\">\r\n      <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\r\n      <span class=\"sr-only\">Siguiente</span>\r\n    </a>\r\n  </div>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
