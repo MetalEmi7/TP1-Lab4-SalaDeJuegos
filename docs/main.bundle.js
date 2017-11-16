@@ -2065,13 +2065,13 @@ var MiHttpService = (function () {
             .catch(this.handlerError);
     };
     MiHttpService.prototype.realJugadores = function (archivo) {
-        return this.http.get("../../assets/archivos/" + archivo)
+        return this.http.get("./assets/archivos/" + archivo)
             .toPromise()
             .then(this.extraerDatos)
             .catch(this.handlerError);
     };
     MiHttpService.prototype.realPalabras = function () {
-        return this.http.get("../../assets/archivos/palabras.json")
+        return this.http.get("./assets/archivos/palabras.json")
             .toPromise()
             .then(this.extraerDatos)
             .catch(this.handlerError);
@@ -2079,7 +2079,7 @@ var MiHttpService = (function () {
     MiHttpService.prototype.login = function () {
         var archivoU = "usuarios.json";
         var archivoJ = "jugadores.json";
-        return this.http.get("../../assets/archivos/" + archivoU)
+        return this.http.get("./assets/archivos/" + archivoU)
             .toPromise()
             .then(this.extraerDatos)
             .catch(this.handlerError);
