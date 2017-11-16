@@ -24,7 +24,7 @@ export class MiHttpService {
 
   public realJugadores(archivo)
   {
-    return this.http.get("../../assets/archivos/" + archivo)
+    return this.http.get("./assets/archivos/" + archivo)
     .toPromise()
     .then(this.extraerDatos)
     .catch(this.handlerError)
@@ -33,7 +33,7 @@ export class MiHttpService {
 
   public realPalabras()
   {
-    return this.http.get("../../assets/archivos/palabras.json")
+    return this.http.get("./assets/archivos/palabras.json")
     .toPromise()
     .then(this.extraerDatos)
     .catch(this.handlerError)
@@ -45,7 +45,7 @@ export class MiHttpService {
     let archivoU = "usuarios.json";
     let archivoJ = "jugadores.json";
 
-    return this.http.get("../../assets/archivos/" + archivoU)
+    return this.http.get("./assets/archivos/" + archivoU)
     .toPromise()
     .then(this.extraerDatos)
     .catch(this.handlerError)
