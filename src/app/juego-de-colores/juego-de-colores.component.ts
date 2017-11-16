@@ -251,10 +251,7 @@ export class JuegoDeColoresComponent{
 
 
     if (this.intentos_Usuario >= this.intentos_Sistema)
-    {
-      console.log("----------------------------");
-      this.finDelJuego();
-    }
+    {this.finDelJuego();}
 
     
   }

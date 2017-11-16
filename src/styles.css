@@ -39,6 +39,14 @@ body
   background-image:url(/assets/imagenes/BtnCeleste.jpg);
 }
 
+.btn-dark{
+  background-image:url(/assets/imagenes/BtnDark.jpg);
+}
+
+.btn-white{
+  background-image:url(/assets/imagenes/BtnWhite.jpg);
+}
+
 .centroDePagina
 {  
   margin: 0 auto;
